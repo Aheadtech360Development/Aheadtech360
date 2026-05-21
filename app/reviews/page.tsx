@@ -175,6 +175,39 @@ function RatingCard({ pr }: { pr: typeof PLATFORM_RATINGS[number] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// IMAGE LIGHTBOX
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <div
+      onClick={onClose}
+      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9999, display: 'grid', placeItems: 'center', padding: '20px', backdropFilter: 'blur(6px)' }}
+    >
+      <div onClick={e => e.stopPropagation()} style={{ position: 'relative', maxWidth: '92vw', maxHeight: '92vh' }}>
+        <button
+          onClick={onClose}
+          style={{ position: 'absolute', top: '-48px', right: 0, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '18px', cursor: 'pointer', lineHeight: 1, borderRadius: '8px', padding: '8px 16px', fontFamily: 'var(--font-jakarta)', fontWeight: 700 }}
+        >
+          ✕ Close
+        </button>
+        <img
+          src={src}
+          alt={alt}
+          style={{ maxWidth: '92vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 24px 80px rgba(0,0,0,0.7)', display: 'block' }}
+        />
+      </div>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // VIDEO MODAL
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -286,7 +319,7 @@ function VideoCard({ v, large, onClick }: { v: Video; large?: boolean; onClick: 
 // REVIEW CARD
 // ─────────────────────────────────────────────────────────────────────────────
 
-function ReviewCard({ r }: { r: Review }) {
+function ReviewCard({ r, onImageClick }: { r: Review; onImageClick?: (src: string) => void }) {
   const [hovered, setHovered] = useState(false)
 
   if (r.image) {
@@ -294,9 +327,15 @@ function ReviewCard({ r }: { r: Review }) {
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ breakInside: 'avoid', marginBottom: '16px', borderRadius: '14px', overflow: 'hidden', border: `1.5px solid ${hovered ? '#213D79' : '#DFE5ED'}`, boxShadow: hovered ? '0 8px 24px rgba(8,14,28,.12)' : '0 2px 8px rgba(8,14,28,.06)', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', transform: hovered ? 'translateY(-2px)' : 'translateY(0)' }}
+        onClick={() => onImageClick && onImageClick(r.image!)}
+        style={{ breakInside: 'avoid', marginBottom: '16px', borderRadius: '14px', overflow: 'hidden', border: `1.5px solid ${hovered ? '#213D79' : '#DFE5ED'}`, boxShadow: hovered ? '0 8px 24px rgba(8,14,28,.12)' : '0 2px 8px rgba(8,14,28,.06)', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', transform: hovered ? 'translateY(-2px)' : 'translateY(0)', cursor: 'zoom-in', position: 'relative' }}
       >
         <img src={r.image} alt={`${r.platform} review`} style={{ width: '100%', display: 'block' }} />
+        {hovered && (
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(8,14,28,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ background: 'rgba(255,255,255,0.92)', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>🔍</div>
+          </div>
+        )}
       </div>
     )
   }
@@ -366,6 +405,7 @@ function CertCard({ c }: { c: typeof CERTS[number] }) {
 
 export default function ReviewsPage() {
   const [activeVideo,    setActiveVideo]    = useState<string | null>(null)
+  const [activeImage,    setActiveImage]    = useState<string | null>(null)
   const [reviewFilter,   setReviewFilter]   = useState<Platform | 'All Reviews'>('All Reviews')
   const [showAll,        setShowAll]        = useState(false)
 
@@ -483,7 +523,7 @@ export default function ReviewsPage() {
 
           {/* Masonry grid — 3 columns */}
           <div className="reviews-masonry">
-            {visibleReviews.map((r, i) => <ReviewCard key={i} r={r} />)}
+            {visibleReviews.map((r, i) => <ReviewCard key={i} r={r} onImageClick={setActiveImage} />)}
           </div>
 
           {/* Show All button */}
@@ -540,6 +580,9 @@ export default function ReviewsPage() {
 
       {/* Video modal */}
       {activeVideo && <VideoModal videoId={activeVideo} onClose={() => setActiveVideo(null)} />}
+
+      {/* Image lightbox */}
+      {activeImage && <ImageLightbox src={activeImage} alt="Review screenshot" onClose={() => setActiveImage(null)} />}
 
       <style>{`
         .rating-row > div { flex: 1 1 140px; }
