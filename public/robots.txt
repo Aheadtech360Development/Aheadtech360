@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /studio
+Disallow: /api
+
+# Host
+Host: https://www.aheadtech360.com
+
+# Sitemaps
+Sitemap: https://www.aheadtech360.com/sitemap.xml

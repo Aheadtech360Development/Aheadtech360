@@ -1,0 +1,22 @@
+export default {
+  name: 'contactPage',
+  title: 'Contact Page',
+  type: 'document',
+  fields: [
+    { name: 'heading', title: 'Page Heading', type: 'string' },
+    { name: 'description', title: 'Description Paragraph', type: 'text' },
+    { name: 'phone', title: 'Phone', type: 'string' },
+    { name: 'email', title: 'Email', type: 'string' },
+    { name: 'whatsappText', title: 'WhatsApp Tagline', type: 'string' },
+    { name: 'address', title: 'Address', type: 'string' },
+    { name: 'responseNote', title: 'Response Speed Note', type: 'text' },
+    { name: 'formScarcity', title: 'Form Scarcity Text', type: 'string' },
+    { name: 'formTitle', title: 'Form Title', type: 'string' },
+    { name: 'formSubtitle', title: 'Form Subtitle', type: 'string' },
+    { name: 'ghlFormUrl', title: 'GoHighLevel Form Embed URL', type: 'url',
+      description: 'Paste your GHL form URL here. Non-technical user just updates this URL.' },
+    { name: 'trustBadges', title: 'Trust Badges (below form)', type: 'array',
+      of: [{ type: 'string' }] },
+    { name: 'seo', title: 'SEO Meta', type: 'seoMeta' },
+  ],
+}
