@@ -167,7 +167,7 @@ function ProjectCard({ p }: { p: Project }) {
       {/* Image area */}
       <div style={{ height: '210px', background: 'linear-gradient(160deg,#EEF2F9,#DFE5ED)', overflow: 'hidden', position: 'relative', marginTop: '12px' }}>
         {p.image ? (
-          <Image src={p.image} alt={p.title} fill style={{ objectFit: 'cover' }} unoptimized />
+          <Image src={p.image} alt={p.title} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={80} />
         ) : (
           <div style={{ height: '100%', display: 'grid', placeItems: 'center' }}>
             <span style={{ fontSize: '12px', color: '#9BAABB', fontFamily: 'var(--font-jakarta)', fontStyle: 'italic' }}>[{p.placeholder}]</span>
