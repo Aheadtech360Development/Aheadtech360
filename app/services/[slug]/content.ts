@@ -467,6 +467,124 @@ export const SERVICE_CONTENT: Record<string, ServicePageData> = {
     },
   },
 
+  // ── APP DEVELOPMENT ───────────────────────────────────────────────────────
+  'app-dev': {
+    slug: 'app-dev', title: 'Mobile App Development',
+
+    hero: {
+      tags: ['MOBILE APP DEVELOPMENT', 'iOS', 'ANDROID'],
+      heading: 'iOS + Android apps that [em]ship and scale.[/em]',
+      description: 'Native and cross-platform mobile apps for ecommerce, lifestyle, AI tools, and service businesses. From MVP to v1 launch to App Store submission — handled end-to-end.',
+      ctaPrimary:   'Scope Your App →',
+      ctaSecondary: 'See Portfolio',
+      checklist: [
+        'UX wireframes + product flow design',
+        'Native (Swift + Kotlin) or React Native',
+        'Backend + API integrations',
+        'Authentication, payments, push notifications',
+        'App Store + Google Play submission',
+        'Analytics + crash reporting',
+        'Post-launch support + iteration',
+      ],
+      stats: [
+        { value: 'iOS',   label: '+ ANDROID' },
+        { value: '12 wk', label: 'MVP AVG'   },
+        { value: 'Live',  label: 'APP STORE'  },
+      ],
+    },
+
+    truth: {
+      tag:        'THE HARD TRUTH',
+      heading:    'Most apps [em]die in the App Store.[/em]',
+      subheading: 'Built without product strategy, launched without distribution, ignored after launch.',
+      bad: {
+        label:   '✗  TYPICAL APP PROJECTS',
+        heading: 'Why most apps fail',
+        items: [
+          'Built every feature on the founder\'s wishlist',
+          'No real users tested before launch',
+          'App Store listing is an afterthought',
+          'Backend can\'t scale beyond 1,000 users',
+          'No retention strategy or push notification plan',
+          'Disappears once delivered — no iteration',
+        ],
+      },
+      good: {
+        label:   '✓  THE AT360 WAY',
+        heading: 'Apps built to ship + grow',
+        items: [
+          'MVP scope ruthlessly cut to what actually matters',
+          'Closed beta with real users before public launch',
+          'ASO (App Store Optimization) handled before listing',
+          'Backend architected for 100x scale from day one',
+          'Push + retention loops planned in v1 spec',
+          'Post-launch iteration retainer available',
+        ],
+      },
+    },
+
+    prose: {
+      heading: 'Mobile App Development — iOS, Android, Cross-Platform',
+      blocks: [
+        { type: 'p', text: 'Mobile app development isn\'t a code problem. It\'s a product problem. The hardest part isn\'t building the app — it\'s knowing what to leave out. Every "essential feature" your team brainstorms in week one is a future maintenance bill and a friction point in user experience.' },
+        { type: 'p', text: 'We build **native iOS apps** (Swift), **native Android apps** (Kotlin), and **cross-platform apps** (React Native, Flutter) — chosen based on what the product actually needs. Cross-platform when speed-to-market matters more than maximum performance. Native when the app does heavy work (camera, AR, complex animations, ML).' },
+        { type: 'h3', text: 'Where We Excel' },
+        { type: 'ul', items: [
+          '**Ecommerce apps** — Shopify-connected mobile apps for brands with engaged repeat customers.',
+          '**Lifestyle + utility apps** — fitness, productivity, scheduling, tracking.',
+          '**AI-powered apps** — wrappers around GPT, Claude, image generation, etc., with proper UX and billing.',
+          '**Service-based apps** — booking, scheduling, on-demand service marketplaces.',
+          '**SaaS companion apps** — mobile companions for web-first SaaS products.',
+        ]},
+        { type: 'h3', text: 'Our Process' },
+        { type: 'p', text: 'Discovery → MVP scoping (cut, cut, cut) → wireframes → product design → backend architecture → app build → beta testing → ASO + listing → App Store + Play Store submission → launch → iteration. MVP timeline: **10–14 weeks** typical.' },
+        { type: 'h3', text: 'What We Won\'t Do' },
+        { type: 'p', text: 'We turn down app projects that should be websites, projects with no distribution plan, and projects where the founder hasn\'t thought past the build. An app is a **3-year commitment**, not a one-time deliverable. If you\'re not ready for that, we\'ll save you the money and tell you so.' },
+      ],
+      related: [
+        { text: 'Custom Development', href: '/services/web-design' },
+        { text: 'Web Dev + CRO',      href: '/services/web-design' },
+      ],
+    },
+
+    deliverables: {
+      tag:     'EXACTLY WHAT YOU GET',
+      heading: 'App build deliverables — [em]nothing skipped.[/em]',
+      items: [
+        { icon: '🎯', title: 'Product Strategy + MVP Scope', desc: 'Real scoping: what\'s in v1, what\'s in v2, what gets cut. Saves 6 months of feature creep.' },
+        { icon: '📱', title: 'iOS + Android Build',          desc: 'Native or React Native — chosen based on product needs. Both stores covered.', highlight: true },
+        { icon: '🔧', title: 'Backend + Auth + Payments',    desc: 'API design, authentication (email/social/SSO), Stripe/RevenueCat billing, push notification infrastructure.' },
+        { icon: '🧪', title: 'Beta Testing Program',          desc: 'TestFlight + Google Play Internal Testing. Real users on real devices before public launch.' },
+        { icon: '🚀', title: 'App Store Submission + ASO',    desc: 'Listing copy, screenshots, keywords. Submission handled including reviewer back-and-forth.' },
+        { icon: '📊', title: 'Analytics + Crash Reporting',   desc: 'Mixpanel/Amplitude for analytics, Sentry for crashes. Live from day one.' },
+      ],
+    },
+
+    faq: {
+      badge:   'FAQ — MOBILE APP DEVELOPMENT',
+      tag:     'COMMON QUESTIONS',
+      heading: 'App questions [em]founders ask us.[/em]',
+      items: [
+        { q: 'Native or React Native — which is right for me?', a: 'React Native if speed-to-market matters and the app is mostly UI + API calls. Native if it does heavy work — camera, AR, real-time, complex animations, ML on device.' },
+        { q: 'How long for an MVP?',                            a: '10–14 weeks for a properly scoped MVP. Anyone promising 4 weeks for a real app is either lying or building a template wrapper.' },
+        { q: 'What does an MVP typically cost?',                a: 'Simple MVP (one-platform, basic features): $15K–$30K. Full MVP (iOS + Android, backend, payments): $35K–$80K. Free scoping call gets you a real number.' },
+        { q: 'Do you handle App Store submission?',             a: 'Yes — listing copy, screenshots, ASO, submission, and reviewer back-and-forth until you\'re live.' },
+        { q: 'What about ongoing maintenance?',                 a: 'Apps need updates: iOS/Android version compatibility, bug fixes, security patches. Monthly retainer available for ongoing support after the initial 30-day window.' },
+        { q: 'Can you also do marketing for the app launch?',   a: 'Yes — bundled with our Paid Ads + ASO services. App launch marketing is its own playbook (very different from ecom or lead gen).' },
+      ],
+    },
+
+    testimonials: {
+      tag:     'FROM FOUNDERS WE WORK WITH',
+      heading: 'What clients [em]actually say.[/em]',
+      items: [
+        { quote: 'AT360 scoped our MVP in week one — cut our feature list from 40 to 12. ', bold: 'Shipped in 11 weeks. App Store live in week 13.', name: 'Maaz K.', role: 'Founder, Driply (AI Fashion)', initials: 'MK' },
+        { quote: 'We had a contractor ghost us at 70% done. AT360 picked it up and ', bold: 'shipped both stores in 3 weeks.', name: 'R. Ali', role: 'Founder, TechHub', initials: 'RA' },
+        { quote: 'Backend they built handles 50K daily actives without issues. ', bold: 'Architected to scale from day one — not patched after the fact.', name: 'S. Khan', role: 'CEO, LuxeBags', initials: 'SK' },
+      ],
+    },
+  },
+
   // ── CRO ────────────────────────────────────────────────────────────────────
   'cro': {
     slug: 'cro', title: 'CRO & Web Development',

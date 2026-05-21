@@ -28,6 +28,7 @@ const DEFAULT_SERVICES: Service[] = [
   { icon: 'icons8-email-96.png',                  iconBg: '#FFFAEB', slug: 'email-marketing',  title: 'We email your customers', description: 'Welcome emails. Cart reminders. Win-back campaigns. Makes money while you sleep.', resultValue: '22%', resultLabel: 'Revenue lift' },
   { icon: 'icons8-website-80.png',                iconBg: '#FEF3F2', slug: 'web-design',       title: 'We build your website', description: 'Shopify. WordPress. Custom. Fast, clean, built to sell — not just look pretty.', resultValue: '<2s', resultLabel: 'Load time' },
   { icon: 'icons8-social-media-marketing-96.png', iconBg: '#EEF2F9', slug: 'social-media',     title: 'We handle your social media', description: 'Content that builds trust so your ads work even better. Plan it, make it, post it.', resultValue: '3x', resultLabel: 'Engagement' },
+  { icon: 'icons8-flow-chart-64.png',             iconBg: '#EEF2FF', slug: 'app-dev',          title: 'We build your mobile app', description: 'iOS, Android, React Native. MVP to App Store in 12 weeks. Strategy-first — we scope what to cut, then build what ships.', resultValue: '12wk', resultLabel: 'MVP avg' },
 ]
 
 function parseHeading(text: string) {
