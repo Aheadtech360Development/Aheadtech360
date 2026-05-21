@@ -585,6 +585,125 @@ export const SERVICE_CONTENT: Record<string, ServicePageData> = {
     },
   },
 
+  // ── CUSTOM DEVELOPMENT ────────────────────────────────────────────────────
+  'custom-dev': {
+    slug: 'custom-dev', title: 'Custom Development',
+
+    hero: {
+      tags: ['CUSTOM DEVELOPMENT', 'SHOPIFY', 'B2B'],
+      heading: 'When off-the-shelf [em]doesn\'t fit.[/em]',
+      description: 'Custom Shopify functions, B2B portals, gated wholesale pricing, configurators, calculators, marketplaces, internal tools — we build the systems that Shopify and WordPress can\'t do natively.',
+      ctaPrimary:   'Scope Your Project →',
+      ctaSecondary: 'See Portfolio',
+      checklist: [
+        'Custom Shopify apps (private + public)',
+        'B2B wholesale portals with login-gated pricing',
+        'Custom calculators + configurators',
+        'Marketplaces + multi-vendor sites',
+        'Internal admin tools + dashboards',
+        'API integrations + automation',
+        'Headless commerce builds (Next.js + Shopify)',
+      ],
+      stats: [
+        { value: 'Custom', label: 'STACK'   },
+        { value: 'B2B',    label: '+ B2C'   },
+        { value: '6–12wk', label: 'TYPICAL' },
+      ],
+    },
+
+    truth: {
+      tag:        'THE HARD TRUTH',
+      heading:    'Platforms have limits. [em]Your business shouldn\'t.[/em]',
+      subheading: 'If Shopify or WordPress can\'t do it, that\'s not a reason to stop. That\'s a reason to build.',
+      bad: {
+        label:   '✗  HITTING PLATFORM LIMITS',
+        heading: 'Where most businesses get stuck',
+        items: [
+          '"Shopify doesn\'t let us do this"',
+          '5 different apps stacked, all conflicting',
+          'Workarounds that break every update',
+          'Manual processes that should be automated',
+          'Apps you pay $400/month for one feature',
+          'Wholesale workflows duct-taped together',
+        ],
+      },
+      good: {
+        label:   '✓  CUSTOM DEVELOPMENT',
+        heading: 'Build what fits the business',
+        items: [
+          'Custom code that does exactly what you need',
+          'One clean integration instead of 5 apps',
+          'Update-proof solutions, not workarounds',
+          'Automation that runs without supervision',
+          'One-time build instead of monthly app fees',
+          'Wholesale + retail unified in one system',
+        ],
+      },
+    },
+
+    prose: {
+      heading: 'Custom Development for Businesses That Outgrew Their Platform',
+      blocks: [
+        { type: 'p', text: 'Shopify is incredible — until you need something it doesn\'t do. Then you have two options: stack 6 apps that half-work and break every update, or build it properly once. We do the second.' },
+        { type: 'p', text: 'Custom development at AheadTech360 covers everything from custom Shopify apps and theme extensions, to **B2B wholesale portals** with login-gated pricing, to full headless commerce builds with Next.js. Our developers work in PHP, JavaScript, Node, React, Liquid, and Python — picked based on the project, not the developer\'s preference.' },
+        { type: 'h3', text: 'What We Most Commonly Build' },
+        { type: 'ul', items: [
+          '**B2B portals** — login-gated pricing, bulk order grids, net terms checkout, custom catalogs, sales rep accounts.',
+          '**Custom configurators** — product configurators, custom apparel builders, calculator-driven quote tools.',
+          '**Shopify apps** — private apps for specific functionality, public apps for the App Store.',
+          '**Marketplaces** — multi-vendor sites, commission logic, vendor onboarding flows.',
+          '**Internal tools** — admin dashboards, inventory systems, custom CRM views.',
+          '**API integrations** — connecting Shopify/Woo with CRMs, ERPs, shipping providers, accounting systems.',
+        ]},
+        { type: 'h3', text: 'Our Process' },
+        { type: 'p', text: 'Discovery + scoping → technical spec + architecture → build in **2-week sprints** → QA → staged deployment → handover with documentation. Most custom projects run **6–12 weeks** depending on complexity.' },
+        { type: 'h3', text: 'When Custom Doesn\'t Make Sense' },
+        { type: 'p', text: 'Honestly, most businesses don\'t need custom development. If a Shopify app does 80% of what you need, we\'ll tell you. Custom is the right answer when (a) the feature is core to how your business works, (b) you\'ll use it for years, or (c) the existing apps cost more in subscriptions than the build cost.' },
+      ],
+      related: [
+        { text: 'Web Dev + CRO',    href: '/services/web-design' },
+        { text: 'App Development',  href: '/services/app-dev'    },
+      ],
+    },
+
+    deliverables: {
+      tag:     'EXACTLY WHAT YOU GET',
+      heading: 'Custom-built systems [em]you own forever.[/em]',
+      items: [
+        { icon: '📋', title: 'Technical Spec + Architecture', desc: 'Written before any code. Stack chosen for fit, not familiarity. Documented for handover.' },
+        { icon: '🔨', title: 'Sprint-Based Development',      desc: '2-week sprints with demos. You see progress every 2 weeks, not at the end.', highlight: true },
+        { icon: '✏️', title: 'Full QA + Testing',             desc: 'Test cases written for every feature. Bugs caught before launch, not after.' },
+        { icon: '📚', title: 'Documentation + Handover',      desc: 'Full technical docs so any developer can take over later. No vendor lock-in.' },
+        { icon: '🚀', title: 'Staged Deployment',              desc: 'Staging environment + production deployment. Rollback plan if something breaks.' },
+        { icon: '🔧', title: '30-Day Post-Launch Support',     desc: 'Bug fixes + minor tweaks included for 30 days. Ongoing support available as retainer.' },
+      ],
+    },
+
+    faq: {
+      badge:   'FAQ — CUSTOM DEVELOPMENT',
+      tag:     'COMMON QUESTIONS',
+      heading: 'Custom dev questions [em]founders ask us.[/em]',
+      items: [
+        { q: 'How do I know if I need custom or just an app?', a: 'Start with the cheapest viable app. Switch to custom when (a) no app fits, (b) you stack 3+ apps to fake it, or (c) monthly app fees exceed a one-time build cost.' },
+        { q: 'What\'s the typical cost?',                      a: 'Small Shopify customizations: $1.5K–$5K. B2B portals: $8K–$25K. Marketplaces or complex apps: $25K–$80K+. Free scoping call to give you a real number.' },
+        { q: 'Will updates break the custom code?',            a: 'Built right, no. We follow Shopify + WordPress best practices for upgrade-safe customizations. We also offer optional ongoing maintenance retainer.' },
+        { q: 'Who owns the code?',                             a: 'You. Once paid, the code is yours. Repository handed over. Any future developer can take it on. No vendor lock-in.' },
+        { q: 'What if I want to build a Shopify public app?',  a: 'We\'ve done it. Includes app store submission, billing API setup, multi-store support, and merchant onboarding.' },
+        { q: 'Can you work with our existing dev team?',       a: 'Yes — code reviews, pair work, scoped sprints. Augmenting an existing team is one of our common engagements.' },
+      ],
+    },
+
+    testimonials: {
+      tag:     'FROM FOUNDERS WE WORK WITH',
+      heading: 'What clients [em]actually say.[/em]',
+      items: [
+        { quote: 'Built our forex capital management site from a Notion doc in 3 weeks. ', bold: 'Custom JS calculator works flawlessly.', name: 'Artaboon Shah', role: 'Founder, Piplytics', initials: 'AS' },
+        { quote: 'Our B2B portal with login-gated pricing was costing us $600/month in apps. AT360 built it once. ', bold: 'Paid off in 4 months.', name: 'H. Kamran', role: 'Founder, UrbanWear', initials: 'HK' },
+        { quote: 'They handed over the repo with full docs. ', bold: 'Our in-house dev picked it up on day one. Zero vendor lock-in.', name: 'P. Malik', role: 'Owner, PrintHouse', initials: 'PM' },
+      ],
+    },
+  },
+
   // ── CRO ────────────────────────────────────────────────────────────────────
   'cro': {
     slug: 'cro', title: 'CRO & Web Development',

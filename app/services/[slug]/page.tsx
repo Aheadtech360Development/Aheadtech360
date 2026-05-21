@@ -269,7 +269,7 @@ function DeliverablesSection({ d }: { d: ServicePageData }) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '16px' }} className="cards-grid">
           {deliverables.items.map((item, i) => (
-            <div key={i} style={{ background: '#fff', border: `1.5px solid ${item.highlight ? '#25B472' : '#DFE5ED'}`, borderRadius: '14px', padding: '24px' }}>
+            <div key={i} className="deliv-card" style={{ background: '#fff', border: `1.5px solid ${item.highlight ? '#25B472' : '#DFE5ED'}`, borderRadius: '14px', padding: '24px' }}>
               <div style={{ fontSize: '28px', marginBottom: '12px' }}>{item.icon}</div>
               <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#080E1C', marginBottom: '6px', fontFamily: 'var(--font-bricolage)' }}>{item.title}</h3>
               <p style={{ fontSize: '13px', color: '#6E8098', lineHeight: 1.6, fontFamily: 'var(--font-jakarta)' }}>{item.desc}</p>
@@ -277,7 +277,12 @@ function DeliverablesSection({ d }: { d: ServicePageData }) {
           ))}
         </div>
       </div>
-      <style>{`@media(max-width:900px){ .cards-grid { grid-template-columns: 1fr 1fr !important; } } @media(max-width:600px){ .cards-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media(max-width:900px){ .cards-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media(max-width:600px){ .cards-grid { grid-template-columns: 1fr !important; } }
+        .deliv-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .deliv-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 28px rgba(8,14,28,.1); }
+      `}</style>
     </section>
   )
 }
