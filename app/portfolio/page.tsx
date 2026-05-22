@@ -143,10 +143,10 @@ const PROJECTS: Project[] = [
     image: '/images/portfolio/Themacpc.png',
     placeholder: 'The Mac PC',
     category: 'TECH RETAIL', location: 'PAKISTAN',
-    title: 'The Mac PC Store',
+    title: 'The Mac P Store',
     description: 'Custom website for a tech retail and repair business with product listings, service pages, and a clean storefront.',
     stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'Retail', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
-    link: 'https://themacpcstore.com',
+    link: 'https://themacpstore.com/',
   },
   {
     platform: 'Custom', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
