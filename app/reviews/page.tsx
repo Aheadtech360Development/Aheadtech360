@@ -329,8 +329,10 @@ function VideoCard({ v, large, onClick }: { v: Video; large?: boolean; onClick: 
 // ─────────────────────────────────────────────────────────────────────────────
 
 function ReviewCard({ r }: { r: Review }) {
-  const [hovered, setHovered] = useState(false)
-  const link = PLATFORM_LINKS[r.platform]
+  const [hovered,   setHovered]   = useState(false)
+  const [expanded,  setExpanded]  = useState(false)
+  const link    = PLATFORM_LINKS[r.platform]
+  const isLong  = (r.quote + (r.bold ?? '')).length > 160
 
   const inner = (
     <div
@@ -348,9 +350,19 @@ function ReviewCard({ r }: { r: Review }) {
       </div>
 
       {/* Quote */}
-      <p style={{ fontSize: '14px', color: '#3E5068', lineHeight: 1.65, fontFamily: 'var(--font-jakarta)', margin: 0 }}>
-        &ldquo;{r.quote}{r.bold && <strong style={{ color: '#1C2A42' }}>{r.bold}</strong>}&rdquo;
-      </p>
+      <div>
+        <p style={{ fontSize: '14px', color: '#3E5068', lineHeight: 1.65, fontFamily: 'var(--font-jakarta)', margin: 0, ...(isLong && !expanded ? { display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical', overflow: 'hidden' } : {}) }}>
+          &ldquo;{r.quote}{r.bold && <strong style={{ color: '#1C2A42' }}>{r.bold}</strong>}&rdquo;
+        </p>
+        {isLong && (
+          <button
+            onClick={e => { e.preventDefault(); e.stopPropagation(); setExpanded(v => !v) }}
+            style={{ background: 'none', border: 'none', padding: '6px 0 0', color: '#213D79', fontSize: '12px', fontWeight: 700, fontFamily: 'var(--font-jakarta)', cursor: 'pointer', display: 'block' }}
+          >
+            {expanded ? 'Read Less ↑' : 'Read More ↓'}
+          </button>
+        )}
+      </div>
 
       {/* Divider */}
       <div style={{ height: '1px', background: '#F2F5F8' }} />
