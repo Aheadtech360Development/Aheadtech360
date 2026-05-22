@@ -55,15 +55,6 @@ function UpworkIcon({ size = 16 }: { size?: number }) {
   )
 }
 
-function FiverrIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <rect width="24" height="24" rx="4" fill="#1DBF73"/>
-      <text x="12" y="17" textAnchor="middle" fill="white" fontSize="11" fontWeight="800" fontFamily="Arial">fi</text>
-    </svg>
-  )
-}
-
 function StarIcon() {
   return <span style={{ color: '#F79009', fontSize: '13px' }}>★</span>
 }
@@ -76,7 +67,7 @@ function Stars() {
 // DATA
 // ─────────────────────────────────────────────────────────────────────────────
 
-type Platform = 'Google' | 'Shopify Partner' | 'Clutch' | 'GoodFirms' | 'Upwork' | 'Fiverr'
+type Platform = 'Google' | 'Shopify Partner' | 'Clutch' | 'GoodFirms' | 'Upwork'
 
 interface Review {
   platform:  Platform
@@ -86,7 +77,6 @@ interface Review {
   role:      string
   initials:  string
   badge?:    'Verified' | 'Top Rated'
-  image?:    string
 }
 
 interface Video {
@@ -98,6 +88,14 @@ interface Video {
   quote:       string
   person:      string
   company:     string
+}
+
+const PLATFORM_LINKS: Record<Platform, string> = {
+  'Google':          'https://www.google.com/search?q=AheadTech360&sca_esv=525e608177515078&sxsrf=ANbL-n7qG-4TMtfXjp0ERL2qxL18KRNaRg%3A1779441939350&source=hp&ei=EyEQaoa0EI-jhbIPrt-x0Ao&iflsig=AFdpzrgAAAAAahAvIyBluPCY1aJ8KzFsbk7JW3VzCHlv&ved=0ahUKEwjGicHlycyUAxWPUUEAHa5vDKoQ4dUDCCg&uact=5&oq=AheadTech360&gs_lp=Egdnd3Mtd2l6IgxBaGVhZFRlY2gzNjAyCxAuGIAEGMcBGK8BMgQQABgeMgIQJjIFEAAY7wUyBRAAGO8FMgUQABjvBTIFEAAY7wVI8ocBUABY2oUBcAR4AJABAZgB8QOgAZgNqgEHMi0yLjIuMbgBA8gBAPgBAfgBApgCCKACpgqoAgrCAgoQIxiABBiKBRgnwgILEC4YgAQYsQMYgwHCAgsQABiABBixAxiDAcICCBAAGIAEGLEDwgILEC4YgAQYxwEY0QPCAgUQABiABMICCBAuGIAEGLEDwgIFEC4YgATCAg4QLhiABBixAxjHARivAcICERAuGIAEGLEDGIMBGMcBGNEDwgIIEC4YsQMYgATCAg0QLhiABBixAxiDARgKwgIHECMY6gIYJ5gDCfEF0InMpiPOtRiSBwk0LjAuMi4xLjGgB-o6sgcHMi0yLjEuMbgHgQrCBwcyLTMuMy4yyAdsgAgB&sclient=gws-wiz&zx=1779441959994#lrd=0x6021eed3c31a0421:0x392a11a8ce26a9ca,1,,,,',
+  'GoodFirms':       'https://www.goodfirms.co/company/aheadtech360',
+  'Upwork':          'https://www.upwork.com/freelancers/ikrash',
+  'Clutch':          'https://clutch.co/profile/aheadtech360#reviews',
+  'Shopify Partner': 'https://www.shopify.com/partners/directory/partner/aheadtech360',
 }
 
 const PLATFORM_RATINGS = [
@@ -117,18 +115,23 @@ const VIDEOS: Video[] = [
 ]
 
 const REVIEWS: Review[] = [
-  { platform: 'Clutch',         quote: 'AT360 didn\'t just run our ads — they ', bold: 'rebuilt our entire revenue engine.', name: 'M. Asad',       role: 'Founder, Maniyas',        initials: 'MA', badge: 'Verified', image: '/images/clutch/cc.jpeg' },
-  { platform: 'Shopify Partner',quote: 'Hired them for a basic Shopify audit. Got a ', bold: 'full revenue diagnostic, CRO wireframe, and an Omnisend flow blueprint', name: 'Jen K.',        role: 'Owner, Coastal Threads',   initials: 'JK', badge: 'Verified', image: '/images/shopify/ff.jpeg' },
-  { platform: 'Shopify Partner',quote: 'Shopify build was ', bold: 'pixel-perfect to the wireframe.', name: 'S. Raza',       role: 'Founder, ApparelHub',       initials: 'SR', badge: 'Verified', image: '/images/shopify/tt.jpeg' },
-  { platform: 'Shopify Partner',quote: 'App stack was a mess — ', bold: '12 redundant apps removed, site speed doubled overnight.', name: 'H. Kamran',     role: 'Founder, UrbanWear',        initials: 'HK', badge: 'Verified', image: '/images/shopify/gg.jpeg' },
-  { platform: 'Shopify Partner',quote: 'Migrated us from WooCommerce to Shopify in 3 weeks. ', bold: 'Zero downtime. All data intact.', name: 'P. Malik',      role: 'Owner, PrintHouse',         initials: 'PM', badge: 'Verified', image: '/images/shopify/pp.jpeg' },
-  { platform: 'GoodFirms',      quote: 'Hired AT360 after burning $40K with another agency. ', bold: 'First month with AT360 broke even. Third month profitable.', name: 'Maaz K.',       role: 'Founder, Driply',           initials: 'MK', badge: 'Verified', image: '/images/goodfirm/kk.jpeg' },
-  { platform: 'Google',         quote: 'Iqrar walked me through every single change in a weekly Loom. ', bold: 'I actually understand my ad account now.', name: 'Jason M.',      role: 'Lofty Creations · UK',      initials: 'JM', badge: 'Verified', image: '/images/google/x.jpeg' },
-  { platform: 'Google',         quote: 'Honest, fast, and they actually pick up the phone. Other agencies treated us like a number. ', bold: 'AT360 treated us like a partner.', name: 'D. Khan',       role: 'CEO, FreshCo',              initials: 'DK', badge: 'Verified', image: '/images/google/xx.jpeg' },
-  { platform: 'Google',         quote: 'Their UGC pipeline is legit. ', bold: '10 creators sourced, briefed, and shipped in 12 days.', name: 'TrashedPunk',  role: 'Streetwear Founder',        initials: 'TP', badge: 'Verified', image: '/images/google/xxx.jpeg' },
-  { platform: 'Google',         quote: 'Google Shopping campaigns set up from scratch. ', bold: 'ROAS hit 5.2x in the first 45 days.', name: 'F. Ahmed',      role: 'Founder, SportsPK',         initials: 'FA', badge: 'Verified', image: '/images/google/xxxx.jpeg' },
-  { platform: 'Google',         quote: 'Email flows were non-existent before AT360. ', bold: 'Now 28% of our revenue is email-attributed.', name: 'S. Khan',       role: 'CEO, LuxeBags',             initials: 'SK', badge: 'Verified', image: '/images/google/xxxxx.jpeg' },
-  { platform: 'Google',         quote: 'Issues flagged at night, fixed by morning. ', bold: 'Response time is unlike any agency we\'ve worked with.', name: 'R. Ali',        role: 'Founder, TechHub',          initials: 'RA', badge: 'Verified', image: '/images/google/xxxxxx.jpeg' },
+  { platform: 'Clutch',         quote: 'AT360 didn\'t just run our ads — they ', bold: 'rebuilt our entire revenue engine.', name: 'M. Asad',       role: 'Founder, Maniyas',          initials: 'MA', badge: 'Verified' },
+  { platform: 'Clutch',         quote: 'Pixel was broken for 6 months. Nobody told me. AT360 caught it in the audit and ', bold: 'fixed attribution within 48 hours. ROAS doubled the next month.', name: 'Artaboon Shah', role: 'Founder, Piplytics',       initials: 'AS', badge: 'Verified' },
+  { platform: 'Clutch',         quote: 'We came for the ads. Stayed for everything else. ', bold: 'AT360 is the only vendor we\'ve renewed three years running.', name: 'Effing Gear',   role: 'Head of Marketing, USA',    initials: 'EG', badge: 'Verified' },
+  { platform: 'Shopify Partner',quote: 'Hired them for a basic Shopify audit. Got a ', bold: 'full revenue diagnostic, CRO wireframe, and an Omnisend flow blueprint.', name: 'Jen K.',        role: 'Owner, Coastal Threads',    initials: 'JK', badge: 'Verified' },
+  { platform: 'Shopify Partner',quote: 'Shopify build was ', bold: 'pixel-perfect to the wireframe.', name: 'S. Raza',       role: 'Founder, ApparelHub',        initials: 'SR', badge: 'Verified' },
+  { platform: 'Shopify Partner',quote: 'App stack was a mess — ', bold: '12 redundant apps removed, site speed doubled overnight.', name: 'H. Kamran',     role: 'Founder, UrbanWear',         initials: 'HK', badge: 'Verified' },
+  { platform: 'Shopify Partner',quote: 'Migrated us from WooCommerce to Shopify in 3 weeks. ', bold: 'Zero downtime. All data intact.', name: 'P. Malik',      role: 'Owner, PrintHouse',          initials: 'PM', badge: 'Verified' },
+  { platform: 'GoodFirms',      quote: 'Hired AT360 after burning $40K with another agency. ', bold: 'First month with AT360 broke even. Third month profitable.', name: 'Maaz K.',       role: 'Founder, Driply',            initials: 'MK', badge: 'Verified' },
+  { platform: 'GoodFirms',      quote: 'Google and Meta campaigns restructured from scratch. ', bold: 'Blended ROAS hit 4.2x by month two. Best performance we\'ve ever had.', name: 'R. Sharma',     role: 'Head of Growth, RetailPK',   initials: 'RS', badge: 'Verified' },
+  { platform: 'Upwork',         quote: 'CPL was $24 when we started. Three months later ', bold: 'it dropped to $6.48. 1,185 leads in one campaign. Insane result.', name: 'Stellar College', role: 'Stellar Career College · CA', initials: 'SC', badge: 'Top Rated' },
+  { platform: 'Upwork',         quote: 'Engaged AT360 for a 3-month sprint. They delivered in 6 weeks. ', bold: 'Clean code, clear comms, zero surprises.', name: 'L. Bennett',    role: 'CTO, TechVenture · UK',      initials: 'LB', badge: 'Top Rated' },
+  { platform: 'Google',         quote: 'Iqrar walked me through every single change in a weekly Loom. ', bold: 'I actually understand my ad account now.', name: 'Jason M.',      role: 'Lofty Creations · UK',       initials: 'JM', badge: 'Verified' },
+  { platform: 'Google',         quote: 'Honest, fast, and they actually pick up the phone. Other agencies treated us like a number. ', bold: 'AT360 treated us like a partner.', name: 'D. Khan',       role: 'CEO, FreshCo',               initials: 'DK', badge: 'Verified' },
+  { platform: 'Google',         quote: 'Their UGC pipeline is legit. ', bold: '10 creators sourced, briefed, and shipped in 12 days.', name: 'TrashedPunk',  role: 'Streetwear Founder',         initials: 'TP', badge: 'Verified' },
+  { platform: 'Google',         quote: 'Google Shopping campaigns set up from scratch. ', bold: 'ROAS hit 5.2x in the first 45 days.', name: 'F. Ahmed',      role: 'Founder, SportsPK',          initials: 'FA', badge: 'Verified' },
+  { platform: 'Google',         quote: 'Email flows were non-existent before AT360. ', bold: 'Now 28% of our revenue is email-attributed.', name: 'S. Khan',       role: 'CEO, LuxeBags',              initials: 'SK', badge: 'Verified' },
+  { platform: 'Google',         quote: 'Issues flagged at night, fixed by morning. ', bold: 'Response time is unlike any agency we\'ve worked with.', name: 'R. Ali',        role: 'Founder, TechHub',           initials: 'RA', badge: 'Verified' },
 ]
 
 const CERTS = [
@@ -140,15 +143,14 @@ const CERTS = [
   { icon: '⭐', name: 'GoodFirms',         sub: 'Top Marketing',    highlight: false },
 ]
 
-const REVIEW_FILTERS: (Platform | 'All Reviews')[] = ['All Reviews', 'Shopify Partner', 'Clutch', 'GoodFirms', 'Google']
+const REVIEW_FILTERS: (Platform | 'All Reviews')[] = ['All Reviews', 'Shopify Partner', 'Clutch', 'GoodFirms', 'Google', 'Upwork']
 
 function platformIcon(p: Platform, size = 14) {
-  if (p === 'Google')         return <GoogleIcon size={size} />
+  if (p === 'Google')          return <GoogleIcon size={size} />
   if (p === 'Shopify Partner') return <ShopifyIcon size={size} />
   if (p === 'Clutch')          return <ClutchIcon size={size} />
   if (p === 'GoodFirms')       return <GoodFirmsIcon size={size} />
   if (p === 'Upwork')          return <UpworkIcon size={size} />
-  if (p === 'Fiverr')          return <FiverrIcon size={size} />
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -170,39 +172,6 @@ function RatingCard({ pr }: { pr: typeof PLATFORM_RATINGS[number] }) {
       <div style={{ marginBottom: '8px' }}><Stars /></div>
       <div style={{ fontFamily: 'var(--font-bricolage)', fontSize: '30px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{pr.rating}</div>
       <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', marginTop: '5px' }}>{pr.sub}</div>
-    </div>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// IMAGE LIGHTBOX
-// ─────────────────────────────────────────────────────────────────────────────
-
-function ImageLightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [onClose])
-
-  return (
-    <div
-      onClick={onClose}
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9999, display: 'grid', placeItems: 'center', padding: '20px', backdropFilter: 'blur(6px)' }}
-    >
-      <div onClick={e => e.stopPropagation()} style={{ position: 'relative', maxWidth: '92vw', maxHeight: '92vh' }}>
-        <button
-          onClick={onClose}
-          style={{ position: 'absolute', top: '-48px', right: 0, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '18px', cursor: 'pointer', lineHeight: 1, borderRadius: '8px', padding: '8px 16px', fontFamily: 'var(--font-jakarta)', fontWeight: 700 }}
-        >
-          ✕ Close
-        </button>
-        <img
-          src={src}
-          alt={alt}
-          style={{ maxWidth: '92vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 24px 80px rgba(0,0,0,0.7)', display: 'block' }}
-        />
-      </div>
     </div>
   )
 }
@@ -319,32 +288,15 @@ function VideoCard({ v, large, onClick }: { v: Video; large?: boolean; onClick: 
 // REVIEW CARD
 // ─────────────────────────────────────────────────────────────────────────────
 
-function ReviewCard({ r, onImageClick }: { r: Review; onImageClick?: (src: string) => void }) {
+function ReviewCard({ r }: { r: Review }) {
   const [hovered, setHovered] = useState(false)
+  const link = PLATFORM_LINKS[r.platform]
 
-  if (r.image) {
-    return (
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onClick={() => onImageClick && onImageClick(r.image!)}
-        style={{ breakInside: 'avoid', marginBottom: '16px', borderRadius: '14px', overflow: 'hidden', border: `1.5px solid ${hovered ? '#213D79' : '#DFE5ED'}`, boxShadow: hovered ? '0 8px 24px rgba(8,14,28,.12)' : '0 2px 8px rgba(8,14,28,.06)', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', transform: hovered ? 'translateY(-2px)' : 'translateY(0)', cursor: 'zoom-in', position: 'relative' }}
-      >
-        <img src={r.image} alt={`${r.platform} review`} style={{ width: '100%', display: 'block' }} />
-        {hovered && (
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(8,14,28,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ background: 'rgba(255,255,255,0.92)', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>🔍</div>
-          </div>
-        )}
-      </div>
-    )
-  }
-
-  return (
+  const inner = (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ background: '#fff', border: `1.5px solid ${hovered ? '#213D79' : '#E8EDF3'}`, borderRadius: '14px', padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: '14px', breakInside: 'avoid', marginBottom: '16px', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', boxShadow: hovered ? '0 6px 20px rgba(8,14,28,.09)' : 'none', transform: hovered ? 'translateY(-2px)' : 'translateY(0)' }}
+      style={{ background: '#fff', border: `1.5px solid ${hovered ? '#213D79' : '#E8EDF3'}`, borderRadius: '14px', padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: '14px', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', boxShadow: hovered ? '0 6px 20px rgba(8,14,28,.09)' : 'none', transform: hovered ? 'translateY(-2px)' : 'translateY(0)', cursor: 'pointer' }}
     >
       {/* Top */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -380,6 +332,12 @@ function ReviewCard({ r, onImageClick }: { r: Review; onImageClick?: (src: strin
       </div>
     </div>
   )
+
+  return (
+    <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', breakInside: 'avoid', marginBottom: '16px' }}>
+      {inner}
+    </a>
+  )
 }
 
 function CertCard({ c }: { c: typeof CERTS[number] }) {
@@ -405,7 +363,6 @@ function CertCard({ c }: { c: typeof CERTS[number] }) {
 
 export default function ReviewsPage() {
   const [activeVideo,    setActiveVideo]    = useState<string | null>(null)
-  const [activeImage,    setActiveImage]    = useState<string | null>(null)
   const [reviewFilter,   setReviewFilter]   = useState<Platform | 'All Reviews'>('All Reviews')
   const [showAll,        setShowAll]        = useState(false)
 
@@ -499,7 +456,7 @@ export default function ReviewsPage() {
               Every review. <em style={{ color: '#25B472', fontStyle: 'italic' }}>Every platform.</em>
             </h2>
             <p style={{ fontSize: '15px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', maxWidth: '500px', margin: '0 auto', lineHeight: 1.7 }}>
-              Pulled directly from Google, Shopify Partner Reviews, Clutch, GoodFirms, Upwork, and Fiverr. No cherry-picking.
+              Pulled directly from Google, Shopify Partner Reviews, Clutch, GoodFirms, and Upwork. No cherry-picking.
             </p>
           </div>
 
@@ -523,7 +480,7 @@ export default function ReviewsPage() {
 
           {/* Masonry grid — 3 columns */}
           <div className="reviews-masonry">
-            {visibleReviews.map((r, i) => <ReviewCard key={i} r={r} onImageClick={setActiveImage} />)}
+            {visibleReviews.map((r, i) => <ReviewCard key={i} r={r} />)}
           </div>
 
           {/* Show All button */}
@@ -580,9 +537,6 @@ export default function ReviewsPage() {
 
       {/* Video modal */}
       {activeVideo && <VideoModal videoId={activeVideo} onClose={() => setActiveVideo(null)} />}
-
-      {/* Image lightbox */}
-      {activeImage && <ImageLightbox src={activeImage} alt="Review screenshot" onClose={() => setActiveImage(null)} />}
 
       <style>{`
         .rating-row > div { flex: 1 1 140px; }

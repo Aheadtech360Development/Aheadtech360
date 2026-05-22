@@ -123,7 +123,7 @@ function FilterBtn({ label, count, active, onClick }: { label: string; count?: n
 function ProjectCard({ p, index }: { p: Project; index: number }) {
   const [hovered, setHovered] = useState(false)
 
-  return (
+  const card = (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -137,6 +137,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         display: 'flex',
         flexDirection: 'column',
+        cursor: p.link ? 'pointer' : 'default',
       }}
     >
       {/* Tags row */}
@@ -201,13 +202,13 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
         </div>
       </div>
 
-      {/* Footer link */}
+      {/* Footer */}
       <div style={{ padding: '0 18px 16px', borderTop: '1px solid #F2F5F8' }}>
         {p.link ? (
-          <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)' }}>
             Visit live site
             <span style={{ fontSize: '14px' }}>↗</span>
-          </a>
+          </div>
         ) : (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', fontSize: '12.5px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', fontStyle: 'italic' }}>
             Under NDA — case study on request
@@ -217,6 +218,15 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
       </div>
     </div>
   )
+
+  if (p.link) {
+    return (
+      <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+        {card}
+      </a>
+    )
+  }
+  return card
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -299,6 +309,14 @@ export default function PortfolioPage() {
                 onClick={() => { setWorkType(workType === f ? null : f); setVisible(PAGE_SIZE) }}
               />
             ))}
+            {(platform !== 'All' || industry !== null || workType !== null) && (
+              <button
+                onClick={() => { setPlatform('All'); setIndustry(null); setWorkType(null); setVisible(PAGE_SIZE) }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 14px', borderRadius: '20px', cursor: 'pointer', border: 'none', fontSize: '12px', fontWeight: 700, fontFamily: 'var(--font-jetbrains)', background: '#FEF3F2', color: '#D92D20', transition: 'all 0.15s' }}
+              >
+                ✕ Clear
+              </button>
+            )}
           </div>
         </div>
       </section>
