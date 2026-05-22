@@ -107,8 +107,8 @@ const PLATFORM_RATINGS = [
 ]
 
 const VIDEOS: Video[] = [
-  { featured: true,  videoFile: '/videos/at360.mp4', placeholder: 'Featured Video — Maniyas Founder', duration: '4:32', quote: '"From 0 to Rs.22.5M in 10 months"', person: 'Maniyas Founder', company: 'Pakistani Fashion D2C' },
-  { videoFile: '/videos/ezt.mp4', placeholder: 'Video Testimonial — Lofty', duration: '2:14', quote: '"They saved my UK DTF biz"', person: 'Jason', company: 'Lofty Creations' },
+  { featured: true,  videoFile: '/videos/at360.mp4', placeholder: 'Featured Video — TrashedPunk', duration: '4:32', quote: '"From 0 to Rs.22.5M in 10 months"', person: 'TrashedPunk', company: '' },
+  { videoFile: '/videos/ezt.mp4', placeholder: 'Video Testimonial — EZDTFMaker', duration: '2:14', quote: '"They saved my UK DTF biz"', person: 'EZDTFMaker', company: '' },
   { placeholder: 'Video Testimonial — Artaboon', duration: '3:08', quote: '"Pixel was broken. Nobody told me."', person: 'Artaboon', company: 'Piplytics' },
   { placeholder: 'Video Testimonial — Maaz Driply', duration: '1:48', quote: '"Built our app in 90 days"',   person: 'Maaz',          company: 'Driply (AI Fashion)' },
   { placeholder: 'Video Testimonial — Stellar',  duration: '2:55', quote: '"1,185 leads at $6.48 CPL"',       person: 'Stellar Career', company: 'Stellar Career College' },
@@ -281,7 +281,7 @@ function VideoCard({ v, large, onClick }: { v: Video; large?: boolean; onClick: 
       {/* Bottom text */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)', padding: large ? '40px 24px 20px' : '28px 16px 14px' }}>
         <div style={{ fontSize: large ? '18px' : '13px', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-bricolage)', lineHeight: 1.2, marginBottom: '4px' }}>{v.quote}</div>
-        <div style={{ fontSize: large ? '13px' : '11px', color: '#A4B3C4', fontFamily: 'var(--font-jakarta)' }}>{v.person} · {v.company}</div>
+        <div style={{ fontSize: large ? '13px' : '11px', color: '#A4B3C4', fontFamily: 'var(--font-jakarta)' }}>{v.person}{v.company ? ` · ${v.company}` : ''}</div>
       </div>
     </div>
   )
@@ -426,7 +426,7 @@ export default function ReviewsPage() {
                       <span style={{ fontSize: '18px' }}>▶</span>
                       <div>
                         <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)' }}>{v.quote}</div>
-                        <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>{v.person} · {v.company}</div>
+                        <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>{v.person}{v.company ? ` · ${v.company}` : ''}</div>
                       </div>
                       <span style={{ marginLeft: 'auto', fontSize: '10px', color: '#A4B3C4', fontFamily: 'var(--font-jetbrains)', flexShrink: 0 }}>{v.duration}</span>
                     </div>
