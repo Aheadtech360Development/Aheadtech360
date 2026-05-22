@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
@@ -51,6 +52,36 @@ function UpworkIcon({ size = 16 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <rect width="24" height="24" rx="4" fill="#14A800"/>
       <text x="12" y="17" textAnchor="middle" fill="white" fontSize="12" fontWeight="800" fontFamily="Arial">U</text>
+    </svg>
+  )
+}
+
+function MetaIcon({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="10" fill="#0866FF"/>
+      <path d="M7 22c0-5.5 2.8-9 6.5-9 2.2 0 3.8 1.3 5.5 4.5 1.2-2 2.8-4.5 5.5-4.5 4 0 8.5 5.5 8.5 9 0 3-1.5 5-4 5-2 0-3.5-1.8-5.5-5-1.2 2.2-2.8 5-5.5 5C10.5 27 7 25 7 22z" fill="white"/>
+    </svg>
+  )
+}
+
+function PashaIcon({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="10" fill="#0D3B1E"/>
+      <rect x="6" y="6" width="28" height="28" rx="6" fill="none" stroke="#34D48A" strokeWidth="1.2"/>
+      <text x="20" y="18" textAnchor="middle" fill="#34D48A" fontSize="7.5" fontWeight="800" fontFamily="Arial" letterSpacing="0.5">P@SHA</text>
+      <text x="20" y="29" textAnchor="middle" fill="white" fontSize="6" fontFamily="Arial" letterSpacing="0.3">Pakistan</text>
+    </svg>
+  )
+}
+
+function PsebIcon({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="10" fill="#01411C"/>
+      <path d="M20 6L32 11V22C32 28 26.5 33 20 34C13.5 33 8 28 8 22V11L20 6Z" fill="#006B2C" stroke="#4ADE80" strokeWidth="1.2"/>
+      <text x="20" y="23" textAnchor="middle" fill="white" fontSize="8.5" fontWeight="800" fontFamily="Arial" letterSpacing="0.5">PSEB</text>
     </svg>
   )
 }
@@ -134,13 +165,16 @@ const REVIEWS: Review[] = [
   { platform: 'Google',         quote: 'Issues flagged at night, fixed by morning. ', bold: 'Response time is unlike any agency we\'ve worked with.', name: 'R. Ali',        role: 'Founder, TechHub',           initials: 'RA', badge: 'Verified' },
 ]
 
-const CERTS = [
-  { icon: '🛍️', name: 'Shopify Partner',   sub: 'Expert Level',    highlight: false },
-  { icon: '📊', name: 'Meta Business',     sub: 'Partner',          highlight: false },
-  { icon: '🔵', name: 'Google Partner',    sub: 'Certified',        highlight: false },
-  { icon: 'PK', name: 'PSEB Registered',  sub: 'Verified Export',  highlight: true  },
-  { icon: '🏆', name: 'Clutch Top',        sub: '2025 Agency',      highlight: false },
-  { icon: '⭐', name: 'GoodFirms',         sub: 'Top Marketing',    highlight: false },
+interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean }
+
+const CERTS: Cert[] = [
+  { icon: <PashaIcon size={40} />,        name: 'P@SHA',          sub: 'Member',           highlight: false },
+  { icon: <PsebIcon size={40} />,         name: 'PSEB',           sub: 'Registered Export', highlight: true  },
+  { icon: <ShopifyIcon size={40} />,      name: 'Shopify Partner',sub: 'Expert Level',     highlight: false },
+  { icon: <MetaIcon size={40} />,         name: 'Meta Expert',    sub: 'Certified',        highlight: false },
+  { icon: <GoogleIcon size={40} />,       name: 'Google Expert',  sub: 'Certified',        highlight: false },
+  { icon: <GoodFirmsIcon size={40} />,    name: 'GoodFirms',      sub: 'Top Agency',       highlight: false },
+  { icon: <ClutchIcon size={40} />,       name: 'Clutch',         sub: 'Top Agency',       highlight: false },
 ]
 
 const REVIEW_FILTERS: (Platform | 'All Reviews')[] = ['All Reviews', 'Shopify Partner', 'Clutch', 'GoodFirms', 'Google', 'Upwork']
@@ -343,7 +377,7 @@ function ReviewCard({ r }: { r: Review }) {
   )
 }
 
-function CertCard({ c }: { c: typeof CERTS[number] }) {
+function CertCard({ c }: { c: Cert }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div
@@ -351,7 +385,7 @@ function CertCard({ c }: { c: typeof CERTS[number] }) {
       onMouseLeave={() => setHovered(false)}
       style={{ background: hovered ? '#EEF2F9' : '#F2F5F8', border: c.highlight ? '2px solid #213D79' : `1.5px solid ${hovered ? '#DFE5ED' : 'transparent'}`, borderRadius: '16px', padding: '28px 24px', minWidth: '150px', textAlign: 'center', flex: '1 1 140px', maxWidth: '180px', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 6px 20px rgba(8,14,28,.08)' : 'none', cursor: 'default' }}
     >
-      <div style={{ fontSize: c.icon.length > 2 ? '20px' : '36px', fontWeight: c.icon.length > 2 ? 800 : 400, color: c.icon.length > 2 ? '#213D79' : 'inherit', marginBottom: '12px', fontFamily: 'var(--font-bricolage)', lineHeight: 1 }}>
+      <div style={{ marginBottom: '14px', display: 'flex', justifyContent: 'center' }}>
         {c.icon}
       </div>
       <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', marginBottom: '4px' }}>{c.name}</div>
