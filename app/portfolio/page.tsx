@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
     title: 'EZ Print Pros',
     description: 'Shopify build for a US DTF printing business with gang sheet ordering, bulk pricing tiers, and Meta ad campaigns.',
     stats: [{ value: 'DTF', label: 'NICHE' }, { value: 'Shopify', label: 'PLATFORM' }, { value: 'USA', label: 'MARKET' }],
-    link: 'https://ezdtfmaker.com',
+    link: 'https://ezdtfmaker.com/pages/printing-collection-page?pb=0',
   },
   {
     platform: 'Shopify', industry: 'Fashion', workType: 'New Build', badge: 'LIVE SITE',
@@ -95,6 +95,7 @@ const PROJECTS: Project[] = [
     title: 'Piplytics',
     description: 'WordPress website for a data analytics platform with custom landing pages, integrations, and SEO setup.',
     stats: [{ value: 'WordPress', label: 'PLATFORM' }, { value: 'B2B', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://piplyticscapital.com/',
   },
   {
     platform: 'WordPress', industry: 'Education', workType: 'New Build', badge: 'LIVE SITE',
@@ -104,6 +105,7 @@ const PROJECTS: Project[] = [
     title: 'Gradelao',
     description: 'WordPress education platform with course listings, enrollment forms, and SEO-optimised content pages.',
     stats: [{ value: 'WordPress', label: 'PLATFORM' }, { value: 'Education', label: 'NICHE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://gradelao.com/',
   },
   {
     platform: 'WordPress', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
@@ -113,6 +115,7 @@ const PROJECTS: Project[] = [
     title: 'Lofty',
     description: 'WordPress website for a B2B SaaS company with landing pages, feature showcases, and conversion-focused design.',
     stats: [{ value: 'WordPress', label: 'PLATFORM' }, { value: 'SaaS', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://weareloftycreations.com/',
   },
   {
     platform: 'Custom', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
@@ -132,6 +135,7 @@ const PROJECTS: Project[] = [
     title: 'Tech4tune',
     description: 'Custom-built website for a tech services company with service showcases, lead capture, and a clean modern design.',
     stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'B2B', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://tech4tune.com/',
   },
   {
     platform: 'Custom', industry: 'Local Biz', workType: 'New Build', badge: 'LIVE SITE',
