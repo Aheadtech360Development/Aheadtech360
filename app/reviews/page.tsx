@@ -99,11 +99,11 @@ const PLATFORM_LINKS: Record<Platform, string> = {
 }
 
 const PLATFORM_RATINGS = [
-  { platform: 'Google' as Platform,         rating: '4.9', sub: '42 reviews',   icon: <GoogleIcon size={18}/> },
-  { platform: 'Shopify Partner' as Platform, rating: '5.0', sub: 'Expert badge', icon: <ShopifyIcon size={18}/> },
-  { platform: 'Clutch' as Platform,          rating: '4.9', sub: '18 reviews',   icon: <ClutchIcon size={18}/> },
-  { platform: 'GoodFirms' as Platform,       rating: '4.8', sub: '14 reviews',   icon: <GoodFirmsIcon size={18}/> },
-  { platform: 'Upwork' as Platform,          rating: '5.0', sub: 'Top Rated Plus',icon: <UpworkIcon size={18}/> },
+  { platform: 'Google' as Platform,         rating: '5.0', sub: '6 reviews',    icon: <GoogleIcon size={18}/> },
+  { platform: 'Shopify Partner' as Platform, rating: '5.0', sub: '4 reviews',   icon: <ShopifyIcon size={18}/> },
+  { platform: 'Clutch' as Platform,          rating: '5.0', sub: '1 review',    icon: <ClutchIcon size={18}/> },
+  { platform: 'GoodFirms' as Platform,       rating: '5.0', sub: '1 review',    icon: <GoodFirmsIcon size={18}/> },
+  { platform: 'Upwork' as Platform,          rating: '5.0', sub: 'Top Rated',   icon: <UpworkIcon size={18}/> },
 ]
 
 const VIDEOS: Video[] = [
