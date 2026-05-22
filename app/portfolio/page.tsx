@@ -154,6 +154,7 @@ const PROJECTS: Project[] = [
     title: 'Transend',
     description: 'Custom-built B2B platform with service showcases, client portal, and lead generation setup.',
     stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'B2B', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://search.transcendrealtyhomes.com/',
   },
 ]
 
