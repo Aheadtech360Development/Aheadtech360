@@ -160,10 +160,13 @@ function platformIcon(p: Platform, size = 14) {
 function RatingCard({ pr }: { pr: typeof PLATFORM_RATINGS[number] }) {
   const [hovered, setHovered] = useState(false)
   return (
-    <div
+    <a
+      href={PLATFORM_LINKS[pr.platform]}
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ background: hovered ? '#112040' : '#0D1B35', border: `1px solid ${hovered ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.1)'}`, borderRadius: '14px', padding: '22px 32px', minWidth: '170px', textAlign: 'center', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 10px 28px rgba(0,0,0,0.4)' : 'none', flex: '1 1 150px', maxWidth: '220px', cursor: 'default' }}
+      style={{ textDecoration: 'none', flex: '1 1 150px', maxWidth: '220px', display: 'block', background: hovered ? '#112040' : '#0D1B35', border: `1px solid ${hovered ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.1)'}`, borderRadius: '14px', padding: '22px 32px', minWidth: '170px', textAlign: 'center', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 10px 28px rgba(0,0,0,0.4)' : 'none', cursor: 'pointer' }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px', marginBottom: '12px' }}>
         {pr.icon}
@@ -172,7 +175,7 @@ function RatingCard({ pr }: { pr: typeof PLATFORM_RATINGS[number] }) {
       <div style={{ marginBottom: '8px' }}><Stars /></div>
       <div style={{ fontFamily: 'var(--font-bricolage)', fontSize: '30px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{pr.rating}</div>
       <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', marginTop: '5px' }}>{pr.sub}</div>
-    </div>
+    </a>
   )
 }
 
