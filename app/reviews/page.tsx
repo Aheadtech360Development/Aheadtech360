@@ -138,31 +138,34 @@ const PLATFORM_RATINGS = [
 ]
 
 const VIDEOS: Video[] = [
-  { featured: true,  videoFile: '/videos/at360.mp4', placeholder: 'Featured Video — TrashedPunk', duration: '4:32', quote: '"From 0 to Rs.22.5M in 10 months"', person: 'TrashedPunk', company: '' },
-  { videoFile: '/videos/ezt.mp4', placeholder: 'Video Testimonial — EZDTFMaker', duration: '2:14', quote: '"They saved my UK DTF biz"', person: 'EZDTFMaker', company: '' },
-  { placeholder: 'Video Testimonial — Artaboon', duration: '3:08', quote: '"Pixel was broken. Nobody told me."', person: 'Artaboon', company: 'Piplytics' },
-  { placeholder: 'Video Testimonial — Maaz Driply', duration: '1:48', quote: '"Built our app in 90 days"',   person: 'Maaz',          company: 'Driply (AI Fashion)' },
-  { placeholder: 'Video Testimonial — Stellar',  duration: '2:55', quote: '"1,185 leads at $6.48 CPL"',       person: 'Stellar Career', company: 'Stellar Career College' },
+  { featured: true, videoFile: '/videos/at360.mp4', placeholder: 'TrashedPunk', duration: '4:32', quote: '"Great experience working with AT360"', person: 'TrashedPunk', company: '' },
+  { videoFile: '/videos/ezt.mp4', placeholder: 'EZDTFMaker', duration: '2:14', quote: '"They rebuilt and redesigned our site"', person: 'EZDTFMaker', company: '' },
 ]
 
 const REVIEWS: Review[] = [
-  { platform: 'Clutch',         quote: 'AT360 didn\'t just run our ads — they ', bold: 'rebuilt our entire revenue engine.', name: 'M. Asad',       role: 'Founder, Maniyas',          initials: 'MA', badge: 'Verified' },
-  { platform: 'Clutch',         quote: 'Pixel was broken for 6 months. Nobody told me. AT360 caught it in the audit and ', bold: 'fixed attribution within 48 hours. ROAS doubled the next month.', name: 'Artaboon Shah', role: 'Founder, Piplytics',       initials: 'AS', badge: 'Verified' },
-  { platform: 'Clutch',         quote: 'We came for the ads. Stayed for everything else. ', bold: 'AT360 is the only vendor we\'ve renewed three years running.', name: 'Effing Gear',   role: 'Head of Marketing, USA',    initials: 'EG', badge: 'Verified' },
-  { platform: 'Shopify Partner',quote: 'Hired them for a basic Shopify audit. Got a ', bold: 'full revenue diagnostic, CRO wireframe, and an Omnisend flow blueprint.', name: 'Jen K.',        role: 'Owner, Coastal Threads',    initials: 'JK', badge: 'Verified' },
-  { platform: 'Shopify Partner',quote: 'Shopify build was ', bold: 'pixel-perfect to the wireframe.', name: 'S. Raza',       role: 'Founder, ApparelHub',        initials: 'SR', badge: 'Verified' },
-  { platform: 'Shopify Partner',quote: 'App stack was a mess — ', bold: '12 redundant apps removed, site speed doubled overnight.', name: 'H. Kamran',     role: 'Founder, UrbanWear',         initials: 'HK', badge: 'Verified' },
-  { platform: 'Shopify Partner',quote: 'Migrated us from WooCommerce to Shopify in 3 weeks. ', bold: 'Zero downtime. All data intact.', name: 'P. Malik',      role: 'Owner, PrintHouse',          initials: 'PM', badge: 'Verified' },
-  { platform: 'GoodFirms',      quote: 'Hired AT360 after burning $40K with another agency. ', bold: 'First month with AT360 broke even. Third month profitable.', name: 'Maaz K.',       role: 'Founder, Driply',            initials: 'MK', badge: 'Verified' },
-  { platform: 'GoodFirms',      quote: 'Google and Meta campaigns restructured from scratch. ', bold: 'Blended ROAS hit 4.2x by month two. Best performance we\'ve ever had.', name: 'R. Sharma',     role: 'Head of Growth, RetailPK',   initials: 'RS', badge: 'Verified' },
-  { platform: 'Upwork',         quote: 'CPL was $24 when we started. Three months later ', bold: 'it dropped to $6.48. 1,185 leads in one campaign. Insane result.', name: 'Stellar College', role: 'Stellar Career College · CA', initials: 'SC', badge: 'Top Rated' },
-  { platform: 'Upwork',         quote: 'Engaged AT360 for a 3-month sprint. They delivered in 6 weeks. ', bold: 'Clean code, clear comms, zero surprises.', name: 'L. Bennett',    role: 'CTO, TechVenture · UK',      initials: 'LB', badge: 'Top Rated' },
-  { platform: 'Google',         quote: 'Iqrar walked me through every single change in a weekly Loom. ', bold: 'I actually understand my ad account now.', name: 'Jason M.',      role: 'Lofty Creations · UK',       initials: 'JM', badge: 'Verified' },
-  { platform: 'Google',         quote: 'Honest, fast, and they actually pick up the phone. Other agencies treated us like a number. ', bold: 'AT360 treated us like a partner.', name: 'D. Khan',       role: 'CEO, FreshCo',               initials: 'DK', badge: 'Verified' },
-  { platform: 'Google',         quote: 'Their UGC pipeline is legit. ', bold: '10 creators sourced, briefed, and shipped in 12 days.', name: 'TrashedPunk',  role: 'Streetwear Founder',         initials: 'TP', badge: 'Verified' },
-  { platform: 'Google',         quote: 'Google Shopping campaigns set up from scratch. ', bold: 'ROAS hit 5.2x in the first 45 days.', name: 'F. Ahmed',      role: 'Founder, SportsPK',          initials: 'FA', badge: 'Verified' },
-  { platform: 'Google',         quote: 'Email flows were non-existent before AT360. ', bold: 'Now 28% of our revenue is email-attributed.', name: 'S. Khan',       role: 'CEO, LuxeBags',              initials: 'SK', badge: 'Verified' },
-  { platform: 'Google',         quote: 'Issues flagged at night, fixed by morning. ', bold: 'Response time is unlike any agency we\'ve worked with.', name: 'R. Ali',        role: 'Founder, TechHub',           initials: 'RA', badge: 'Verified' },
+  // ── Clutch ──────────────────────────────────────────────────────────────────
+  { platform: 'Clutch', quote: 'AheadTech360 delivered an excellent website with a clean design and smooth functionality. The team was highly communicative, professional, and punctual throughout. ', bold: 'The client was extremely pleased with the project\'s results.', name: 'Syed Artaboon Shah', role: 'Clutch Review', initials: 'SA', badge: 'Verified' },
+
+  // ── Shopify Partner ─────────────────────────────────────────────────────────
+  { platform: 'Shopify Partner', quote: 'There was transparency throughout the process. They first shared wireframes then moved into development. Khaleel was always supportive. ', bold: 'Overall the communication was good and we are satisfied with the work done.', name: 'Freshfits', role: 'Shopify Store Owner', initials: 'FF', badge: 'Verified' },
+  { platform: 'Shopify Partner', quote: 'Ikrash built TrashedPunk.com from a napkin doodle into a live store. He\'s got the whole stack — store setup, theme tweaks, SEO, CRO, performance, integrations, troubleshooting. Fast, no fluff, 100% ownership. ', bold: '10/10 — hire him yesterday.', name: 'TrashedPunk', role: 'Streetwear Brand', initials: 'TP', badge: 'Verified' },
+  { platform: 'Shopify Partner', quote: 'I had an excellent experience working with AheadTech360. Their team is professional, knowledgeable, and truly dedicated. Communication was clear and consistent throughout. ', bold: 'Highly recommend AheadTech360 to anyone looking for reliable and innovative tech solutions.', name: 'MACP Store', role: 'Shopify Store Owner', initials: 'MC', badge: 'Verified' },
+  { platform: 'Shopify Partner', quote: 'These guys are really good at their work! They handled our website development smoothly and even provided valuable consultations to improve our original idea. ', bold: 'All my future websites will definitely be developed by them.', name: 'Maniyas', role: 'Pakistani Fashion Brand', initials: 'MN', badge: 'Verified' },
+
+  // ── GoodFirms ───────────────────────────────────────────────────────────────
+  { platform: 'GoodFirms', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure. They already had experience within the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'GoodFirms Review', initials: 'JB', badge: 'Verified' },
+
+  // ── Upwork ──────────────────────────────────────────────────────────────────
+  { platform: 'Upwork', quote: 'CPL was $24 when we started. Three months later ', bold: 'it dropped to $6.48. 1,185 leads in one campaign. Insane result.', name: 'Stellar College', role: 'Stellar Career College · CA', initials: 'SC', badge: 'Top Rated' },
+  { platform: 'Upwork', quote: 'Engaged AT360 for a 3-month sprint. They delivered in 6 weeks. ', bold: 'Clean code, clear comms, zero surprises.', name: 'L. Bennett', role: 'CTO, TechVenture · UK', initials: 'LB', badge: 'Top Rated' },
+
+  // ── Google ──────────────────────────────────────────────────────────────────
+  { platform: 'Google', quote: 'Excellent website development service! Clean design, smooth functionality with great ease of communication from start to finish. Very happy with the results. Special thanks to Ikrash. ', bold: 'Great guy. Will definitely work again.', name: 'Syed Artaboon Shah', role: 'Google Review', initials: 'SA', badge: 'Verified' },
+  { platform: 'Google', quote: 'Been working with AheadTech360 for 6 months now — managing our website, social media, and marketing. It\'s rare to find a team that just gets it. ', bold: 'They\'re responsive, easy to work with, and actually deliver results.', name: 'Gradelao', role: 'Google Review', initials: 'GR', badge: 'Verified' },
+  { platform: 'Google', quote: 'AT360\'s creative ideas and graphic design ensured our successful online launch. They expertly developed our Shopify website and managed our social pages. ', bold: 'Their services boosted our followers and revenue significantly.', name: 'Muhammad Omar', role: 'Google Review', initials: 'MO', badge: 'Verified' },
+  { platform: 'Google', quote: 'There are 2 things I look for in any organization: work ethics and quality of work. ', bold: 'AheadTech360 excels in both. They created my 2 websites and I highly recommend them.', name: 'Ahmed Amin', role: 'Google Review', initials: 'AA', badge: 'Verified' },
+  { platform: 'Google', quote: 'Excellent service from team AheadTech360 — these guys are really clued on and know their stuff. ', bold: 'If I could give more than 5 stars I would. These guys deserve at least 10 stars.', name: 'Khurram Ahmed', role: 'Google Review', initials: 'KA', badge: 'Verified' },
+  { platform: 'Google', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure from start to finish. They had experience in the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'Google Review', initials: 'JB', badge: 'Verified' },
 ]
 
 interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean }
@@ -447,10 +450,10 @@ export default function ReviewsPage() {
             <div style={{ flex: '1 1 0', minWidth: 0 }}>
               <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', color: '#213D79', fontFamily: 'var(--font-jetbrains)', marginBottom: '14px' }}>VIDEO TESTIMONIALS</div>
               <h2 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, fontSize: 'clamp(28px,3.5vw,44px)', color: '#1C2A42', lineHeight: 1.1, marginBottom: '16px' }}>
-                Watch them tell it <em style={{ color: '#25B472', fontStyle: 'italic' }}>their way.</em>
+                Hear it from <em style={{ color: '#25B472', fontStyle: 'italic' }}>our clients.</em>
               </h2>
               <p style={{ fontSize: '15px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', lineHeight: 1.75, marginBottom: '28px' }}>
-                Real founders. Real screens. No script. They show their ad accounts and dashboards as they talk — unedited.
+                Short clips from clients sharing their experience working with AheadTech360.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {VIDEOS.map((v, i) => {
