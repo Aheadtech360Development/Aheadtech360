@@ -40,6 +40,16 @@ const PROJECTS: Project[] = [
     link: 'https://freshfits.co',
   },
   {
+    platform: 'Shopify', industry: 'Print/Apparel', workType: 'New Build', badge: 'LIVE SITE',
+    image: '/images/portfolio/TrashedPunk.png',
+    placeholder: 'TrashedPunk',
+    category: 'APPAREL', location: 'USA',
+    title: 'TrashedPunk',
+    description: 'Shopify apparel store with a bold brand identity, conversion-focused product pages, and Meta ad campaigns.',
+    stats: [{ value: 'Shopify', label: 'PLATFORM' }, { value: 'Apparel', label: 'NICHE' }, { value: 'USA', label: 'MARKET' }],
+    link: 'https://trashedpunk.com',
+  },
+  {
     platform: 'Shopify', industry: 'Fashion', workType: 'New Build', badge: 'LIVE SITE',
     image: '/images/portfolio/Maniyas.png',
     placeholder: 'Maniyas',
