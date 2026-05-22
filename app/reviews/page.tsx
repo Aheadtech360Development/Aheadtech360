@@ -386,7 +386,7 @@ function ReviewCard({ r }: { r: Review }) {
   )
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', breakInside: 'avoid', marginBottom: '16px' }}>
+    <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
       {inner}
     </a>
   )
@@ -597,17 +597,19 @@ export default function ReviewsPage() {
         .vid-cards > div { min-height: 220px; }
 
         .reviews-masonry {
-          columns: 3;
-          column-gap: 16px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          align-items: start;
         }
 
         @media(max-width: 960px) {
           .vid-layout { flex-direction: column !important; gap: 40px !important; }
           .vid-cards { flex: none !important; width: 100% !important; max-height: 420px; }
-          .reviews-masonry { columns: 2; }
+          .reviews-masonry { grid-template-columns: repeat(2, 1fr); }
         }
         @media(max-width: 600px) {
-          .reviews-masonry { columns: 1; }
+          .reviews-masonry { grid-template-columns: 1fr; }
         }
       `}</style>
     </>
