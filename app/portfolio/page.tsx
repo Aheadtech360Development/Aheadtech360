@@ -137,6 +137,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
         display: 'flex',
         flexDirection: 'column',
+        height: '100%',
         cursor: p.link ? 'pointer' : 'default',
       }}
     >
@@ -185,7 +186,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
         <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#080E1C', fontFamily: 'var(--font-bricolage)', lineHeight: 1.25, marginBottom: '8px' }}>
           {p.title}
         </h3>
-        <p style={{ fontSize: '13px', color: '#6E8098', lineHeight: 1.6, fontFamily: 'var(--font-jakarta)', marginBottom: '14px' }}>
+        <p style={{ fontSize: '13px', color: '#6E8098', lineHeight: 1.6, fontFamily: 'var(--font-jakarta)', marginBottom: '14px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
           {p.description}
         </p>
       </div>
@@ -221,7 +222,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
 
   if (p.link) {
     return (
-      <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+      <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
         {card}
       </a>
     )
