@@ -83,9 +83,10 @@ const PROJECTS: Project[] = [
     image: '/images/portfolio/Thereal.png',
     placeholder: 'The Real',
     category: 'D2C FASHION', location: 'PAKISTAN',
-    title: 'The Real',
+    title: 'The Real Robe',
     description: 'Shopify store for a fashion brand with a conversion-optimised design, COD checkout, and social media integration.',
     stats: [{ value: 'Shopify', label: 'PLATFORM' }, { value: 'Fashion', label: 'NICHE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://therealrobe.com',
   },
   {
     platform: 'WordPress', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
@@ -142,9 +143,10 @@ const PROJECTS: Project[] = [
     image: '/images/portfolio/Themacpc.png',
     placeholder: 'The Mac PC',
     category: 'TECH RETAIL', location: 'PAKISTAN',
-    title: 'The Mac PC',
+    title: 'The Mac PC Store',
     description: 'Custom website for a tech retail and repair business with product listings, service pages, and a clean storefront.',
     stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'Retail', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    link: 'https://themacpcstore.com',
   },
   {
     platform: 'Custom', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
