@@ -119,13 +119,13 @@ const PROJECTS: Project[] = [
     link: 'https://gradelao.com/',
   },
   {
-    platform: 'WordPress', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
+    platform: 'WordPress', industry: 'Print/Apparel', workType: 'New Build', badge: 'LIVE SITE',
     image: '/images/portfolio/Lofty.png',
     placeholder: 'Lofty',
-    category: 'B2B / SAAS', location: 'USA',
+    category: 'APPAREL', location: 'USA',
     title: 'Lofty',
-    description: 'WordPress website for a B2B SaaS company with landing pages, feature showcases, and conversion-focused design.',
-    stats: [{ value: 'WordPress', label: 'PLATFORM' }, { value: 'SaaS', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    description: 'WooCommerce store for an apparel brand with product catalogue, custom checkout flow, and conversion-focused design.',
+    stats: [{ value: 'WooCommerce', label: 'PLATFORM' }, { value: 'Apparel', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
     link: 'https://weareloftycreations.com/',
   },
   {
