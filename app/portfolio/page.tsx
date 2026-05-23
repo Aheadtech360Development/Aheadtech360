@@ -163,16 +163,6 @@ const PROJECTS: Project[] = [
     stats: [{ value: 'WooCommerce', label: 'PLATFORM' }, { value: 'Apparel', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
     link: 'https://weareloftycreations.com/',
   },
-  {
-    platform: 'Custom', industry: 'B2B', workType: 'New Build', badge: 'LIVE SITE',
-    image: '/images/portfolio/Transend.png',
-    placeholder: 'Transend',
-    category: 'B2B SERVICES', location: 'USA',
-    title: 'Transend',
-    description: 'Custom-built B2B platform with service showcases, client portal, and lead generation setup.',
-    stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'B2B', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
-    link: 'https://search.transcendrealtyhomes.com/',
-  },
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
