@@ -139,7 +139,7 @@ const PROJECTS: Project[] = [
     category: 'TECH SERVICES', location: 'PAKISTAN',
     title: 'Tech4tune',
     description: 'Custom-built website for a tech services company with service showcases, lead capture, and a clean modern design.',
-    stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'B2B', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    stats: [{ value: 'Custom', label: 'PLATFORM' }, { value: 'Marketing', label: 'NICHE' }, { value: 'Live', label: 'STATUS' }],
     link: 'https://tech4tune.com/',
   },
   {
