@@ -176,7 +176,7 @@ const imgContain = { objectFit: 'contain' as const }
 const CERTS: Cert[] = [
   { icon: <Image src="/images/reviews/pasha.png"    alt="P@SHA"          width={120} height={44} style={imgContain} unoptimized />, name: 'P@SHA',          sub: 'Member',            highlight: false },
   { icon: <PsebIcon size={52} />,                                                                                                   name: 'PSEB',           sub: 'Registered Export', highlight: true  },
-  { icon: <Image src="/images/Shopify-agency-official-shopify-partner.png" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false },
+  { icon: <Image src="/images/reviews/shopify.svg" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false },
   { icon: <Image src="/images/reviews/meta.png"     alt="Meta Expert"    width={52}  height={52} style={imgContain} unoptimized />, name: 'Meta Expert',    sub: 'Certified',         highlight: false },
   { icon: <GoogleIcon size={52} />,                                                                                                 name: 'Google Expert',  sub: 'Certified',         highlight: false },
   { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={110} height={36} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
@@ -411,6 +411,7 @@ function CertCard({ c }: { c: Cert }) {
       <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
         {c.icon}
       </div>
+      <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', marginBottom: '4px' }}>{c.name}</div>
       <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>{c.sub}</div>
     </div>
   )
