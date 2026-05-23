@@ -139,8 +139,8 @@ const PLATFORM_RATINGS = [
 ]
 
 const VIDEOS: Video[] = [
-  { featured: true, videoFile: '/videos/at360.mp4', placeholder: 'TrashedPunk', duration: '4:32', quote: '"The speed, the communication was on point"', person: 'TrashedPunk', company: '' },
-  { videoFile: '/videos/ezt.mp4', placeholder: 'EZDTFMaker', duration: '2:14', quote: '"We have no Regrets"', person: 'EZDTFMaker', company: '' },
+  { featured: true, videoFile: '/videos/at360.mp4', placeholder: 'TrashedPunk', duration: '1:04', quote: '"The speed, the communication was on point"', person: 'TrashedPunk', company: '' },
+  { videoFile: '/videos/ezt.mp4', placeholder: 'EZDTFMaker', duration: '1:21', quote: '"We have no Regrets"', person: 'EZDTFMaker', company: '' },
 ]
 
 const REVIEWS: Review[] = [
