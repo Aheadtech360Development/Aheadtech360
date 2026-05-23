@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -171,13 +172,13 @@ const REVIEWS: Review[] = [
 interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean }
 
 const CERTS: Cert[] = [
-  { icon: <PashaIcon size={40} />,        name: 'P@SHA',          sub: 'Member',           highlight: false },
+  { icon: <Image src="/images/reviews/pasha.png" alt="P@SHA" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '8px' }} unoptimized />, name: 'P@SHA', sub: 'Member', highlight: false },
   { icon: <PsebIcon size={40} />,         name: 'PSEB',           sub: 'Registered Export', highlight: true  },
   { icon: <ShopifyIcon size={40} />,      name: 'Shopify Partner',sub: 'Expert Level',     highlight: false },
   { icon: <MetaIcon size={40} />,         name: 'Meta Expert',    sub: 'Certified',        highlight: false },
   { icon: <GoogleIcon size={40} />,       name: 'Google Expert',  sub: 'Certified',        highlight: false },
   { icon: <GoodFirmsIcon size={40} />,    name: 'GoodFirms',      sub: 'Top Agency',       highlight: false },
-  { icon: <ClutchIcon size={40} />,       name: 'Clutch',         sub: 'Top Agency',       highlight: false },
+  { icon: <Image src="/images/reviews/clutch.png" alt="Clutch" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '8px' }} unoptimized />, name: 'Clutch', sub: 'Top Agency', highlight: false },
 ]
 
 const REVIEW_FILTERS: (Platform | 'All Reviews')[] = ['All Reviews', 'Shopify Partner', 'Clutch', 'GoodFirms', 'Google', 'Upwork']
