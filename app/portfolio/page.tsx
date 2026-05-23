@@ -160,7 +160,7 @@ const PROJECTS: Project[] = [
     category: 'APPAREL', location: 'USA',
     title: 'Lofty',
     description: 'WooCommerce store for an apparel brand with product catalogue, custom checkout flow, and conversion-focused design.',
-    stats: [{ value: 'WooCommerce', label: 'PLATFORM' }, { value: 'Apparel', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
+    stats: [{ value: 'WordPress', label: 'PLATFORM' }, { value: 'Ecommerce', label: 'TYPE' }, { value: 'Live', label: 'STATUS' }],
     link: 'https://weareloftycreations.com/',
   },
 ]
