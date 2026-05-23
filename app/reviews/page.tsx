@@ -175,11 +175,11 @@ const imgContain = { objectFit: 'contain' as const }
 
 const CERTS: Cert[] = [
   { icon: <Image src="/images/reviews/pasha.png"    alt="P@SHA"          width={120} height={44} style={imgContain} unoptimized />, name: 'P@SHA',          sub: 'Member',            highlight: false },
-  { icon: <Image src="/images/reviews/psb.png"      alt="PSEB"            width={52}  height={52} style={imgContain} unoptimized />, name: 'PSEB',           sub: 'Registered Export', highlight: true  },
+  { icon: <Image src="/images/reviews/psb.png"      alt="PSEB"            width={130} height={56} style={imgContain} unoptimized />, name: 'PSEB',           sub: 'Registered Export', highlight: true  },
   { icon: <Image src="/images/reviews/shopify.png" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false },
   { icon: <Image src="/images/reviews/meta.png"     alt="Meta Expert"    width={52}  height={52} style={imgContain} unoptimized />, name: 'Meta Expert',    sub: 'Certified',         highlight: false },
   { icon: <GoogleIcon size={52} />,                                                                                                 name: 'Google Expert',  sub: 'Certified',         highlight: false },
-  { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={110} height={36} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
+  { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={130} height={48} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
   { icon: <Image src="/images/reviews/clutch.png"   alt="Clutch"         width={100} height={44} style={imgContain} unoptimized />, name: 'Clutch',         sub: 'Top Agency',        highlight: false },
 ]
 
