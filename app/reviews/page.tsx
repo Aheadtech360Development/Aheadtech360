@@ -169,16 +169,18 @@ const REVIEWS: Review[] = [
   { platform: 'Google', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure from start to finish. They had experience in the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'Google Review', initials: 'JB', badge: 'Verified' },
 ]
 
-interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean; hideName?: boolean }
+interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean }
+
+const imgStyle = { objectFit: 'contain' as const, borderRadius: '8px' }
 
 const CERTS: Cert[] = [
-  { icon: <Image src="/images/reviews/pasha.png" alt="P@SHA" width={64} height={64} style={{ objectFit: 'contain', borderRadius: '8px' }} unoptimized />, name: 'P@SHA', sub: 'Member', highlight: false, hideName: true },
-  { icon: <PsebIcon size={40} />,         name: 'PSEB',           sub: 'Registered Export', highlight: true  },
-  { icon: <ShopifyIcon size={40} />,      name: 'Shopify Partner',sub: 'Expert Level',     highlight: false },
-  { icon: <MetaIcon size={40} />,         name: 'Meta Expert',    sub: 'Certified',        highlight: false },
-  { icon: <GoogleIcon size={40} />,       name: 'Google Expert',  sub: 'Certified',        highlight: false },
-  { icon: <GoodFirmsIcon size={40} />,    name: 'GoodFirms',      sub: 'Top Agency',       highlight: false },
-  { icon: <Image src="/images/reviews/clutch.png" alt="Clutch" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '8px' }} unoptimized />, name: 'Clutch', sub: 'Top Agency', highlight: false },
+  { icon: <Image src="/images/reviews/pasha.png"    alt="P@SHA"       width={64} height={64} style={imgStyle} unoptimized />, name: 'P@SHA',          sub: 'Member',           highlight: false },
+  { icon: <PsebIcon size={64} />,                                                                                              name: 'PSEB',           sub: 'Registered Export', highlight: true  },
+  { icon: <Image src="/images/Shopify-agency-official-shopify-partner.png" alt="Shopify Partner" width={64} height={64} style={imgStyle} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',     highlight: false },
+  { icon: <Image src="/images/reviews/meta.png"     alt="Meta Expert"  width={64} height={64} style={imgStyle} unoptimized />, name: 'Meta Expert',    sub: 'Certified',        highlight: false },
+  { icon: <GoogleIcon size={64} />,                                                                                            name: 'Google Expert',  sub: 'Certified',        highlight: false },
+  { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"  width={64} height={64} style={imgStyle} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',       highlight: false },
+  { icon: <Image src="/images/reviews/clutch.png"   alt="Clutch"       width={64} height={64} style={imgStyle} unoptimized />, name: 'Clutch',         sub: 'Top Agency',       highlight: false },
 ]
 
 const REVIEW_FILTERS: (Platform | 'All Reviews')[] = ['All Reviews', 'Shopify Partner', 'Clutch', 'GoodFirms', 'Google', 'Upwork']
@@ -395,16 +397,20 @@ function ReviewCard({ r }: { r: Review }) {
 
 function CertCard({ c }: { c: Cert }) {
   const [hovered, setHovered] = useState(false)
+  const border = c.highlight
+    ? '2px solid #213D79'
+    : hovered
+      ? '1.5px solid #25B472'
+      : '1.5px solid rgba(37,180,114,0.25)'
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ background: hovered ? '#EEF2F9' : '#F2F5F8', border: c.highlight ? '2px solid #213D79' : `1.5px solid ${hovered ? '#DFE5ED' : 'transparent'}`, borderRadius: '16px', padding: '28px 24px', minWidth: '150px', textAlign: 'center', flex: '1 1 140px', maxWidth: '180px', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 6px 20px rgba(8,14,28,.08)' : 'none', cursor: 'default', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+      style={{ background: hovered ? '#EDFBF3' : '#F2F5F8', border, borderRadius: '16px', padding: '28px 24px', minWidth: '150px', textAlign: 'center', flex: '1 1 140px', maxWidth: '180px', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 6px 20px rgba(37,180,114,.12)' : 'none', cursor: 'default', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
     >
-      <div style={{ marginBottom: c.hideName ? '10px' : '14px', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>
         {c.icon}
       </div>
-      {!c.hideName && <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', marginBottom: '4px' }}>{c.name}</div>}
       <div style={{ fontSize: '11px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>{c.sub}</div>
     </div>
   )
