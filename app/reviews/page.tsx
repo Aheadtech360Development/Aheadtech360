@@ -169,14 +169,14 @@ const REVIEWS: Review[] = [
   { platform: 'Google', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure from start to finish. They had experience in the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'Google Review', initials: 'JB', badge: 'Verified' },
 ]
 
-interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean }
+interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean; iconBg?: string }
 
 const imgContain = { objectFit: 'contain' as const }
 
 const CERTS: Cert[] = [
   { icon: <Image src="/images/reviews/pasha.png"    alt="P@SHA"          width={120} height={44} style={imgContain} unoptimized />, name: 'P@SHA',          sub: 'Member',            highlight: false },
   { icon: <PsebIcon size={52} />,                                                                                                   name: 'PSEB',           sub: 'Registered Export', highlight: true  },
-  { icon: <Image src="/images/reviews/shopify.svg" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false },
+  { icon: <Image src="/images/reviews/shopify.svg" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false, iconBg: '#96BF48' },
   { icon: <Image src="/images/reviews/meta.png"     alt="Meta Expert"    width={52}  height={52} style={imgContain} unoptimized />, name: 'Meta Expert',    sub: 'Certified',         highlight: false },
   { icon: <GoogleIcon size={52} />,                                                                                                 name: 'Google Expert',  sub: 'Certified',         highlight: false },
   { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={110} height={36} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
@@ -408,7 +408,7 @@ function CertCard({ c }: { c: Cert }) {
       onMouseLeave={() => setHovered(false)}
       style={{ background: hovered ? '#EDFBF3' : '#F2F5F8', border, borderRadius: '16px', padding: '28px 24px', minWidth: '150px', textAlign: 'center', flex: '1 1 140px', maxWidth: '180px', transition: 'all 0.2s', transform: hovered ? 'translateY(-3px)' : 'translateY(0)', boxShadow: hovered ? '0 6px 20px rgba(37,180,114,.12)' : 'none', cursor: 'default', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
     >
-      <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+      <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px', background: c.iconBg || 'transparent', borderRadius: c.iconBg ? '10px' : '0', padding: c.iconBg ? '8px 12px' : '0' }}>
         {c.icon}
       </div>
       <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', marginBottom: '4px' }}>{c.name}</div>
