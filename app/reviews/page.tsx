@@ -179,7 +179,7 @@ const CERTS: Cert[] = [
   { icon: <Image src="/images/reviews/shopify.png" alt="Shopify Partner" width={120} height={44} style={imgContain} unoptimized />, name: 'Shopify Partner', sub: 'Expert Level',      highlight: false },
   { icon: <Image src="/images/reviews/meta.png"     alt="Meta Expert"    width={52}  height={52} style={imgContain} unoptimized />, name: 'Meta Expert',    sub: 'Certified',         highlight: false },
   { icon: <GoogleIcon size={52} />,                                                                                                 name: 'Google Expert',  sub: 'Certified',         highlight: false },
-  { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={130} height={48} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
+  { icon: <Image src="/images/reviews/goodfirms.png" alt="GoodFirms"    width={150} height={58} style={imgContain} unoptimized />, name: 'GoodFirms',      sub: 'Top Agency',        highlight: false },
   { icon: <Image src="/images/reviews/clutch.png"   alt="Clutch"         width={100} height={44} style={imgContain} unoptimized />, name: 'Clutch',         sub: 'Top Agency',        highlight: false },
 ]
 
