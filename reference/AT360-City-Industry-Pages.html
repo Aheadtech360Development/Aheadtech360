@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AheadTech360 — City & Industry Page Templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#213D79;--blue-d:#162952;--blue-l:#2E56A8;--blue-bg:#EEF2F9;
+  --green:#25B472;--green-d:#1C8F5A;--green-l:#34D48A;--green-bg:#EDFBF3;
+  --red:#E53E3E;--amber:#F59E0B;
+  --dk:#080E1C;--dk2:#0F1729;--dk3:#1A2540;
+  --g50:#F8FAFC;--g100:#EEF2F6;--g300:#A0AEBF;--g500:#6B7A90;--g700:#3D4A5C;--g900:#1A2234;
+  --white:#FAFBFC;
+  --fd:'Bricolage Grotesque',system-ui,sans-serif;
+  --fb:'Plus Jakarta Sans',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --r:8px;--rl:12px;--rx:16px;
+  --sh-s:0 2px 8px rgba(8,14,28,.06);
+  --sh-m:0 6px 24px rgba(8,14,28,.1);
+  --sh-l:0 12px 40px rgba(8,14,28,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--fb);color:var(--g900);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+.pnav{background:var(--dk);border-bottom:3px solid var(--green);padding:10px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:999}
+.pnav-l{font-size:9px;font-weight:800;color:var(--g300);letter-spacing:2px;text-transform:uppercase;font-family:var(--fm);margin-right:4px}
+.pnav button{background:0;border:1px solid rgba(255,255,255,.1);color:var(--g300);font-size:11px;font-weight:600;padding:5px 13px;border-radius:6px;cursor:pointer;font-family:var(--fb);transition:.2s}
+.pnav button:hover{color:#fff;background:rgba(255,255,255,.06)}
+.pnav button.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ── PAGE SWITCH ── */
+.page{display:none}.page.on{display:block}
+
+/* ── SHARED UTILITIES ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:700;font-family:var(--fb);cursor:pointer;border:none;transition:.2s}
+.btn-g{background:var(--green);color:#fff}.btn-g:hover{background:var(--green-d);transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,180,114,.3)}
+.btn-o{background:var(--blue-bg);color:var(--blue);border:1.5px solid var(--blue-bg)}.btn-o:hover{background:#fff;border-color:var(--blue)}
+.btn-wh{background:#fff;color:var(--dk)}.btn-wh:hover{background:var(--g50)}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 13px;border-radius:99px;font-size:10.5px;font-weight:700;font-family:var(--fm);letter-spacing:.5px;text-transform:uppercase}
+.tag-blue{background:var(--blue-bg);color:var(--blue)}
+.tag-green{background:rgba(37,180,114,.12);border:1px solid rgba(37,180,114,.25);color:var(--green-l)}
+.sl{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;font-family:var(--fm);margin-bottom:8px}
+.sl-bl{color:var(--blue)}.sl-gr{color:var(--green-d)}.sl-wh{color:var(--green-l)}
+.sh{font-family:var(--fd);font-weight:800;line-height:1.08;letter-spacing:-.4px;margin-bottom:10px}
+.sh em{font-style:italic;color:var(--green)}
+.sh.wh{color:#fff}.sh.wh em{color:var(--green-l)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.sec{padding:64px 32px}
+.sec-sm{padding:44px 32px}
+
+/* ── SWITCHER BAR ── */
+.sw-bar{background:var(--dk2);border-bottom:1px solid rgba(255,255,255,.06);padding:10px 32px;position:sticky;top:48px;z-index:88}
+.sw-bar-in{max-width:1160px;margin:0 auto;display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}
+.sw-bar-in::-webkit-scrollbar{display:none}
+.sw-bar-in .lbl{font-size:9px;font-weight:800;color:var(--g500);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--fm);white-space:nowrap;margin-right:4px;flex-shrink:0}
+.sw-bar-in .sep{width:1px;height:18px;background:rgba(255,255,255,.12);margin:0 8px;flex-shrink:0}
+.sw-bar-in button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--g300);font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;cursor:pointer;white-space:nowrap;font-family:var(--fb);transition:.2s;flex-shrink:0}
+.sw-bar-in button:hover{background:rgba(255,255,255,.1);color:#fff}
+.sw-bar-in button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ── PANEL SWITCH ── */
+.panel{display:none}.panel.on{display:block}
+
+/* ══════════════════════════════════════
+   CITY PAGE
+══════════════════════════════════════ */
+
+/* Hero */
+.ch{padding:72px 32px 56px;background:linear-gradient(155deg,var(--blue-bg) 0%,#fff 55%,var(--green-bg) 100%)}
+.ch-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:52px;align-items:start}
+.ch-bc{font-size:11px;color:var(--g500);font-weight:600;font-family:var(--fm);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.ch-bc span{color:var(--blue)}
+.ch h1{font-family:var(--fd);font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.06;letter-spacing:-.5px;color:var(--dk);margin-bottom:16px}
+.ch h1 em{color:var(--green);font-style:italic}
+.ch-desc{font-size:15.5px;color:var(--g500);line-height:1.72;margin-bottom:24px;max-width:520px}
+.ch-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.ch-sigs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ch-sig{background:#fff;border:1.5px solid var(--g100);border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:center}
+.ch-sig .em{font-size:17px;flex-shrink:0}
+.ch-sig h5{font-size:12px;font-weight:800;color:var(--dk);margin-bottom:1px}
+.ch-sig p{font-size:11px;color:var(--g500);line-height:1.4}
+
+/* Hero proof card */
+.ch-proof{background:#fff;border:1.5px solid var(--g100);border-radius:var(--rx);padding:26px;box-shadow:var(--sh-l)}
+.ch-proof h4{font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--fm);margin-bottom:14px}
+.ch-pstat{display:flex;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--g100)}
+.ch-pstat:last-of-type{border-bottom:0;margin-bottom:10px}
+.ch-pstat .v{font-family:var(--fd);font-size:26px;font-weight:800;color:var(--green-d);min-width:70px;line-height:1}
+.ch-pstat .l{font-size:12.5px;color:var(--g700);line-height:1.4}
+.ch-pstat .l b{color:var(--dk);font-weight:700;display:block}
+.ch-pills{display:flex;gap:6px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--g100)}
+.ch-pill{background:var(--g50);border:1px solid var(--g100);border-radius:99px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--g700);font-family:var(--fm)}
+
+/* Stats strip */
+.stats-strip{background:linear-gradient(135deg,var(--blue),var(--blue-l));padding:36px 32px}
+.stats-strip-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.ss-c .v{font-family:var(--fd);font-size:36px;font-weight:800;color:#fff;line-height:1}
+.ss-c .l{font-size:11px;color:rgba(255,255,255,.65);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;font-family:var(--fm)}
+
+/* Market section */
+.mkt{background:var(--dk);padding:56px 32px}
+.mkt-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.mkt h2{font-family:var(--fd);font-size:clamp(26px,3vw,36px);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.1}
+.mkt h2 em{color:var(--green-l);font-style:italic}
+.mkt>div>p{font-size:14.5px;color:var(--g300);line-height:1.7;margin-bottom:12px}
+.mkt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mkt-c{background:var(--dk2);border:1px solid rgba(255,255,255,.05);border-radius:var(--rl);padding:18px}
+.mkt-c .em{font-size:20px;margin-bottom:8px}
+.mkt-c h5{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px}
+.mkt-c p{font-size:12px;color:var(--g500);line-height:1.55}
+
+/* Services grid */
+.city-svcs{background:var(--g50);padding:60px 32px}
+.city-svcs-in{max-width:1160px;margin:0 auto}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.svc-c{background:#fff;border:1.5px solid var(--g100);border-radius:var(--rl);padding:24px;transition:.2s}
+.svc-c:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--sh-m)}
+.svc-c .ic{width:42px;height:42px;background:var(--blue-bg);border-radius:9px;display:grid;place-items:center;font-size:19px;margin-bottom:12px}
+.svc-c h4{font-size:14.5px;font-weight:800;color:var(--dk);margin-bottom:6px}
+.svc-c p{font-size:13px;color:var(--g500);line-height:1.6;margin-bottom:10px}
+.svc-c .badge{font-size:10.5px;font-weight:700;color:var(--green-d);background:var(--green-bg);padding:3px 10px;border-radius:99px;display:inline-block;font-family:var(--fm)}
+
+/* SEO copy + sidebar */
+.seo-s{background:#fff;padding:64px 32px}
+.seo-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start}
+.seo-body h2{font-family:var(--fd);font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--dk);margin:30px 0 12px;letter-spacing:-.3px;line-height:1.15}
+.seo-body h2:first-child{margin-top:0}
+.seo-body h3{font-family:var(--fd);font-size:19px;font-weight:700;color:var(--dk);margin:22px 0 8px}
+.seo-body p{font-size:14.5px;color:var(--g700);line-height:1.8;margin-bottom:14px}
+.seo-body ul{margin:8px 0 16px 20px}
+.seo-body li{font-size:14.5px;color:var(--g700);line-height:1.7;margin-bottom:6px}
+.seo-body strong{color:var(--dk);font-weight:700}
+.seo-related{font-size:13px;color:var(--g500);font-style:italic;margin-top:28px}
+.seo-related a{color:var(--blue);font-weight:600;font-style:normal;border-bottom:1px solid var(--blue-bg)}
+.seo-related a:hover{border-color:var(--blue)}
+
+/* Sidebar */
+.sidebar{position:sticky;top:110px}
+.sb-card{background:#fff;border:1.5px solid var(--g100);border-radius:var(--rl);padding:22px;margin-bottom:14px;box-shadow:var(--sh-s)}
+.sb-card h5{font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:1px;font-family:var(--fm);margin-bottom:12px}
+.sb-card ul{list-style:none}
+.sb-card li{font-size:13px;color:var(--g700);padding:7px 0;border-bottom:1px dashed var(--g100);display:flex;gap:8px;line-height:1.4}
+.sb-card li:last-child{border-bottom:0}
+.sb-card li::before{content:'→';color:var(--green-d);font-weight:900;flex-shrink:0}
+.sb-cta{background:linear-gradient(135deg,var(--green),var(--green-d));border-radius:var(--rl);padding:22px;text-align:center}
+.sb-cta h5{font-size:16px;font-weight:800;color:#fff;font-family:var(--fd);margin-bottom:6px}
+.sb-cta p{font-size:12px;color:rgba(255,255,255,.8);margin-bottom:14px;line-height:1.5}
+.sb-cta .btn{width:100%;justify-content:center;background:#fff;color:var(--green-d)}
+
+/* FAQ accordion */
+.faq-s{background:var(--g50);padding:64px 32px}
+.faq-in{max-width:860px;margin:0 auto}
+.faq-acc{margin-top:28px}
+.faq-i{background:#fff;border:1.5px solid var(--g100);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
+.faq-i:hover{border-color:var(--blue)}
+.faq-q{padding:17px 22px;font-size:14px;font-weight:700;color:var(--dk);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;user-select:none}
+.faq-q .ico{font-size:18px;color:var(--blue);transition:.3s;flex-shrink:0}
+.faq-a{padding:0 22px 16px;font-size:14px;color:var(--g700);line-height:1.72;display:none}
+.faq-i.open .faq-a{display:block}
+.faq-i.open{border-color:var(--blue)}
+.faq-i.open .ico{transform:rotate(45deg)}
+.faq-note{font-size:11px;color:var(--g300);text-align:right;margin-top:10px;font-family:var(--fm)}
+
+/* Nearby cities */
+.nearby{background:#fff;padding:60px 32px;border-top:1px solid var(--g100)}
+.nearby-in{max-width:1160px;margin:0 auto}
+.nearby-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.nearby-c{background:var(--g50);border:1.5px solid var(--g100);border-radius:var(--rl);padding:22px;text-align:center;transition:.2s;cursor:pointer}
+.nearby-c:hover{border-color:var(--blue);background:#fff;transform:translateY(-2px)}
+.nearby-c .em{font-size:24px;margin-bottom:8px}
+.nearby-c h4{font-size:14px;font-weight:800;color:var(--dk);margin-bottom:4px}
+.nearby-c p{font-size:12.5px;color:var(--g500);line-height:1.5}
+
+/* Final CTA */
+.final{background:linear-gradient(160deg,var(--dk),var(--dk3))}
+.final-in{max-width:700px;margin:0 auto;padding:88px 32px;text-align:center}
+.final-in h2{font-family:var(--fd);font-size:clamp(32px,4vw,46px);font-weight:800;color:#fff;margin-bottom:12px;line-height:1.1}
+.final-in h2 em{color:var(--green-l);font-style:italic}
+.final-in p{font-size:15px;color:var(--g300);margin-bottom:32px}
+.final-in small{font-size:11.5px;color:var(--g500);display:block;margin-top:14px;font-family:var(--fm)}
+
+/* ══════════════════════════════════════
+   INDUSTRY PAGE
+══════════════════════════════════════ */
+
+/* Hero dark */
+.ind-hero{padding:72px 32px 56px;background:linear-gradient(155deg,var(--dk) 0%,var(--dk3) 60%,var(--blue-d) 100%);position:relative;overflow:hidden}
+.ind-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(37,180,114,.07),transparent 65%);pointer-events:none}
+.ind-hero-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:52px;align-items:center;position:relative}
+.ind-hero h1{font-family:var(--fd);font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.06;letter-spacing:-.5px;color:#fff;margin:14px 0 16px}
+.ind-hero h1 em{color:var(--green-l);font-style:italic}
+.ind-hero-desc{font-size:15.5px;color:var(--g300);line-height:1.72;margin-bottom:26px;max-width:520px}
+.ind-hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.niche-pills{display:flex;gap:8px;flex-wrap:wrap}
+.niche-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:600;color:var(--g300)}
+
+/* Pain card */
+.pain-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rx);padding:26px;backdrop-filter:blur(10px)}
+.pain-card h4{font-size:10px;font-weight:800;color:var(--green-l);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--fm);margin-bottom:14px}
+.pain-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.pain-item:last-child{border-bottom:0}
+.pain-item .dot{width:17px;height:17px;background:rgba(37,180,114,.15);border:1px solid rgba(37,180,114,.3);border-radius:50%;display:grid;place-items:center;font-size:9px;color:var(--green-l);flex-shrink:0;margin-top:2px}
+.pain-item p{font-size:13px;color:var(--g300);line-height:1.5}
+.pain-item p b{color:#fff}
+
+/* Why specialized */
+.why-s{background:var(--g50);padding:60px 32px}
+.why-in{max-width:1160px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.why-c{background:#fff;border:1.5px solid var(--g100);border-radius:var(--rl);padding:26px;transition:.2s}
+.why-c:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--sh-m)}
+.why-c .ic{font-size:24px;margin-bottom:12px}
+.why-c h4{font-size:15px;font-weight:800;color:var(--dk);margin-bottom:8px}
+.why-c p{font-size:13px;color:var(--g500);line-height:1.6}
+.why-c .note{font-size:11px;font-weight:700;color:var(--green-d);background:var(--green-bg);padding:4px 10px;border-radius:6px;display:inline-block;margin-top:10px;font-family:var(--fm)}
+
+/* Process */
+.proc-s{background:#fff;padding:60px 32px;border-top:1px solid var(--g100)}
+.proc-in{max-width:1160px;margin:0 auto}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:36px}
+.proc-grid::before{content:'';position:absolute;top:27px;left:56px;right:56px;height:2px;background:linear-gradient(90deg,var(--blue),var(--green))}
+.proc-step{text-align:center;padding:0 12px;position:relative}
+.proc-n{width:54px;height:54px;border-radius:50%;background:#fff;border:2.5px solid var(--blue);display:grid;place-items:center;font-size:18px;font-weight:800;color:var(--blue);margin:0 auto 12px;position:relative;z-index:2;font-family:var(--fd)}
+.proc-tag{background:var(--blue);color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:7px;font-family:var(--fm);letter-spacing:.5px}
+.proc-step h4{font-size:13.5px;font-weight:700;color:var(--dk);margin-bottom:5px}
+.proc-step p{font-size:12.5px;color:var(--g500);line-height:1.55}
+
+/* Case study dark */
+.cs-s{background:var(--dk);padding:60px 32px}
+.cs-in{max-width:1160px;margin:0 auto}
+.cs-card{background:var(--dk2);border:1px solid rgba(255,255,255,.06);border-radius:var(--rx);padding:36px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;margin-top:32px}
+.cs-card h3{font-family:var(--fd);font-size:clamp(20px,2.5vw,28px);font-weight:800;color:#fff;margin-bottom:12px;line-height:1.2}
+.cs-card .quote{font-size:14.5px;color:var(--g300);line-height:1.7;font-style:italic;border-left:3px solid var(--green);padding-left:16px;margin:14px 0}
+.cs-card .attrib{font-size:11.5px;font-weight:700;color:var(--green-l);font-family:var(--fm)}
+.cs-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cs-stat{background:var(--dk3);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;text-align:center}
+.cs-stat .v{font-family:var(--fd);font-size:28px;font-weight:800;color:var(--green-l);line-height:1}
+.cs-stat .l{font-size:10px;color:var(--g300);text-transform:uppercase;letter-spacing:.5px;font-family:var(--fm);margin-top:4px}
+
+/* Industry sidebar */
+.ind-sb-card{background:#fff;border:1.5px solid var(--g100);border-radius:var(--rl);padding:22px;margin-bottom:14px;box-shadow:var(--sh-s)}
+.ind-sb-card h5{font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:1px;font-family:var(--fm);margin-bottom:12px}
+.ind-sb-card li{display:flex;gap:8px;align-items:center;padding:7px 0;font-size:13px;color:var(--g700);border-bottom:1px dashed var(--g100);list-style:none;line-height:1.4}
+.ind-sb-card li:last-child{border-bottom:0}
+.ind-sb-card li::before{content:'✓';color:var(--green-d);font-weight:900;font-size:11px;flex-shrink:0}
+.ind-clients{background:var(--g50);border:1.5px solid var(--g100);border-radius:var(--rl);padding:20px;margin-bottom:14px}
+.ind-clients h5{font-size:10px;font-weight:800;color:var(--g500);text-transform:uppercase;letter-spacing:1px;font-family:var(--fm);margin-bottom:12px}
+.ic-row{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--g100)}
+.ic-row:last-child{border-bottom:0}
+.ic-av{width:32px;height:32px;background:var(--blue-bg);border-radius:7px;display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--blue);flex-shrink:0}
+.ic-row .nm{font-size:12.5px;font-weight:700;color:var(--dk)}
+.ic-row .tp{font-size:11px;color:var(--g500);font-family:var(--fm)}
+.ind-sb-cta{background:linear-gradient(135deg,var(--dk),var(--blue-d));border-radius:var(--rl);padding:22px;text-align:center}
+.ind-sb-cta h5{font-size:15px;font-weight:800;color:#fff;font-family:var(--fd);margin-bottom:6px}
+.ind-sb-cta p{font-size:12px;color:var(--g300);margin-bottom:14px;line-height:1.5}
+
+/* MOBILE */
+@media(max-width:900px){
+  .ch-in,.mkt-in,.seo-in,.ind-hero-in,.cs-card{grid-template-columns:1fr;gap:28px}
+  .ch,.ind-hero{padding:48px 16px 36px}
+  .mkt,.city-svcs,.seo-s,.faq-s,.nearby,.why-s,.proc-s,.cs-s,.stats-strip{padding:44px 16px}
+  .sec,.sec-sm{padding:44px 16px}
+  .svc-grid,.why-grid{grid-template-columns:1fr}
+  .nearby-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-strip-in{grid-template-columns:repeat(2,1fr);gap:14px}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .proc-grid::before{display:none}
+  .mkt-grid{grid-template-columns:1fr 1fr}
+  .sidebar,.ind-sidebar{position:static}
+  .ch-sigs{grid-template-columns:1fr 1fr}
+  .cs-stats{grid-template-columns:1fr 1fr}
+  .final-in{padding:64px 16px}
+}
+@media(max-width:600px){
+  .nearby-grid,.svc-grid,.why-grid,.mkt-grid,.cs-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE NAV -->
+<div class="pnav">
+  <span class="pnav-l">Template:</span>
+  <button class="on" onclick="go('city',this)">🗽 City Page</button>
+  <button onclick="go('industry',this)">🏠 Industry Page</button>
+</div>
+
+
+<!-- ================================================================ -->
+<!--  CITY PAGE                                                        -->
+<!-- ================================================================ -->
+<div id="p-city" class="page on">
+
+  <!-- Switcher -->
+  <div class="sw-bar">
+    <div class="sw-bar-in">
+      <span class="lbl">US:</span>
+      <button class="on" onclick="switchCity(this,'nyc')">🗽 New York</button>
+      <button onclick="switchCity(this,'chicago')">🌆 Chicago</button>
+      <button onclick="switchCity(this,'houston')">🤠 Houston</button>
+      <button onclick="switchCity(this,'la')">🌴 Los Angeles</button>
+      <button onclick="switchCity(this,'miami')">🌊 Miami</button>
+      <button onclick="switchCity(this,'dallas')">⭐ Dallas</button>
+      <div class="sep"></div>
+      <span class="lbl">UK:</span>
+      <button onclick="switchCity(this,'london')">🇬🇧 London</button>
+      <div class="sep"></div>
+      <span class="lbl">UAE:</span>
+      <button onclick="switchCity(this,'dubai')">🇦🇪 Dubai</button>
+      <div class="sep"></div>
+      <span class="lbl">PK:</span>
+      <button onclick="switchCity(this,'karachi')">🇵🇰 Karachi</button>
+      <button onclick="switchCity(this,'lahore')">🇵🇰 Lahore</button>
+    </div>
+  </div>
+
+  <!-- ─── NEW YORK ─── -->
+  <div class="panel on" data-city="nyc">
+
+    <section class="ch">
+      <div class="ch-in">
+        <div>
+          <div class="ch-bc">Home <span>Digital Marketing Agency in New York</span></div>
+          <div class="tag tag-blue">📣 Paid Ads · SEO · CRO · Web Dev</div>
+          <h1>Digital Marketing Agency<br>in <em>New York, NY.</em></h1>
+          <p class="ch-desc">We help New York businesses — from Midtown startups to Brooklyn ecom brands — grow faster with Meta Ads, Google Ads, SEO, and CRO. Senior team on every account. No juniors. No year-long lock-ins.</p>
+          <div class="ch-ctas">
+            <button class="btn btn-g">Get My Free Audit →</button>
+            <button class="btn btn-o">See Client Work</button>
+          </div>
+          <div class="ch-sigs">
+            <div class="ch-sig"><span class="em">🕐</span><div><h5>ET Timezone</h5><p>Live calls 9am–6pm ET</p></div></div>
+            <div class="ch-sig"><span class="em">📍</span><div><h5>All 5 Boroughs</h5><p>Manhattan · Brooklyn · Queens</p></div></div>
+            <div class="ch-sig"><span class="em">⭐</span><div><h5>4.9 on Google</h5><p>42 verified reviews</p></div></div>
+            <div class="ch-sig"><span class="em">🚀</span><div><h5>14-Day Onboarding</h5><p>Ads live within 2 weeks</p></div></div>
+          </div>
+        </div>
+        <div class="ch-proof">
+          <h4>Results from our portfolio</h4>
+          <div class="ch-pstat"><div class="v">7.05x</div><div class="l"><b>Best ROAS achieved</b>Ecommerce brand, 90 days</div></div>
+          <div class="ch-pstat"><div class="v">$6.48</div><div class="l"><b>CPL — education client</b>1,185 leads, 6 months</div></div>
+          <div class="ch-pstat"><div class="v">47%</div><div class="l"><b>Conversion rate lift</b>Post-CRO redesign</div></div>
+          <div class="ch-pstat"><div class="v">2.4x</div><div class="l"><b>Organic traffic growth</b>SEO campaign, 9 months</div></div>
+          <div class="ch-pills">
+            <span class="ch-pill">Shopify Partner</span>
+            <span class="ch-pill">Meta Partner</span>
+            <span class="ch-pill">Google Partner</span>
+            <span class="ch-pill">PSEB Reg.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-strip">
+      <div class="stats-strip-in">
+        <div class="ss-c"><div class="v">75+</div><div class="l">Brands Scaled</div></div>
+        <div class="ss-c"><div class="v">7.05x</div><div class="l">Best ROAS</div></div>
+        <div class="ss-c"><div class="v">4.9★</div><div class="l">Google Rating</div></div>
+        <div class="ss-c"><div class="v">&lt;14d</div><div class="l">Ads Live</div></div>
+      </div>
+    </div>
+
+    <section class="mkt">
+      <div class="mkt-in">
+        <div>
+          <div class="sl sl-wh">Why New York is different</div>
+          <h2>NY demands a <em>different playbook.</em></h2>
+          <p>New York is the most competitive ad market in the US. Meta CPMs run 30–60% above national averages. Google CPCs in finance, fashion, and legal verticals regularly hit $15–$40. Agencies using the same campaigns they run in smaller markets will burn your budget in weeks.</p>
+          <p>We've run campaigns across Midtown B2B, Lower East Side retail, Brooklyn ecom, and Queens service businesses. We know the seasonal rhythms and how New York buyers evaluate before committing.</p>
+        </div>
+        <div class="mkt-grid">
+          <div class="mkt-c"><div class="em">📈</div><h5>High CPM Market</h5><p>NY Meta CPMs average $12–$18. Cut waste first, then scale what converts.</p></div>
+          <div class="mkt-c"><div class="em">🏙️</div><h5>Hyper-Local Targeting</h5><p>Neighborhood-level geo fencing and ZIP-code segmentation.</p></div>
+          <div class="mkt-c"><div class="em">🛍️</div><h5>Ecom + Retail Mix</h5><p>NY buyers research online, buy anywhere. Attribution setup is critical.</p></div>
+          <div class="mkt-c"><div class="em">🏆</div><h5>Competitive Keywords</h5><p>Legal, finance, real estate — tight exact-match strategy required.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="city-svcs">
+      <div class="city-svcs-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto">
+          <div class="sl sl-bl">What we do in New York</div>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,36px)">Full-stack digital marketing <em>for NY businesses.</em></h2>
+        </div>
+        <div class="svc-grid">
+          <div class="svc-c"><div class="ic">📣</div><h4>Meta &amp; Google Ads</h4><p>Audit-first campaign builds. Senior buyer assigned from day one. Weekly optimization.</p><span class="badge">Avg 3.2x ROAS</span></div>
+          <div class="svc-c"><div class="ic">🔍</div><h4>SEO for NYC</h4><p>Technical audit, borough-level keyword targeting, content, and white-hat link building.</p><span class="badge">2.4x traffic avg</span></div>
+          <div class="svc-c"><div class="ic">🌐</div><h4>Web Dev + CRO</h4><p>Shopify and WordPress. Sub-2s mobile load. CRO-backed wireframes before any code.</p><span class="badge">47% CVR lift avg</span></div>
+          <div class="svc-c"><div class="ic">📧</div><h4>Email Marketing</h4><p>Klaviyo and Omnisend flows, segmentation, broadcasts — turn your list into revenue.</p><span class="badge">22% revenue lift</span></div>
+          <div class="svc-c"><div class="ic">📱</div><h4>Social Media</h4><p>Instagram, TikTok, LinkedIn — content that warms cold traffic and supports paid ads.</p><span class="badge">3x engagement</span></div>
+          <div class="svc-c"><div class="ic">⚙️</div><h4>Custom Development</h4><p>Shopify apps, B2B portals, configurators, marketplaces, API integrations.</p><span class="badge">75+ builds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-s">
+      <div class="seo-in">
+        <div class="seo-body">
+          <h2>Digital Marketing Agency in New York — What to Look For</h2>
+          <p>New York has thousands of <strong>digital marketing agencies</strong>. Most of them take your retainer, farm the work to freelancers, and send you a PDF at month end. The first thing to verify: does a senior person actually run your account, or does it get handed to a junior coordinator after the sales call?</p>
+          <p>At <strong>AheadTech360</strong>, the strategist who audits your account runs it from day one. No handoff. And because we carry no Manhattan office overhead, our pricing is 30–50% below equivalent New York boutiques — more of your budget goes toward actual work.</p>
+
+          <h3>Performance Marketing in New York — Why It's Hard</h3>
+          <p>In a high-CPM market, the margin for error is zero. A Meta campaign that limps along at 1.5x ROAS in a low-competition city produces negative returns in New York. You need tracking that is completely airtight (broken CAPI means Meta is flying blind), creative that earns attention in a crowded feed, exact-match Google campaigns with aggressive negatives, and CRO on the landing page before you spend a dollar. We fix all four before a single campaign goes live.</p>
+
+          <h3>Local SEO for New York Businesses</h3>
+          <p>"Near me" search volume in New York is among the highest in the world. Ranking in the Google Maps Pack drives more phone calls and form fills than most paid channels, at near-zero marginal cost. For service businesses, <strong>neighborhood-level targeting</strong> matters — ranking for "divorce lawyer Upper West Side" is more valuable than "divorce lawyer New York City" because it is less competitive and matches buyer intent more precisely.</p>
+
+          <h3>Ecommerce Brands in New York</h3>
+          <p>New York has one of the densest concentrations of Shopify ecommerce brands in the world — fashion, beauty, food, art, and consumer goods. We run the full ecom revenue stack: Meta Ads, Google Shopping, Klaviyo email flows, and Shopify CRO.</p>
+
+          <h3>B2B and Professional Services</h3>
+          <p>For New York B2B — SaaS, financial services, legal, consulting — the right channels are LinkedIn Ads, exact-match Google Search, content-led SEO for long buying cycles, and email nurture. We run all of them, and we report on revenue, not impressions.</p>
+
+          <p class="seo-related">Also serving: <a onclick="switchCity(null,'chicago')">Chicago</a> · <a onclick="switchCity(null,'miami')">Miami</a> · <a onclick="switchCity(null,'la')">Los Angeles</a> · <a onclick="switchCity(null,'london')">London</a> · <a onclick="switchCity(null,'dubai')">Dubai</a> · <a onclick="switchCity(null,'karachi')">Karachi</a></p>
+        </div>
+        <div class="sidebar">
+          <div class="sb-card">
+            <h5>Services in New York</h5>
+            <ul>
+              <li>Meta &amp; Google Ads</li>
+              <li>SEO &amp; Local Search</li>
+              <li>Shopify Development</li>
+              <li>Email Marketing (Klaviyo)</li>
+              <li>CRO &amp; Conversion Audits</li>
+              <li>Social Media Management</li>
+              <li>Custom Development</li>
+            </ul>
+          </div>
+          <div class="sb-card">
+            <h5>Industries We Serve in NY</h5>
+            <ul>
+              <li>Ecommerce &amp; DTC</li>
+              <li>Professional Services</li>
+              <li>Real Estate</li>
+              <li>Fashion &amp; Apparel</li>
+              <li>Finance &amp; Fintech</li>
+              <li>Education</li>
+            </ul>
+          </div>
+          <div class="sb-cta">
+            <h5>Free Audit for NY Brands</h5>
+            <p>We'll review your ads, site, or SEO and tell you exactly what's costing you money.</p>
+            <button class="btn btn-wh">Get My Free Audit →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-s">
+      <div class="faq-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto">
+          <div class="sl sl-bl">Frequently asked questions</div>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,34px)">Questions New York businesses <em>ask us.</em></h2>
+        </div>
+        <div class="faq-acc">
+          <div class="faq-i open"><div class="faq-q" onclick="toggleFaq(this)">How much does digital marketing cost for a New York business? <span class="ico">+</span></div><div class="faq-a">Retainers start at $1,499–$2,999/month for single-service engagements and $5,000–$15,000/month for mid-market companies. For paid ads in New York's high-CPM environment, we recommend a minimum ad spend of $5,000/month — below that, fees consume too much of the budget relative to the data you can collect.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Are you physically based in New York? <span class="ico">+</span></div><div class="faq-a">No — we're remote-first, operating under a Wyoming LLC and serving New York clients with ET-timezone alignment. Most clients prefer it: faster response times, more budget going toward actual work, and no Manhattan overhead inflating your retainer.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">How long until I see results from digital marketing in New York? <span class="ico">+</span></div><div class="faq-a">Paid ads: first meaningful signal at 30 days, optimization data at 60–90 days. SEO: technical fixes visible in 30–60 days, traffic compound growth at 4–6 months. CRO: conversion lift measurable in 2–4 weeks post-launch. We front-load tracking and audit work so day-one budget is spent efficiently.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Do you work with small businesses or only large companies? <span class="ico">+</span></div><div class="faq-a">Both. For paid ads, we recommend a minimum $5K/month ad budget to work in New York's CPM environment. For SEO, web development, and project work, there is no minimum revenue requirement — we have worked with solo founders and $50M brands alike.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Can you handle neighborhood-level local SEO in New York? <span class="ico">+</span></div><div class="faq-a">Yes — borough and neighborhood-level targeting is something we build specifically. Google Business Profile optimization, citation cleanup, local landing pages targeting exact areas (e.g. "plumber in Williamsburg Brooklyn"), and Map Pack strategy. Typical timeline: 3–6 months to see meaningful Map Pack movement.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What makes you different from New York-based agencies? <span class="ico">+</span></div><div class="faq-a">Three things: senior people run your account from day one with no junior handoff; we're 30–50% less expensive than equivalent NY boutiques because we carry no Manhattan overhead; and we communicate more — weekly Loom walkthroughs, monthly strategy calls, and a direct line to your strategist. Most agency relationships break down on communication. We've made that a feature.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Long-term contracts or month-to-month? <span class="ico">+</span></div><div class="faq-a">90-day initial commitment for ongoing retainers — we need time to set up tracking, test, and show real results. After that, month-to-month. No year-long lock-ins. We earn the renewal every month.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What industries do you serve in New York? <span class="ico">+</span></div><div class="faq-a">Ecommerce (fashion, beauty, consumer goods), professional services, education, finance and fintech, real estate, and hospitality. We have run campaigns in every one of these verticals in the NY market specifically.</div></div>
+        </div>
+        <p class="faq-note">💡 Add FAQ schema markup to this section in production for Google rich results</p>
+      </div>
+    </section>
+
+    <section class="nearby">
+      <div class="nearby-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto">
+          <div class="sl sl-bl">Also serving</div>
+          <h2 class="sh" style="font-size:clamp(22px,2.5vw,30px)">Digital marketing agencies <em>near New York.</em></h2>
+        </div>
+        <div class="nearby-grid">
+          <div class="nearby-c" onclick="switchCity(null,'chicago')"><div class="em">🌆</div><h4>Chicago, IL</h4><p>Loop, River North, Wicker Park, Chicagoland suburbs</p></div>
+          <div class="nearby-c" onclick="switchCity(null,'miami')"><div class="em">🌊</div><h4>Miami, FL</h4><p>Brickell, Wynwood, Coral Gables, South Florida</p></div>
+          <div class="nearby-c" onclick="switchCity(null,'houston')"><div class="em">🤠</div><h4>Houston, TX</h4><p>The Woodlands, Galleria, Sugar Land, Greater Houston</p></div>
+          <div class="nearby-c" onclick="switchCity(null,'london')"><div class="em">🇬🇧</div><h4>London, UK</h4><p>Central London, Greater London, Home Counties</p></div>
+          <div class="nearby-c" onclick="switchCity(null,'dubai')"><div class="em">🇦🇪</div><h4>Dubai, UAE</h4><p>Dubai, Abu Dhabi, Sharjah, UAE market</p></div>
+          <div class="nearby-c" onclick="switchCity(null,'karachi')"><div class="em">🇵🇰</div><h4>Karachi, Pakistan</h4><p>PSEB-registered, Pakistan-wide coverage</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="final"><div class="final-in">
+      <h2>Ready to grow your<br><em>New York business?</em></h2>
+      <p>Free audit — we'll tell you exactly what's costing you revenue and what to fix first.</p>
+      <button class="btn btn-g" style="font-size:15px;padding:14px 30px">Get My Free Audit →</button>
+      <small>ET timezone · Same-day response · No year-long contracts</small>
+    </div></div>
+  </div><!-- /nyc -->
+
+  <!-- ─── STUB PANELS ─── -->
+  <!-- Chicago -->
+  <div class="panel" data-city="chicago">
+    <section class="ch"><div class="ch-in">
+      <div>
+        <div class="ch-bc">Home <span>Digital Marketing Agency in Chicago</span></div>
+        <div class="tag tag-blue">📣 Paid Ads · SEO · CRO · Web Dev</div>
+        <h1>Digital Marketing Agency<br>in <em>Chicago, IL.</em></h1>
+        <p class="ch-desc">We've run paid campaigns and SEO for Chicago brands across the Loop, River North, Wicker Park, and Chicagoland suburbs. Senior team. Audit-first. CT timezone.</p>
+        <div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button><button class="btn btn-o">See Chicago Work</button></div>
+        <div class="ch-sigs">
+          <div class="ch-sig"><span class="em">🕐</span><div><h5>CT Timezone</h5><p>9am–6pm CT live calls</p></div></div>
+          <div class="ch-sig"><span class="em">📍</span><div><h5>Chicagoland</h5><p>Loop · Wicker Park · Naperville</p></div></div>
+          <div class="ch-sig"><span class="em">⭐</span><div><h5>4.9 Google</h5><p>42 verified reviews</p></div></div>
+          <div class="ch-sig"><span class="em">🖨️</span><div><h5>DTF + Print Niche</h5><p>Chicago print market expertise</p></div></div>
+        </div>
+      </div>
+      <div class="ch-proof">
+        <h4>Chicago market results</h4>
+        <div class="ch-pstat"><div class="v">7.05x</div><div class="l"><b>Best ROAS — DTF vertical</b>90-day turnaround, Chicago brand</div></div>
+        <div class="ch-pstat"><div class="v">$6.48</div><div class="l"><b>CPL — vocational college</b>1,185 leads via Google + Meta</div></div>
+        <div class="ch-pstat"><div class="v">47%</div><div class="l"><b>CVR lift</b>Post-CRO redesign</div></div>
+        <div class="ch-pills"><span class="ch-pill">Shopify Partner</span><span class="ch-pill">Meta Partner</span><span class="ch-pill">Google Partner</span></div>
+      </div>
+    </div></section>
+    <div class="stats-strip"><div class="stats-strip-in">
+      <div class="ss-c"><div class="v">75+</div><div class="l">Brands Scaled</div></div>
+      <div class="ss-c"><div class="v">7.05x</div><div class="l">Best ROAS</div></div>
+      <div class="ss-c"><div class="v">$6.48</div><div class="l">Lowest CPL</div></div>
+      <div class="ss-c"><div class="v">4.9★</div><div class="l">Google Rating</div></div>
+    </div></div>
+    <section class="seo-s"><div class="seo-in">
+      <div class="seo-body">
+        <h2>Digital Marketing Agency in Chicago</h2>
+        <p>Chicago's business ecosystem spans the Loop's finance and professional services, River North's tech scene, Wicker Park and Logan Square's retail and creative brands, and a massive suburban commercial corridor. We've run paid advertising and SEO in Chicago across <strong>DTF printing and custom apparel</strong>, <strong>vocational education</strong>, <strong>retail ecommerce</strong>, and <strong>B2B wholesale</strong>.</p>
+        <h3>Chicago Ecommerce and Print Brands</h3>
+        <p>Chicago has a strong ecommerce community in print-on-demand, apparel, food, and B2B wholesale. Meta CPMs in Chicago run 15–20% below New York ($10–$14 average) — but tracking accuracy and creative quality are still non-negotiable to make the numbers work.</p>
+        <h3>Local SEO for Chicago</h3>
+        <p>Neighborhood SEO in Chicago is strong. Ranking in the Map Pack for "accountant in Lincoln Park" or "marketing agency in River North" drives direct calls and form fills. We build GBP profiles, clean up citations, and create neighborhood-level content targeting specific Chicago audiences.</p>
+        <h3>Education Marketing in Chicago</h3>
+        <p>We generated <strong>1,185 student leads at $6.48 CPL</strong> for a Chicago vocational college using a multi-platform Google and Meta approach with a purpose-built qualification landing page. Chicago's vocational education market is strong and the CPL economics work well here.</p>
+        <p class="seo-related">Also serving: <a onclick="switchCity(null,'nyc')">New York</a> · <a onclick="switchCity(null,'houston')">Houston</a> · <a onclick="switchCity(null,'miami')">Miami</a> · <a onclick="switchCity(null,'dallas')">Dallas</a></p>
+      </div>
+      <div class="sidebar">
+        <div class="sb-card"><h5>Chicago Services</h5><ul><li>Meta &amp; Google Ads</li><li>Chicago Local SEO</li><li>Shopify Development</li><li>Education Lead Gen</li><li>Email Marketing</li><li>Custom Dev</li></ul></div>
+        <div class="sb-cta"><h5>Free Chicago Audit</h5><p>Tell us what you're running. We'll show you what's broken.</p><button class="btn btn-wh">Get My Free Audit →</button></div>
+      </div>
+    </div></section>
+    <section class="faq-s"><div class="faq-in">
+      <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">Chicago FAQ</div><h2 class="sh" style="font-size:clamp(24px,3vw,32px)">Questions Chicago businesses <em>ask us.</em></h2></div>
+      <div class="faq-acc">
+        <div class="faq-i open"><div class="faq-q" onclick="toggleFaq(this)">Do you have experience with the Chicago DTF and print market? <span class="ico">+</span></div><div class="faq-a">Yes — Chicago's DTF and blank apparel wholesale market is one we've worked in directly. We understand gang sheet builders, B2B wholesale pricing, and how Chicago print businesses acquire customers online. We've also generated 1,185 student leads at $6.48 CPL for a Chicago vocational college — one of our strongest lead gen case studies.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What are typical ad costs in Chicago vs New York? <span class="ico">+</span></div><div class="faq-a">Chicago Meta CPMs typically run 15–20% below New York, so your budget goes a little further. Google Search in professional services and legal ranges from $8–$25 CPC. Our retainer pricing starts at $1,499/month regardless of city.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Can you do neighborhood-level local SEO in Chicago? <span class="ico">+</span></div><div class="faq-a">Yes — Wicker Park, Lincoln Park, River North, Logan Square, Hyde Park. Same approach as borough-level SEO in New York: GBP optimization, citations, neighborhood landing pages, and Map Pack strategy. Typical timeline for meaningful movement: 3–6 months.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Do you offer contracts or month-to-month? <span class="ico">+</span></div><div class="faq-a">90-day initial commitment, then month-to-month. No year-long lock-ins.</div></div>
+      </div>
+      <p class="faq-note">💡 Add FAQ schema markup in production for Google rich results</p>
+    </div></section>
+    <section class="nearby"><div class="nearby-in">
+      <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">Also serving</div><h2 class="sh" style="font-size:clamp(20px,2.5vw,28px)">Digital marketing agencies <em>near Chicago.</em></h2></div>
+      <div class="nearby-grid">
+        <div class="nearby-c" onclick="switchCity(null,'nyc')"><div class="em">🗽</div><h4>New York</h4><p>Manhattan, Brooklyn, Queens — East Coast</p></div>
+        <div class="nearby-c" onclick="switchCity(null,'dallas')"><div class="em">⭐</div><h4>Dallas</h4><p>DFW Metroplex, Plano, Irving</p></div>
+        <div class="nearby-c" onclick="switchCity(null,'houston')"><div class="em">🤠</div><h4>Houston</h4><p>The Woodlands, Galleria, Sugar Land</p></div>
+        <div class="nearby-c" onclick="switchCity(null,'london')"><div class="em">🇬🇧</div><h4>London</h4><p>Central London, Greater London</p></div>
+        <div class="nearby-c" onclick="switchCity(null,'karachi')"><div class="em">🇵🇰</div><h4>Karachi</h4><p>PSEB-registered, Pakistan-wide</p></div>
+        <div class="nearby-c" onclick="switchCity(null,'dubai')"><div class="em">🇦🇪</div><h4>Dubai</h4><p>Dubai, Abu Dhabi, Sharjah</p></div>
+      </div>
+    </div></section>
+    <div class="final"><div class="final-in"><h2>Grow your <em>Chicago</em> business.</h2><p>Free audit. Senior team. No lock-ins after 90 days.</p><button class="btn btn-g" style="font-size:15px;padding:14px 30px">Get My Free Audit →</button></div></div>
+  </div><!-- /chicago -->
+
+  <!-- Remaining city stubs — same template, swap copy in production -->
+  <div class="panel" data-city="houston"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Houston</span></div><div class="tag tag-blue">📣 Paid Ads · SEO · CRO</div><h1>Digital Marketing Agency<br>in <em>Houston, TX.</em></h1><p class="ch-desc">Serving Houston's energy, healthcare, construction, and ecommerce sectors. Senior buyers. CT timezone. Audit-first.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🕐</span><div><h5>CT Timezone</h5><p>9am–6pm CT</p></div></div><div class="ch-sig"><span class="em">📍</span><div><h5>Greater Houston</h5><p>Heights · Galleria · Woodlands</p></div></div></div></div><div class="ch-proof"><h4>Our results</h4><div class="ch-pstat"><div class="v">7.05x</div><div class="l"><b>Best ROAS</b>Ecommerce client</div></div><div class="ch-pstat"><div class="v">47%</div><div class="l"><b>CVR lift</b>Post-CRO redesign</div></div><div class="ch-pills"><span class="ch-pill">Shopify Partner</span><span class="ch-pill">Google Partner</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>Houston</em> business.</h2><p>Free audit. Senior team. No lock-ins.</p><button class="btn btn-g">Get My Free Audit →</button><small>Fill full 8-section template with Houston-specific copy in production</small></div></div></div>
+  <div class="panel" data-city="la"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Los Angeles</span></div><div class="tag tag-blue">📣 Paid Ads · UGC · CRO</div><h1>Digital Marketing Agency<br>in <em>Los Angeles, CA.</em></h1><p class="ch-desc">Serving LA's fashion, CPG, and DTC ecommerce brands. PT timezone. Strong UGC and video capabilities for LA's visual market.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🌴</span><div><h5>PT Timezone</h5><p>9am–6pm PT</p></div></div><div class="ch-sig"><span class="em">🎬</span><div><h5>Creative-First</h5><p>UGC + video-heavy campaigns</p></div></div></div></div><div class="ch-proof"><h4>Our results</h4><div class="ch-pstat"><div class="v">6x</div><div class="l"><b>Peak ROAS</b>Fashion / streetwear brand</div></div><div class="ch-pills"><span class="ch-pill">Meta Partner</span><span class="ch-pill">Shopify Partner</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>LA</em> brand.</h2><p>Free audit. Creative-first. Senior team.</p><button class="btn btn-g">Get My Free Audit →</button><small>Fill full template with LA-specific copy in production</small></div></div></div>
+  <div class="panel" data-city="miami"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Miami</span></div><div class="tag tag-blue">📣 Paid Ads · SEO · Bilingual</div><h1>Digital Marketing Agency<br>in <em>Miami, FL.</em></h1><p class="ch-desc">Serving Miami, Brickell, Wynwood, and South Florida. Bilingual English + Spanish campaigns. Real estate, hospitality, DTC, and fintech.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🌊</span><div><h5>ET Timezone</h5><p>Miami + South Florida</p></div></div><div class="ch-sig"><span class="em">🗣️</span><div><h5>Bilingual Campaigns</h5><p>English + Spanish creative</p></div></div></div></div><div class="ch-proof"><h4>Our results</h4><div class="ch-pstat"><div class="v">3.2x</div><div class="l"><b>Average ROAS</b>Across portfolio</div></div><div class="ch-pills"><span class="ch-pill">Meta Partner</span><span class="ch-pill">Bilingual</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>Miami</em> business.</h2><p>Free audit. Bilingual campaigns. No lock-ins.</p><button class="btn btn-g">Get My Free Audit →</button><small>Fill full template with Miami-specific copy in production</small></div></div></div>
+  <div class="panel" data-city="dallas"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Dallas</span></div><div class="tag tag-blue">📣 Paid Ads · SEO · CRO</div><h1>Digital Marketing Agency<br>in <em>Dallas, TX.</em></h1><p class="ch-desc">Serving Dallas, Fort Worth, Plano, and the DFW Metroplex. Healthcare, real estate, ecommerce, and B2B services.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">⭐</span><div><h5>CT Timezone</h5><p>DFW + North Texas</p></div></div><div class="ch-sig"><span class="em">🏥</span><div><h5>Healthcare + B2B</h5><p>Strong Dallas verticals</p></div></div></div></div><div class="ch-proof"><h4>Our results</h4><div class="ch-pstat"><div class="v">3.2x</div><div class="l"><b>Average ROAS</b>Across portfolio</div></div><div class="ch-pills"><span class="ch-pill">Shopify Partner</span><span class="ch-pill">Google Partner</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>Dallas</em> business.</h2><button class="btn btn-g">Get My Free Audit →</button><small>Fill full template in production</small></div></div></div>
+  <div class="panel" data-city="london"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in London</span></div><div class="tag tag-blue">📣 Paid Ads · SEO · GDPR-Compliant</div><h1>Digital Marketing Agency<br>in <em>London, UK.</em></h1><p class="ch-desc">Serving London brands in ecommerce, DTF printing, workwear, and professional services. GMT-aligned. GBP billing. GDPR-compliant tracking standard.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🇬🇧</span><div><h5>GMT Timezone</h5><p>London + UK-wide</p></div></div><div class="ch-sig"><span class="em">🔒</span><div><h5>GDPR-Compliant</h5><p>UK GDPR tracking included</p></div></div></div></div><div class="ch-proof"><h4>UK results</h4><div class="ch-pstat"><div class="v">2x</div><div class="l"><b>Order volume</b>UK DTF brand, Essex</div></div><div class="ch-pills"><span class="ch-pill">Meta Partner</span><span class="ch-pill">GDPR Ready</span><span class="ch-pill">GBP Billing</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>London</em> business.</h2><p>Free audit. GDPR-compliant. GBP billing.</p><button class="btn btn-g">Get My Free Audit →</button><small>Fill full template with London-specific copy in production</small></div></div></div>
+  <div class="panel" data-city="dubai"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Dubai</span></div><div class="tag tag-blue">📣 Paid Ads · SEO · AED Billing</div><h1>Digital Marketing Agency<br>in <em>Dubai, UAE.</em></h1><p class="ch-desc">Serving Dubai, Abu Dhabi, Sharjah, and the UAE. Luxury, real estate, ecommerce, B2B. AED billing. Bilingual EN/AR campaigns.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🇦🇪</span><div><h5>GST+4 Timezone</h5><p>Dubai · Abu Dhabi · Sharjah</p></div></div><div class="ch-sig"><span class="em">💎</span><div><h5>Luxury + Premium</h5><p>UAE market positioning</p></div></div></div></div><div class="ch-proof"><h4>UAE market</h4><div class="ch-pstat"><div class="v">UAE</div><div class="l"><b>Active market</b>Multiple Gulf clients</div></div><div class="ch-pills"><span class="ch-pill">AED Billing</span><span class="ch-pill">EN/AR</span><span class="ch-pill">UAE VAT</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>Dubai</em> business.</h2><p>Free audit. AED billing. Bilingual campaigns.</p><button class="btn btn-g">Get My Free Audit →</button><small>Fill full template with Dubai/UAE-specific copy in production</small></div></div></div>
+  <div class="panel" data-city="karachi"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Karachi</span></div><div class="tag tag-blue">🇵🇰 PSEB Registered · COD Native · Rs. Billing</div><h1>Digital Marketing Agency<br>in <em>Karachi, Pakistan.</em></h1><p class="ch-desc">PSEB-registered, Karachi-headquartered. Pakistani D2C brands, ecommerce, education, and B2B — COD-native strategy, Rs. billing, Urdu/English campaigns.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="ch-sigs"><div class="ch-sig"><span class="em">🇵🇰</span><div><h5>PKT Timezone</h5><p>Karachi HQ · PSEB Reg.</p></div></div><div class="ch-sig"><span class="em">📦</span><div><h5>COD-Native</h5><p>Pakistan COD market specialists</p></div></div></div></div><div class="ch-proof"><h4>Pakistan results</h4><div class="ch-pstat"><div class="v">6.94x</div><div class="l"><b>ROAS</b>Pakistani fashion D2C, 10 months</div></div><div class="ch-pstat"><div class="v">Rs.22.5M</div><div class="l"><b>Revenue</b>Ecommerce brand from scratch</div></div><div class="ch-pills"><span class="ch-pill">PSEB Registered</span><span class="ch-pill">COD Funnels</span><span class="ch-pill">Urdu/EN</span></div></div></div></section><div class="final"><div class="final-in"><h2>Pakistan ka most <em>result-driven</em> agency.</h2><p>Free audit. PSEB registered. Rs. billing.</p><button class="btn btn-g">Get My Free Audit →</button></div></div></div>
+  <div class="panel" data-city="lahore"><section class="ch"><div class="ch-in"><div><div class="ch-bc">Home <span>Digital Marketing Agency in Lahore</span></div><div class="tag tag-blue">🇵🇰 Meta Ads · SEO · COD Strategy</div><h1>Digital Marketing Agency<br>in <em>Lahore, Pakistan.</em></h1><p class="ch-desc">Serving Lahore's fashion brands, educational institutes, and ecommerce businesses. PSEB registered. COD-native. Urdu/English campaigns.</p><div class="ch-ctas"><button class="btn btn-g">Get My Free Audit →</button></div></div><div class="ch-proof"><h4>Pakistan results</h4><div class="ch-pstat"><div class="v">6.94x</div><div class="l"><b>ROAS</b>Pakistani fashion D2C, 10 months</div></div><div class="ch-pills"><span class="ch-pill">PSEB Registered</span><span class="ch-pill">COD Funnels</span></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your <em>Lahore</em> business.</h2><button class="btn btn-g">Get My Free Audit →</button></div></div></div>
+
+</div><!-- /p-city -->
+
+
+<!-- ================================================================ -->
+<!--  INDUSTRY PAGE                                                    -->
+<!-- ================================================================ -->
+<div id="p-industry" class="page">
+
+  <!-- Switcher -->
+  <div class="sw-bar">
+    <div class="sw-bar-in">
+      <span class="lbl">Industry:</span>
+      <button class="on" onclick="switchInd(this,'realestate')">🏠 Real Estate</button>
+      <button onclick="switchInd(this,'fashion')">👗 Fashion / Apparel</button>
+      <button onclick="switchInd(this,'ecommerce')">🛍️ Ecommerce</button>
+      <button onclick="switchInd(this,'education')">🎓 Education</button>
+      <button onclick="switchInd(this,'restaurant')">🍽️ Restaurants</button>
+      <button onclick="switchInd(this,'healthcare')">🏥 Healthcare</button>
+      <button onclick="switchInd(this,'saas')">💻 SaaS / Tech</button>
+      <button onclick="switchInd(this,'localservice')">🔧 Local Services</button>
+    </div>
+  </div>
+
+  <!-- ─── REAL ESTATE ─── -->
+  <div class="panel on" data-ind="realestate">
+
+    <section class="ind-hero">
+      <div class="ind-hero-in">
+        <div>
+          <div class="tag tag-green">🏠 Real Estate Marketing</div>
+          <h1>Digital Marketing Agency<br>for <em>Real Estate.</em></h1>
+          <p class="ind-hero-desc">Agents, brokers, and developers need a different playbook — not the same funnel every other agency runs. We generate qualified buyer and seller leads using Meta, Google, SEO, and CRO built around how real estate buyers actually think.</p>
+          <div class="ind-hero-ctas">
+            <button class="btn btn-g">Get My Free Real Estate Audit →</button>
+            <button class="btn btn-wh">See Our Work</button>
+          </div>
+          <div class="niche-pills">
+            <span class="niche-pill">Residential</span>
+            <span class="niche-pill">Commercial</span>
+            <span class="niche-pill">Property Dev</span>
+            <span class="niche-pill">Agents + Teams</span>
+            <span class="niche-pill">Rental</span>
+            <span class="niche-pill">New Development</span>
+          </div>
+        </div>
+        <div class="pain-card">
+          <h4>Real estate marketing problems we solve</h4>
+          <div class="pain-item"><div class="dot">✓</div><p><b>High CPL on Meta</b> — unqualified leads who fill forms and ghost agents</p></div>
+          <div class="pain-item"><div class="dot">✓</div><p><b>Google Ads disapprovals</b> — Fair Housing violations without knowing why</p></div>
+          <div class="pain-item"><div class="dot">✓</div><p><b>Zero SEO</b> — no organic traffic despite years of operation</p></div>
+          <div class="pain-item"><div class="dot">✓</div><p><b>Long sales cycle with no nurture</b> — leads go cold during the 3–12 month journey</p></div>
+          <div class="pain-item"><div class="dot">✓</div><p><b>Not in the Map Pack</b> — competitors show up, you don't</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-s">
+      <div class="why-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto">
+          <div class="sl sl-bl">Why real estate is different</div>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,36px)">Generic agencies break on <em>real estate specifics.</em></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-c"><div class="ic">⚖️</div><h4>Fair Housing Compliance</h4><p>Meta's Special Ads Category for Housing restricts demographic and ZIP-code targeting. Most agencies get accounts flagged. We set this up correctly every time — it changes the strategy, not the results.</p><span class="note">Compliance first</span></div>
+          <div class="why-c"><div class="ic">🕐</div><h4>Long Sales Cycle = Nurture</h4><p>Real estate buyers take 3–12 months to close. Agencies optimizing for CPL miss the point. We build CRM flows, email sequences, and SMS nurture that keeps you front-of-mind through the full buyer journey.</p><span class="note">Full funnel built</span></div>
+          <div class="why-c"><div class="ic">📍</div><h4>Hyper-Local SEO Required</h4><p>People don't buy "a house." They buy a specific property in a specific neighborhood. Neighborhood landing pages, GBP, Map Pack — ranking for the right local terms drives more qualified traffic than any broad city keyword.</p><span class="note">Neighborhood-level</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proc-s">
+      <div class="proc-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">How we work</div><h2 class="sh" style="font-size:clamp(24px,2.5vw,32px)">Our real estate marketing <em>process.</em></h2></div>
+        <div class="proc-grid">
+          <div class="proc-step"><div class="proc-n">1</div><div class="proc-tag">Week 1</div><h4>Audit + Compliance</h4><p>Ad account, tracking, site, GBP. Flag Fair Housing issues before accounts get banned.</p></div>
+          <div class="proc-step"><div class="proc-n">2</div><div class="proc-tag">Week 2</div><h4>Funnel Strategy</h4><p>Map full funnel: cold traffic → lead → nurture → appointment → close. Decide channel mix.</p></div>
+          <div class="proc-step"><div class="proc-n">3</div><div class="proc-tag">Weeks 3–4</div><h4>Campaigns + SEO Live</h4><p>Campaigns launched. Technical SEO deployed. GBP optimized. Nurture sequences active in CRM.</p></div>
+          <div class="proc-step"><div class="proc-n">4</div><div class="proc-tag">Monthly</div><h4>Optimize + Scale</h4><p>Track appointments booked — not just lead volume. Rankings reviewed. Scale what works.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-s">
+      <div class="cs-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-wh">Proof</div><h2 class="sh wh" style="font-size:clamp(24px,2.5vw,32px)">Lead gen that transfers <em>to real estate.</em></h2></div>
+        <div class="cs-card">
+          <div>
+            <h3>Service Business: 40 Booked Clients at $18/Lead</h3>
+            <div class="quote">"They built a new website, set up Google Ads exact-match, and built a booking funnel that converted at 12%. We went from 3 new clients a month to 40. The $18 CPL was just the start — each client is worth thousands."</div>
+            <div class="attrib">Local Service Business · Google Ads + CRO + New Site</div>
+          </div>
+          <div class="cs-stats">
+            <div class="cs-stat"><div class="v">40</div><div class="l">New Clients</div></div>
+            <div class="cs-stat"><div class="v">$18</div><div class="l">CPL</div></div>
+            <div class="cs-stat"><div class="v">12%</div><div class="l">Booking CVR</div></div>
+            <div class="cs-stat"><div class="v">New</div><div class="l">Site Built</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-s">
+      <div class="seo-in">
+        <div class="seo-body">
+          <h2>Digital Marketing for Real Estate — What Actually Works in 2026</h2>
+          <p>If you've tried Facebook ads for real estate leads, you've probably hit one of two outcomes: account flagged for Fair Housing violations, or 200 leads at $4 each that never pick up the phone. Both fail for the same reason — the agency didn't understand real estate marketing.</p>
+          <p><strong>Real estate digital marketing</strong> has three constraints most agencies ignore: Fair Housing compliance, a 3–12 month buyer decision cycle, and the hyper-local nature of the product. Miss any one of them and you're burning budget.</p>
+
+          <h3>Meta Ads — What Fair Housing Compliance Actually Means</h3>
+          <p>Meta's Special Ads Category for Housing means no age, gender, ZIP radius, or demographic targeting. Lookalike audiences use a Special Ad Audience instead. Fail to set this up and your account gets restricted — often permanently. Working within these constraints changes the strategy: behavioral interest targeting, life-transition creative, and high-intent landing pages beat demographic targeting anyway.</p>
+
+          <h3>Google Ads — High Intent, High Cost</h3>
+          <p>Searches like "<strong>homes for sale in [neighborhood]</strong>" and "<strong>real estate agent [city]</strong>" convert at far higher rates than social traffic. The problem: $8–$25 CPC in most markets, and Google broad match will burn budget on irrelevant searches without exact-match campaigns and a tight negative keyword list maintained weekly.</p>
+
+          <h3>Real Estate SEO — The Compounding Asset</h3>
+          <p>Neighborhood landing pages are the most defensible SEO play in real estate. A brokerage that ranks for "<strong>homes for sale in Williamsburg Brooklyn</strong>" generates consistent inbound at zero marginal cost — unlike ads that stop the moment budget stops. Building that requires genuine neighborhood content, GBP optimization, consistent local citations, and buyer-intent articles (market reports, neighborhood guides, school district comparisons).</p>
+
+          <h3>Lead Nurture for the Long Cycle</h3>
+          <p>Average real estate buyer takes 10+ weeks from first search to first agent contact — and another 8–12 weeks to close. A single follow-up call is not a strategy. We build email and SMS nurture sequences, market update broadcasts, and CRM automation (GHL or Follow Up Boss) that keeps you front-of-mind for the full duration of the buyer journey.</p>
+
+          <p class="seo-related">Related: <a onclick="switchInd(null,'localservice')">Local Service Marketing</a> · <a onclick="switchInd(null,'ecommerce')">Ecommerce Marketing</a> · <a onclick="switchCity(null,'nyc')">New York</a> · <a onclick="switchCity(null,'miami')">Miami</a></p>
+        </div>
+        <div class="sidebar" style="position:sticky;top:110px">
+          <div class="ind-sb-card">
+            <h5>Real Estate Services</h5>
+            <ul>
+              <li>Meta Ads (Special Ad Category)</li>
+              <li>Google Search + Local</li>
+              <li>Real Estate SEO</li>
+              <li>Neighborhood Landing Pages</li>
+              <li>GBP Optimization</li>
+              <li>Email + SMS Nurture</li>
+              <li>CRM Setup (GHL / FUB)</li>
+              <li>Website CRO</li>
+            </ul>
+          </div>
+          <div class="ind-clients">
+            <h5>We work with</h5>
+            <div class="ic-row"><div class="ic-av">RS</div><div><div class="nm">Residential Agents</div><div class="tp">Buyer + seller lead gen</div></div></div>
+            <div class="ic-row"><div class="ic-av">PD</div><div><div class="nm">Property Developers</div><div class="tp">Pre-launch campaigns</div></div></div>
+            <div class="ic-row"><div class="ic-av">CB</div><div><div class="nm">Commercial Brokers</div><div class="tp">LinkedIn + Google B2B</div></div></div>
+            <div class="ic-row"><div class="ic-av">PM</div><div><div class="nm">Property Managers</div><div class="tp">Vacancy fill campaigns</div></div></div>
+          </div>
+          <div class="ind-sb-cta">
+            <h5>Free Real Estate Audit</h5>
+            <p>We'll review your ads, site, and lead funnel — and tell you where leads are leaking.</p>
+            <button class="btn btn-g" style="width:100%;justify-content:center">Get My Free Audit →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-s">
+      <div class="faq-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">Real estate FAQ</div><h2 class="sh" style="font-size:clamp(24px,3vw,32px)">Questions real estate professionals <em>ask us.</em></h2></div>
+        <div class="faq-acc">
+          <div class="faq-i open"><div class="faq-q" onclick="toggleFaq(this)">Can you run Facebook Ads for real estate without violating Fair Housing rules? <span class="ico">+</span></div><div class="faq-a">Yes — requires Meta's Special Ads Category for Housing, which restricts certain targeting (no ZIP radius, no demographic targeting). We use behavioral interest targeting and Special Ad Audiences as the compliant alternative. Getting this wrong gets accounts permanently restricted. We set it up correctly on every real estate account we touch.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What's a realistic cost per lead for real estate? <span class="ico">+</span></div><div class="faq-a">Meta real estate leads: $8–$35 depending on market, offer, and targeting. Google Search: $25–$80 per click, 5–15% CVR on a well-built landing page. Qualified appointment cost: $40–$200 depending on market. Cheap CPL is a red flag in real estate — $3 leads rarely respond to calls.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">How do you generate seller leads vs buyer leads? <span class="ico">+</span></div><div class="faq-a">Seller leads: Meta with a home valuation hook ("what's your home worth?") — higher intent, shorter cycle. Buyer leads: Google Search for specific property type and neighborhood, Meta for pre-market awareness. The funnels are completely different and should never be combined in the same campaign.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">How long does real estate SEO take? <span class="ico">+</span></div><div class="faq-a">Neighborhood pages: 3–6 months for lower-competition terms. Map Pack movement: 2–4 months with consistent GBP work. High-competition city terms ("real estate agent NYC"): 12–24+ months. We target neighborhood-specific terms first for faster, more defensible wins.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Do you work with individual agents or only brokerages? <span class="ico">+</span></div><div class="faq-a">Both. Minimum recommendation for agents: $1,500/month ad spend and a working website. Brokerages and teams with larger budgets handled under a full-stack retainer. Property developers get a different model — scope call required first.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Which CRM do you recommend for lead nurture? <span class="ico">+</span></div><div class="faq-a">GoHighLevel (GHL) for full automation control. Follow Up Boss for real estate-specific features and MLS integrations. HubSpot for commercial real estate. We set up and integrate all three — GHL is our default for most agents and small teams.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Can you build real estate websites and landing pages? <span class="ico">+</span></div><div class="faq-a">Yes — WordPress + Elementor for brokerages, GHL funnels for lead gen, and neighborhood landing page systems that scale to 20–50 pages without manual effort per page.</div></div>
+          <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What makes your real estate marketing different? <span class="ico">+</span></div><div class="faq-a">Three things: compliance-first (no account bans), lead quality focus (appointments booked — not just form fills), and full-cycle thinking (marketing doesn't stop at the form — we build the nurture that gets the appointment).</div></div>
+        </div>
+        <p class="faq-note">💡 Add FAQ schema markup in production for Google rich results</p>
+      </div>
+    </section>
+
+    <!-- Internal links to other industries -->
+    <section class="nearby">
+      <div class="nearby-in">
+        <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">Other industries we serve</div><h2 class="sh" style="font-size:clamp(22px,2.5vw,30px)">Not in real estate? <em>We work across many industries.</em></h2></div>
+        <div class="nearby-grid">
+          <div class="nearby-c" onclick="switchInd(null,'fashion')"><div class="em">👗</div><h4>Fashion &amp; Apparel</h4><p>Meta, TikTok, UGC, Shopify CRO, email flows</p></div>
+          <div class="nearby-c" onclick="switchInd(null,'ecommerce')"><div class="em">🛍️</div><h4>Ecommerce</h4><p>Full-stack: paid ads, SEO, email, CRO, Shopify</p></div>
+          <div class="nearby-c" onclick="switchInd(null,'education')"><div class="em">🎓</div><h4>Education</h4><p>Lead gen for vocational schools and online courses</p></div>
+          <div class="nearby-c" onclick="switchInd(null,'localservice')"><div class="em">🔧</div><h4>Local Services</h4><p>Google Ads, Local SEO, GBP, booking funnels</p></div>
+          <div class="nearby-c" onclick="switchInd(null,'healthcare')"><div class="em">🏥</div><h4>Healthcare</h4><p>Patient acquisition for clinics and wellness</p></div>
+          <div class="nearby-c" onclick="switchInd(null,'saas')"><div class="em">💻</div><h4>SaaS &amp; Tech</h4><p>LinkedIn Ads, content SEO, product-led growth</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="final"><div class="final-in"><h2>Ready to grow your<br><em>real estate business?</em></h2><p>Free audit — we'll review your ads, site, and lead funnel and tell you exactly where the leaks are.</p><button class="btn btn-g" style="font-size:15px;padding:14px 30px">Get My Free Real Estate Audit →</button></div></div>
+  </div><!-- /realestate -->
+
+  <!-- ─── FASHION ─── -->
+  <div class="panel" data-ind="fashion">
+    <section class="ind-hero"><div class="ind-hero-in">
+      <div><div class="tag tag-green">👗 Fashion &amp; Apparel Marketing</div><h1>Marketing Agency<br>for <em>Fashion Brands.</em></h1><p class="ind-hero-desc">Meta Ads, TikTok, UGC pipelines, Shopify CRO, email flows, and creative testing — built for fashion and apparel brands that need to scale DTC profitably without killing margin.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Fashion Audit →</button><button class="btn btn-wh">See Our Work</button></div><div class="niche-pills"><span class="niche-pill">DTC Brands</span><span class="niche-pill">Streetwear</span><span class="niche-pill">Basics + Essentials</span><span class="niche-pill">Custom Apparel</span><span class="niche-pill">POD</span><span class="niche-pill">Luxury</span></div></div>
+      <div class="pain-card"><h4>Fashion brand problems we solve</h4><div class="pain-item"><div class="dot">✓</div><p><b>Low ROAS despite good product</b> — wrong angles, weak creative, broken tracking</p></div><div class="pain-item"><div class="dot">✓</div><p><b>High CPM in a crowded vertical</b> — need creative that stops scroll differently</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Email earning &lt;10% of revenue</b> — list exists, flows don't</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Shopify converts at 0.8%</b> — beautiful store that doesn't sell</p></div><div class="pain-item"><div class="dot">✓</div><p><b>AOV too low</b> — no bundle logic, no upsells, every sale is one item</p></div></div>
+    </div></section>
+    <section class="cs-s"><div class="cs-in"><div style="text-align:center;max-width:640px;margin:0 auto 28px"><div class="sl sl-wh">Fashion results</div><h2 class="sh wh" style="font-size:clamp(24px,2.5vw,32px)">Real fashion brands. <em>Real numbers.</em></h2></div><div class="cs-card"><div><h3>Fashion Brand: 6.94x ROAS Over 10 Months</h3><div class="quote">"Built from zero — positioning, Meta ads, Shopify CRO, email flows. The system compounds month over month. Hit Rs.22.5M in revenue with 75% product margin."</div><div class="attrib">D2C Fashion Brand · Full Stack</div></div><div class="cs-stats"><div class="cs-stat"><div class="v">6.94x</div><div class="l">ROAS</div></div><div class="cs-stat"><div class="v">Rs.22.5M</div><div class="l">Revenue</div></div><div class="cs-stat"><div class="v">75%</div><div class="l">Margin</div></div><div class="cs-stat"><div class="v">10 mo</div><div class="l">Timeline</div></div></div></div></div></section>
+    <section class="seo-s"><div class="seo-in">
+      <div class="seo-body">
+        <h2>Digital Marketing for Fashion and Apparel Brands</h2>
+        <p>Fashion is one of the most creative and competitive verticals in digital marketing. Everyone is running Meta Ads. Everyone has a Shopify store. The difference between brands scaling profitably and brands burning out after 6 months almost always comes down to the same three things: creative quality and testing rigor, email and retention revenue, and conversion rate on the actual site.</p>
+        <h3>Meta Ads for Fashion — Angle-First Testing</h3>
+        <p>The fashion vertical on Meta is crowded and CPMs are high. Standing out requires creative that earns attention immediately. Our <strong>angle-first testing framework</strong> identifies 6 emotional angles your audience responds to (identity, social proof, pain, features, humor, authenticity) and tests creatives systematically. Winners scaled in 7 days. Losers killed. After 60 days you know more about your audience than most brands learn in years.</p>
+        <h3>TikTok for Fashion</h3>
+        <p>For fashion brands with younger demographics (18–35) and AOV under $150, TikTok can produce CPMs 30–50% below Meta — if the creative is native enough. Polished studio content fails on TikTok. Raw, authentic UGC in the brand's aesthetic wins consistently. We source TikTok-native creators who understand fashion content.</p>
+        <h3>Email Revenue — 25–35% Is Achievable</h3>
+        <p>Most fashion brands earn 5–12% from email. The strong ones earn 25–35%. The difference: a Welcome Series that warms before it discounts, a 3-email Abandoned Cart with escalation structure, Post-Purchase upsell within 48 hours, and a Win-Back flow for 60-day lapsed buyers. We build all of these in 2–4 weeks.</p>
+        <h3>Shopify CRO for Fashion</h3>
+        <p>Fashion Shopify stores have specific conversion problems: no clear size guides showing fit on real bodies, slow mobile load killing CVR, checkout flow asking for too much too soon. Our CRO audits for fashion stores find 8–14 conversion blockers per site on average — most fixable in under 2 weeks.</p>
+        <p class="seo-related">Related: <a onclick="switchInd(null,'ecommerce')">Ecommerce Marketing</a> · <a onclick="switchCity(null,'nyc')">New York</a> · <a onclick="switchCity(null,'la')">Los Angeles</a></p>
+      </div>
+      <div class="sidebar" style="position:sticky;top:110px">
+        <div class="ind-sb-card"><h5>Fashion Services</h5><ul><li>Meta Ads (angle-first)</li><li>TikTok Ads</li><li>UGC Creator Sourcing</li><li>Shopify CRO</li><li>Email (Klaviyo flows)</li><li>AOV + Bundle Strategy</li><li>Content Production</li></ul></div>
+        <div class="ind-sb-cta"><h5>Free Fashion Audit</h5><p>We'll review ads, site CVR, and email revenue — and show you where the leaks are.</p><button class="btn btn-g" style="width:100%;justify-content:center">Get My Free Audit →</button></div>
+      </div>
+    </div></section>
+    <section class="faq-s"><div class="faq-in">
+      <div style="text-align:center;max-width:640px;margin:0 auto"><div class="sl sl-bl">Fashion FAQ</div><h2 class="sh" style="font-size:clamp(24px,3vw,32px)">Questions fashion brands <em>ask us.</em></h2></div>
+      <div class="faq-acc">
+        <div class="faq-i open"><div class="faq-q" onclick="toggleFaq(this)">How much should a fashion brand spend on Meta Ads? <span class="ico">+</span></div><div class="faq-a">Minimum $3,000/month to collect enough data to optimize. At $5,000/month you can run a proper angle-testing system. Under $3K, campaigns stay in learning loops without enough purchase signals to exit them.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Is TikTok better than Meta for fashion? <span class="ico">+</span></div><div class="faq-a">Depends on three things: customer age (TikTok skews 18–30), AOV (works well up to $120–$150), and creative capacity (you need native TikTok-style content, not studio ads). When all three fit, TikTok often produces 30–50% better CPMs than Meta. Luxury or $200+ AOV brands — Meta is still stronger.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">How do I fix low conversion rate on my fashion Shopify store? <span class="ico">+</span></div><div class="faq-a">Most common culprits: size guide hard to find or doesn't show fit on real people, mobile load over 3 seconds, no social proof visible before scroll on product pages, and single-button checkout not enabled. These four alone typically lift CVR 15–30%.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">What percentage of revenue should come from email? <span class="ico">+</span></div><div class="faq-a">Target 20–30%. If you're under 10%, you either have no flows (fix immediately), poor list health (deliverability issues), or no segmentation (everyone getting the same email). All three are fixable in 4–8 weeks.</div></div>
+        <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">Do you work with small fashion brands or only established ones? <span class="ico">+</span></div><div class="faq-a">Both. For smaller brands ($5K–$30K/month revenue), we often start with a one-time project (audit + email flows + ad setup) rather than a full retainer. For established brands ($50K+/month), full retainer with the complete stack.</div></div>
+      </div>
+      <p class="faq-note">💡 Add FAQ schema markup in production</p>
+    </div></section>
+    <div class="final"><div class="final-in"><h2>Ready to scale your<br><em>fashion brand?</em></h2><p>Free audit — ads, email, site CVR. We'll tell you exactly what to fix first.</p><button class="btn btn-g" style="font-size:15px;padding:14px 30px">Get My Free Fashion Audit →</button></div></div>
+  </div><!-- /fashion -->
+
+  <!-- Remaining industry stubs -->
+  <div class="panel" data-ind="ecommerce"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">🛍️ Ecommerce Marketing</div><h1>Full-Stack Marketing Agency<br>for <em>Ecommerce.</em></h1><p class="ind-hero-desc">Paid ads, SEO, email, CRO, and Shopify development — the full revenue stack for ecommerce brands that want to grow without stitching together five agencies.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Ecom Audit →</button></div><div class="niche-pills"><span class="niche-pill">Shopify Brands</span><span class="niche-pill">DTC</span><span class="niche-pill">Subscription</span><span class="niche-pill">B2C Product</span></div></div><div class="pain-card"><h4>Ecommerce problems we solve</h4><div class="pain-item"><div class="dot">✓</div><p><b>ROAS declining</b> — creative fatigue + iOS attribution issues compounding</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Email under 10% of revenue</b> — no flows, no segmentation</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Cart abandonment above 75%</b> — checkout UX and trust issues</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Zero SEO foundation</b> — fully dependent on paid</p></div></div></div></section><div class="final"><div class="final-in"><h2>Scale your <em>ecommerce</em> store.</h2><p>Free audit. Full stack. Senior team.</p><button class="btn btn-g">Get My Free Ecom Audit →</button><small>Full 8-section template — fill with ecom-specific copy in production</small></div></div></div>
+
+  <div class="panel" data-ind="education"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">🎓 Education Marketing</div><h1>Digital Marketing Agency<br>for <em>Education.</em></h1><p class="ind-hero-desc">Lead generation for vocational schools, tutoring centres, online courses, and universities. We generated 1,185 student leads at $6.48 CPL. This is what education marketing looks like when it works.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Education Audit →</button></div><div class="niche-pills"><span class="niche-pill">Vocational Schools</span><span class="niche-pill">Tutoring</span><span class="niche-pill">Online Courses</span><span class="niche-pill">ACCA / CFA</span></div></div><div class="pain-card"><h4>Education marketing challenges</h4><div class="pain-item"><div class="dot">✓</div><p><b>High CPL on Google</b> — education keywords expensive without tight negative strategy</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Low enrollment quality</b> — form fills that never show up to orientation</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Competitor bidding on your name</b> — trademark keyword issues</p></div><div class="pain-item"><div class="dot">✓</div><p><b>No lead nurture</b> — leads go cold between inquiry and enrollment</p></div></div></div></section><div class="final"><div class="final-in"><h2>Fill your enrollment pipeline with <em>qualified students.</em></h2><button class="btn btn-g">Get My Free Education Audit →</button><small>Full 8-section template — fill with education-specific copy in production</small></div></div></div>
+
+  <div class="panel" data-ind="restaurant"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">🍽️ Restaurant &amp; Food Marketing</div><h1>Digital Marketing Agency<br>for <em>Restaurants &amp; Food.</em></h1><p class="ind-hero-desc">Google Local SEO, Meta Ads, Instagram content, and online ordering CRO for restaurants, ghost kitchens, food brands, and CPG companies.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="niche-pills"><span class="niche-pill">Restaurants</span><span class="niche-pill">Ghost Kitchens</span><span class="niche-pill">Food Brands</span><span class="niche-pill">Catering</span></div></div><div class="pain-card"><h4>Food brand challenges</h4><div class="pain-item"><div class="dot">✓</div><p><b>Not in "restaurants near me"</b> — GBP not optimized, no Map Pack</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Instagram dead or inconsistent</b> — no content strategy</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Online ordering site converts badly</b> — losing pre-orders to friction</p></div></div></div></section><div class="final"><div class="final-in"><h2>More tables. More orders.<br><em>Less empty seats.</em></h2><button class="btn btn-g">Get My Free Audit →</button><small>Full 8-section template — fill with restaurant/food-specific copy in production</small></div></div></div>
+
+  <div class="panel" data-ind="healthcare"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">🏥 Healthcare Marketing</div><h1>Digital Marketing Agency<br>for <em>Healthcare.</em></h1><p class="ind-hero-desc">Patient acquisition for clinics, dental, wellness, and healthcare services. HIPAA-aware campaigns. Google Local, Meta, SEO. Compliance built in, not bolted on.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="niche-pills"><span class="niche-pill">Dental / Ortho</span><span class="niche-pill">Clinics</span><span class="niche-pill">Wellness</span><span class="niche-pill">Med Spas</span></div></div><div class="pain-card"><h4>Healthcare marketing challenges</h4><div class="pain-item"><div class="dot">✓</div><p><b>Meta restricts health targeting</b> — need compliant setup and creative</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Google Ads disapprovals</b> — healthcare ad policies strict and changing</p></div><div class="pain-item"><div class="dot">✓</div><p><b>HIPAA-aware tracking needed</b> — standard GA4 setups may not comply</p></div></div></div></section><div class="final"><div class="final-in"><h2>Grow your patient base<br>with <em>compliant marketing.</em></h2><button class="btn btn-g">Get My Free Audit →</button><small>Full 8-section template — fill with healthcare-specific copy in production</small></div></div></div>
+
+  <div class="panel" data-ind="saas"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">💻 SaaS &amp; Tech Marketing</div><h1>Digital Marketing Agency<br>for <em>SaaS &amp; Tech.</em></h1><p class="ind-hero-desc">Content SEO, LinkedIn Ads, Google Search, and product-led growth for SaaS companies. We understand MRR, churn, CAC payback, and LTV — not just impressions and clicks.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free SaaS Audit →</button></div><div class="niche-pills"><span class="niche-pill">B2B SaaS</span><span class="niche-pill">B2C Apps</span><span class="niche-pill">AI Tools</span><span class="niche-pill">Dev Tools</span></div></div><div class="pain-card"><h4>SaaS marketing challenges</h4><div class="pain-item"><div class="dot">✓</div><p><b>High CAC, no SEO moat</b> — fully dependent on paid, zero organic</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Free trial CVR below 3%</b> — users sign up but don't activate</p></div><div class="pain-item"><div class="dot">✓</div><p><b>LinkedIn Ads at $50+ CPL</b> — wrong audience, wrong format</p></div></div></div></section><div class="final"><div class="final-in"><h2>Lower CAC. Higher LTV.<br><em>Sustainable SaaS growth.</em></h2><button class="btn btn-g">Get My Free SaaS Audit →</button><small>Full 8-section template — fill with SaaS-specific copy in production</small></div></div></div>
+
+  <div class="panel" data-ind="localservice"><section class="ind-hero"><div class="ind-hero-in"><div><div class="tag tag-green">🔧 Local Service Marketing</div><h1>Digital Marketing Agency<br>for <em>Local Services.</em></h1><p class="ind-hero-desc">Google Ads, Local SEO, GBP, and booking-optimized landing pages for plumbers, contractors, cleaners, lawyers, and service businesses. We turned $0 ad spend into 40 new clients at $18/lead.</p><div class="ind-hero-ctas"><button class="btn btn-g">Get My Free Audit →</button></div><div class="niche-pills"><span class="niche-pill">Home Services</span><span class="niche-pill">Legal</span><span class="niche-pill">Accounting</span><span class="niche-pill">Cleaning</span><span class="niche-pill">Trades</span></div></div><div class="pain-card"><h4>Local service challenges</h4><div class="pain-item"><div class="dot">✓</div><p><b>Not in Google Map Pack</b> — competitors get all the calls</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Google Ads wasting budget</b> — broad match burning money</p></div><div class="pain-item"><div class="dot">✓</div><p><b>Landing page doesn't convert</b> — visitors read and leave without calling</p></div><div class="pain-item"><div class="dot">✓</div><p><b>No review system</b> — fewer reviews than newer competitors</p></div></div></div></section><div class="final"><div class="final-in"><h2>More booked jobs.<br><em>Less chasing leads.</em></h2><button class="btn btn-g">Get My Free Audit →</button><small>Full 8-section template — fill with local service-specific copy in production</small></div></div></div>
+
+</div><!-- /p-industry -->
+
+
+<script>
+// Page switching
+function go(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.getElementById('p-' + id).classList.add('on');
+  document.querySelectorAll('.pnav button').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  window.scrollTo(0, 0);
+}
+
+// City switcher
+function switchCity(btn, key) {
+  document.querySelectorAll('#p-city .panel').forEach(p => p.classList.remove('on'));
+  var panel = document.querySelector('#p-city .panel[data-city="' + key + '"]');
+  if (panel) panel.classList.add('on');
+  document.querySelectorAll('#p-city .sw-bar-in button').forEach(b => b.classList.remove('on'));
+  if (btn) {
+    btn.classList.add('on');
+  } else {
+    document.querySelectorAll('#p-city .sw-bar-in button').forEach(b => {
+      if ((b.getAttribute('onclick') || '').indexOf("'" + key + "'") > -1) b.classList.add('on');
+    });
+  }
+  window.scrollTo(0, 0);
+}
+
+// Industry switcher
+function switchInd(btn, key) {
+  document.querySelectorAll('#p-industry .panel').forEach(p => p.classList.remove('on'));
+  var panel = document.querySelector('#p-industry .panel[data-ind="' + key + '"]');
+  if (panel) panel.classList.add('on');
+  document.querySelectorAll('#p-industry .sw-bar-in button').forEach(b => b.classList.remove('on'));
+  if (btn) {
+    btn.classList.add('on');
+  } else {
+    document.querySelectorAll('#p-industry .sw-bar-in button').forEach(b => {
+      if ((b.getAttribute('onclick') || '').indexOf("'" + key + "'") > -1) b.classList.add('on');
+    });
+  }
+  window.scrollTo(0, 0);
+}
+
+// FAQ accordion
+function toggleFaq(el) {
+  var item = el.closest('.faq-i');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

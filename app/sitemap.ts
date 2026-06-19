@@ -14,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/contact`,            lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/resources`,          lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${baseUrl}/story`,              lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/industries`,         lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/city`,               lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   ]
 
   const posts = await client.fetch<{ slug: string; _updatedAt: string }[]>(
@@ -38,5 +40,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  return [...staticPages, ...blogPages, ...casePages]
+  const industries = await client.fetch<{ slug: string; _updatedAt: string }[]>(
+    `*[_type == "industryPage" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`
+  )
+  const industryPages: MetadataRoute.Sitemap = industries.map((p) => ({
+    url: `${baseUrl}/industries/${p.slug}`,
+    lastModified: new Date(p._updatedAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  const cities = await client.fetch<{ slug: string; _updatedAt: string }[]>(
+    `*[_type == "cityPage" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`
+  )
+  const cityPages: MetadataRoute.Sitemap = cities.map((p) => ({
+    url: `${baseUrl}/city/${p.slug}`,
+    lastModified: new Date(p._updatedAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...blogPages, ...casePages, ...industryPages, ...cityPages]
 }

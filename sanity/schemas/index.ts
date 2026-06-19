@@ -13,6 +13,8 @@ import testimonial from './testimonial'
 import caseStudy from './caseStudy'
 import faqItem from './faqItem'
 import teamMember from './teamMember'
+import industryPage from './industryPage'
+import cityPage from './cityPage'
 
 export const schemaTypes = [
   siteSettings,
@@ -30,4 +32,6 @@ export const schemaTypes = [
   caseStudy,
   faqItem,
   teamMember,
+  industryPage,
+  cityPage,
 ]
