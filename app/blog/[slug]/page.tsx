@@ -12,7 +12,7 @@ import CTABox from '@/components/blog/CTABox'
 // ── Queries ────────────────────────────────────────────────────────────
 
 const POST_QUERY = `*[_type == "blogPost" && slug.current == $slug][0]{
-  title, category, publishedAt, readTime, excerpt,
+  title, category, publishedAt, _updatedAt, readTime, excerpt,
   tags,
   "image": { "url": coverImage.asset->url, "alt": coverImage.alt },
   body[]{
@@ -25,7 +25,7 @@ const POST_QUERY = `*[_type == "blogPost" && slug.current == $slug][0]{
     }
   },
   shareLinks,
-  faqs,
+  faqs[]{ question, answer },
   seo { metaTitle, metaDescription, keywords, "ogImageUrl": ogImage.asset->url }
 }`
 
@@ -336,8 +336,54 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const shareUrl = encodeURIComponent(pageUrl)
   const shareTitle = encodeURIComponent(post.title || '')
 
+  // ── Structured data ────────────────────────────────────────────────────
+  const faqSchema = post.faqs?.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faqs.map((faq: { question: string; answer: string }) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      }
+    : null
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.seo?.metaDescription || post.excerpt || '',
+    image: post.image?.url ? [post.image.url] : [],
+    datePublished: post.publishedAt,
+    dateModified: post._updatedAt || post.publishedAt,
+    author: { '@type': 'Organization', name: 'AheadTech360' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'AheadTech360',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.aheadtech360.com/images/Ahead-Logo-right-balaning.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.aheadtech360.com/blog/${slug}`,
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {/* ════════════════════════════════════════════════════════
           SECTION 1: Main Article
       ════════════════════════════════════════════════════════ */}
