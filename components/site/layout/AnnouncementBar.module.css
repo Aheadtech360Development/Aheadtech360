@@ -1,0 +1,52 @@
+/* Sticky above the header on desktop; scrolls away on mobile so it never eats the viewport. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 101;
+  background: var(--navy);
+  color: var(--bg);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--announce-h, 40px);
+  padding: 8px var(--gutter);
+  text-align: center;
+}
+
+.marker {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  background: var(--green);
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.arrow {
+  flex-shrink: 0;
+  font-size: 13px;
+  transition: transform var(--t-fast);
+}
+
+.link:hover .arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+  .bar {
+    position: static;
+  }
+  .link {
+    min-height: 40px;
+  }
+}

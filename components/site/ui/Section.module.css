@@ -1,0 +1,48 @@
+.section {
+  position: relative;
+  --heading: var(--ink);
+  --lead: var(--muted);
+  --eyebrow: var(--muted);
+  --marker: var(--green);
+  /* media/review tiles sit on the opposite tone of their section */
+  --tile-bg: var(--bg-soft);
+  /* keep in-page anchors clear of the sticky announcement bar + header */
+  scroll-margin-top: calc(var(--announce-h) + var(--header-h) + 16px);
+}
+
+.default {
+  background: var(--bg);
+}
+
+.soft {
+  background: var(--bg-soft);
+  border-block: 2px solid var(--line);
+  --marker: var(--navy);
+  --tile-bg: var(--bg);
+}
+
+.navy {
+  background: var(--navy);
+  color: var(--on-navy);
+  --heading: var(--on-navy);
+  --lead: var(--on-navy-muted);
+  --eyebrow: var(--on-navy-muted);
+  --marker: var(--green);
+}
+
+.pad-lg {
+  padding-block: var(--py-section);
+}
+.pad-md {
+  padding-block: var(--py-band);
+}
+.pad-cta {
+  padding-block: var(--py-cta);
+}
+.pad-hero {
+  padding-top: var(--pt-hero);
+  padding-bottom: var(--pb-hero);
+}
+.pad-none {
+  padding-block: 0;
+}

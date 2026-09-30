@@ -1,0 +1,48 @@
+.box {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 2px solid var(--green);
+  background: var(--green-light);
+  text-align: right;
+  transition: transform var(--t-fast);
+}
+.box:hover {
+  transform: translate(-2px, -2px);
+}
+
+.lg {
+  padding: 12px 18px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--green-ink);
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.lg .value {
+  font-size: 17px;
+}
+
+@media (max-width: 767px) {
+  /* stacked layouts put the box on the left edge, so align its text to match */
+  .box {
+    text-align: left;
+  }
+}
+
+@media (max-width: 400px) {
+  .value {
+    white-space: normal;
+  }
+}

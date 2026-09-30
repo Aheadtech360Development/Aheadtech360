@@ -1,0 +1,59 @@
+.slot {
+  position: relative;
+  display: flex;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: border-color var(--t-fast);
+}
+
+.empty {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 140px;
+  padding: 16px;
+  border: 2px dashed var(--line);
+  background: var(--tile-bg, var(--bg-soft));
+  text-align: center;
+  color: var(--muted);
+}
+.empty:hover {
+  border-color: var(--navy);
+}
+
+.positive {
+  border-color: var(--green);
+  background: var(--green-light);
+  color: var(--green-ink);
+}
+.positive:hover {
+  border-color: var(--green);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.note {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.filled {
+  border: 2px solid var(--line);
+  background: var(--bg);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}

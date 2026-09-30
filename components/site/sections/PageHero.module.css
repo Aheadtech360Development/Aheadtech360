@@ -1,0 +1,66 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  max-width: 56rem;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.display .title {
+  font-size: var(--fs-display);
+}
+.lg .title {
+  font-size: var(--fs-hero-lg);
+}
+.md .title {
+  font-size: var(--fs-hero);
+}
+.sm .title {
+  font-size: var(--fs-hero-sm);
+}
+
+.display,
+.lg {
+  gap: 26px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 38.75rem; /* 620px */
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.display .lead,
+.lg .lead {
+  font-size: 17px;
+}
+
+.meta {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 26px;
+  margin-top: 4px;
+}

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
-import Topbar from '@/components/layout/Topbar'
-import { sanityFetch } from '@/sanity/lib/client'
 import Script from 'next/script'
+
+// Root layout: document shell, fonts and analytics only.
+// Site chrome (header/footer) lives in the route-group layouts:
+//   app/(site)/layout.tsx    — current design
+//   app/(legacy)/layout.tsx  — previous design, kept reachable by direct URL only
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -37,30 +38,11 @@ export const metadata: Metadata = {
   description: 'We help small businesses make more money from their marketing. Meta Ads, Google Ads, SEO, CRO, Email, Web Design.',
 }
 
-const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
-  topbarText, navLinks, phone, email, address, footerTagline
-}`
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  let settings: any = null
-  try {
-    settings = await sanityFetch<any>(SETTINGS_QUERY)
-  } catch {
-    // Sanity unavailable — fallback to null, components handle undefined props
-  }
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${jakarta.variable} ${bricolage.variable} ${jetbrains.variable}`}>
       <body className="font-body text-gray-900 bg-white antialiased leading-relaxed">
-        <Topbar text={settings?.topbarText} />
-        <Header navLinks={settings?.navLinks?.length ? settings.navLinks : undefined} />
         {children}
-        <Footer
-          phone={settings?.phone}
-          email={settings?.email}
-          address={settings?.address}
-          tagline={settings?.footerTagline}
-        />
         {/* <!-- Google tag (gtag.js) --> */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBJBVXBH5F"></script>
         <Script id="google-analytics" strategy="afterInteractive"

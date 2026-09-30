@@ -1,0 +1,67 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 16px 28px;
+  border: 2px solid transparent;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    transform var(--t-fast),
+    box-shadow var(--t-fast),
+    gap var(--t-fast);
+}
+
+/* navy button on light backgrounds */
+.solid {
+  color: var(--bg);
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.solid:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--green);
+}
+
+/* green button on navy backgrounds */
+.onNavy {
+  color: var(--navy-deep);
+  background: var(--green);
+  border-color: var(--green);
+}
+.onNavy:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--bg);
+}
+
+/* underlined text link used as a secondary CTA */
+.text {
+  min-height: 0;
+  padding: 0 0 3px;
+  border: 0;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+.text:hover {
+  gap: 12px;
+}
+
+.sm {
+  min-height: 44px;
+  padding: 13px 20px;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  /* let long labels wrap instead of overflowing narrow screens */
+  .button:not(.text) {
+    white-space: normal;
+  }
+}

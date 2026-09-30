@@ -1,6 +1,7 @@
 // app/sitemap.ts
 import { MetadataRoute } from 'next'
 import { client } from '@/sanity/lib/client'
+import { CASE_STUDIES, caseHref } from '@/content/site/case-studies'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.aheadtech360.com'
@@ -16,7 +17,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/story`,              lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/industries`,         lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/city`,               lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    // current site design
+    { url: `${baseUrl}/offer`,              lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/pricing`,            lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/faq`,                lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/book-a-call`,        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/case-studies`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/terms`,              lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${baseUrl}/privacy`,            lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
   ]
+
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((c) => ({
+    url: `${baseUrl}${caseHref(c.slug)}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
 
   const posts = await client.fetch<{ slug: string; _updatedAt: string }[]>(
     `*[_type == "blogPost" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`
@@ -60,5 +76,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...blogPages, ...casePages, ...industryPages, ...cityPages]
+  return [...staticPages, ...caseStudyPages, ...blogPages, ...casePages, ...industryPages, ...cityPages]
 }

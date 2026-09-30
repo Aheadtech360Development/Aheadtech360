@@ -1,0 +1,111 @@
+/*
+ * Design tokens + base for the current site design.
+ *
+ * Everything is scoped under `.site` (the wrapper rendered by app/(site)/layout.tsx) so none of it
+ * can leak into the legacy pages. Components consume these tokens through CSS Modules.
+ *
+ * The design was delivered as a fixed 1440px mock. Where the mock was inconsistent, it has been
+ * normalised onto the scales below (container widths, section padding, type sizes, link targets).
+ */
+.site {
+  /* colour */
+  --bg: #ffffff;
+  --bg-soft: #f5f7fa;
+  --ink: #14161a;
+  --muted: #5b5d66;
+  --line: #e2e4ea;
+  --navy: #1d3c73;
+  --navy-deep: #142b54;
+  --green: #24b574;
+  --green-light: #e9fbf2;
+  --green-ink: #1d7a4d; /* text/icon colour on --green-light */
+
+  /* text on navy backgrounds */
+  --on-navy: #ffffff;
+  --on-navy-strong: #dde4f0;
+  --on-navy-muted: #aec0e0;
+  --on-navy-dim: #9fadc7; /* lifted from #5c6d96 in the mock (2.7:1); now >= 4.7:1 on both navy and navy-deep */
+  --on-navy-line: #4a628f;
+
+  /* layout */
+  --w-header: 1240px;
+  --w-content: 1080px;
+  --w-narrow: 900px;
+  --w-prose: 800px;
+  --w-cta: 700px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  /* vertical rhythm */
+  --py-section: clamp(3.5rem, 7vw, 6rem); /* standard content section: 56px -> 96px */
+  --py-band: clamp(2.5rem, 5vw, 4rem); /* compact bands (trust, guarantee, teasers): 40px -> 64px */
+  --py-cta: clamp(3.25rem, 6vw, 5rem); /* closing CTA band: 52px -> 80px */
+  --pt-hero: clamp(2.5rem, 5vw, 4rem); /* page hero, top: sits close under the header */
+  --pb-hero: clamp(3rem, 6vw, 4.5rem);
+
+  /* type scale (desktop max values match the mock) */
+  --fs-display: clamp(2.25rem, 5.2vw, 3.625rem); /* 58px — home h1 */
+  --fs-hero-lg: clamp(2rem, 4.4vw, 3rem); /* 48px — offer, book a call */
+  --fs-hero: clamp(1.875rem, 4vw, 2.75rem); /* 44px — interior pages */
+  --fs-hero-sm: clamp(1.75rem, 3.4vw, 2.25rem); /* 36px — legal */
+  --fs-h2: clamp(1.75rem, 3.6vw, 2.5rem); /* 40px */
+  --fs-h2-cta: clamp(1.625rem, 3.3vw, 2.25rem); /* 36px */
+  --fs-h2-md: clamp(1.5rem, 3vw, 2rem); /* 32px */
+  --fs-h3-lg: clamp(1.25rem, 2.4vw, 1.625rem); /* 26px */
+  --ls-display: -0.03em;
+  --ls-heading: -0.035em;
+
+  /* motion */
+  --t-fast: 150ms ease;
+  --t-base: 200ms ease;
+
+  /* header stack: announcement bar (sticky on desktop only) + site header */
+  --announce-h: 40px;
+  --header-h: 76px;
+
+  font-family: var(--font-jakarta), 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  line-height: normal; /* body in app/layout.tsx sets leading-relaxed for the legacy pages */
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-text-size-adjust: 100%;
+}
+
+.site > main {
+  flex: 1 0 auto;
+}
+
+/* :where() keeps these resets at zero specificity so component classes (e.g. button colours) always win */
+:where(.site) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site :focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
+:where(.site) img,
+:where(.site) svg {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .site {
+    --announce-h: 0px;
+    --header-h: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site *,
+  .site *::before,
+  .site *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

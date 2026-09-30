@@ -1,0 +1,89 @@
+.callout {
+  display: flex;
+  gap: 26px;
+  padding: 32px 38px;
+  border: 2px solid var(--navy);
+  background: var(--bg);
+}
+
+.withIcon {
+  align-items: center;
+}
+
+.withAction {
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 36px 44px;
+}
+
+.iconTile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--green);
+  background: var(--green-light);
+  color: var(--green-ink);
+}
+
+.iconTitle {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.actionCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.actionTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.text {
+  margin: 8px 0 0;
+  max-width: 30rem;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.actionCopy .text {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .callout,
+  .withAction {
+    padding: 24px 22px;
+  }
+  .withIcon {
+    align-items: flex-start;
+  }
+  .withAction {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .iconTitle {
+    font-size: 17px;
+  }
+  .actionTitle {
+    font-size: 19px;
+  }
+}

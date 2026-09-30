@@ -1,0 +1,85 @@
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 50px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.centered {
+  max-width: 56rem;
+  margin-inline: auto;
+  align-items: center;
+  text-align: center;
+}
+/* keep the back link on the left edge even when the rest is centred */
+.centered .back {
+  align-self: flex-start;
+}
+
+.back {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--t-fast);
+}
+.back:hover {
+  color: var(--navy);
+}
+
+.eyebrow {
+  --eyebrow: var(--navy);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.lead {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.centered .lead {
+  max-width: 40rem;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.headline {
+  margin: 6px 0 0;
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.media {
+  aspect-ratio: 16 / 10;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}

@@ -1,0 +1,97 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  transition: transform var(--t-base);
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.full {
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: var(--navy);
+}
+.full .avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.full .name {
+  font-size: 18px;
+}
+
+.badge {
+  padding: 3px 9px;
+  border: 1px solid var(--green);
+  background: var(--green-light);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--green-ink);
+}
+
+.role {
+  margin: 4px 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.full .role {
+  margin-bottom: 12px;
+}
+
+.bio {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.full .bio {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}

@@ -1,0 +1,19 @@
+.skip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding: 12px 18px;
+  background: var(--navy);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transform: translateY(-120%);
+  transition: transform var(--t-fast);
+}
+
+.skip:focus {
+  transform: translateY(0);
+}

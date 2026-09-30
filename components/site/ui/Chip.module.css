@@ -1,0 +1,53 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--ink);
+  transition: border-color var(--t-fast);
+}
+.chip:hover {
+  border-color: var(--navy);
+}
+
+.withMarker {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.withIcon {
+  font-weight: 700;
+}
+
+.marker {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--green);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--navy);
+}
+
+.iconGreen {
+  color: var(--green);
+}

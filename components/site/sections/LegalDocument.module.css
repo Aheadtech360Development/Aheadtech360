@@ -1,0 +1,93 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.intro p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.intro a,
+.p a,
+.ul a,
+.ol a {
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.box {
+  border: 2px solid var(--navy);
+  background: var(--bg);
+}
+
+.section {
+  padding: 24px 30px;
+  border-bottom: 2px solid var(--line);
+}
+.section:last-child {
+  border-bottom: 0;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.p,
+.ul,
+.ol {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.p {
+  white-space: pre-line; /* contact blocks use line breaks */
+}
+.p:last-child,
+.ul:last-child,
+.ol:last-child {
+  margin-bottom: 0;
+}
+
+.ul,
+.ol {
+  padding-left: 20px;
+}
+/* Tailwind's preflight removes list markers globally, so restore them here */
+.ul {
+  list-style: disc;
+}
+.ol {
+  list-style: decimal;
+}
+.ul li,
+.ol li {
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+.ul li:last-child,
+.ol li:last-child {
+  margin-bottom: 0;
+}
+
+.p strong,
+.ul strong,
+.ol strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 20px 18px;
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* max-width is border-box, so add the gutters back to keep the content column at its nominal width */
+.header {
+  max-width: calc(var(--w-header) + var(--gutter) * 2);
+}
+.content {
+  max-width: calc(var(--w-content) + var(--gutter) * 2);
+}
+.narrow {
+  max-width: calc(var(--w-narrow) + var(--gutter) * 2);
+}
+.prose {
+  max-width: calc(var(--w-prose) + var(--gutter) * 2);
+}
+.cta {
+  max-width: calc(var(--w-cta) + var(--gutter) * 2);
+}
