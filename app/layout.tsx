@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Bricolage_Grotesque, JetBrains_Mono } from 'next/fon
 import './globals.css'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
-import Topbar from '@/components/layout/Topbar'
 import { sanityFetch } from '@/sanity/lib/client'
 import Script from 'next/script'
 
@@ -52,8 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${jakarta.variable} ${bricolage.variable} ${jetbrains.variable}`}>
       <body className="font-body text-gray-900 bg-white antialiased leading-relaxed">
-        <Topbar text={settings?.topbarText} />
-        <Header navLinks={settings?.navLinks?.length ? settings.navLinks : undefined} />
+        <Header />
         {children}
         <Footer
           phone={settings?.phone}

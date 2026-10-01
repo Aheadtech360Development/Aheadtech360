@@ -1,187 +1,122 @@
 // app/about/page.tsx
-export const revalidate = 60
-
+// About — fashion/apparel repositioning. Hardcoded copy (no Sanity wiring), matching the
+// mockup: hero, origin split, location transparency, five commitments, CTA band.
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
-import { sanityFetch } from '@/sanity/lib/client'
 
-const ABOUT_QUERY = `*[_type == "aboutPage"][0]{
-  heroHeading, heroParagraph1, heroParagraph2,
-  "heroImage": { "url": heroImage.asset->url, "alt": heroImage.alt, "caption": heroImage.caption },
-  "values": values[]{ "iconUrl": icon.asset->url, "iconAlt": icon.alt, title, description },
-  seo { metaTitle, metaDescription, keywords, "ogImageUrl": ogImage.asset->url }
-}`
-
-const TEAM_QUERY = `*[_type == "teamMember"] | order(order asc) {
-  name, role,
-  "photo": { "url": photo.asset->url, "alt": photo.alt }
-}`
-
-const VALUES_DEFAULT = [
-  { icon: 'icons8-outcome-64.png', iconBg: '#EEF2F9', title: 'Outcome-obsessed', description: "We track revenue, not impressions. Every decision is measured against \"Did this make the client more money?\"" },
-  { icon: 'icons8-test-tube-100.png', iconBg: '#EDFBF3', title: 'We eat our own cooking', description: "We run ecommerce brands with the same strategies we use for clients. If it doesn't work for us, we don't sell it." },
-  { icon: 'icons8-handshake-64.png', iconBg: '#FFFAEB', title: 'Small team, not a factory', description: "You'll know your strategist by name. We take on max 3 new clients/month." },
-]
-
-const TEAM_FALLBACK = [
-  { name: 'Ikrash Ovais', role: 'CEO & Co-Founder', photo: null },
-  { name: 'Iqrar', role: 'COO & Ads Lead', photo: null },
-  { name: '[Name]', role: 'Account Manager', photo: null },
-  { name: '[Name]', role: 'Developer', photo: null },
-  { name: '[Name]', role: 'Designer', photo: null },
-  { name: '[Name]', role: 'Video Editor', photo: null },
-  { name: '[Name]', role: 'Social Manager', photo: null },
-  { name: '[Name]', role: 'Content Writer', photo: null },
-]
-
-export async function generateMetadata(): Promise<Metadata> {
-  const about = await sanityFetch<any>(ABOUT_QUERY)
-  return {
-    title: about?.seo?.metaTitle || 'About Us — AheadTech360',
-    description: about?.seo?.metaDescription || 'Small team. Big results. We\'re a performance marketing agency based in Karachi, serving US brands.',
-    keywords: about?.seo?.keywords || '',
-    openGraph: {
-      title: about?.seo?.metaTitle || 'About Us — AheadTech360',
-      description: about?.seo?.metaDescription || '',
-      url: 'https://aheadtech360.com/about',
-      siteName: 'AheadTech360',
-      images: about?.seo?.ogImageUrl ? [{ url: about.seo.ogImageUrl, width: 1200, height: 630 }] : [],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: about?.seo?.metaTitle || 'About Us — AheadTech360',
-      description: about?.seo?.metaDescription || '',
-    },
-  }
+export const metadata: Metadata = {
+  title: 'About Us — AheadTech360',
+  description: 'AheadTech360 is run by Iqrar and Ikrash, and every brand we take is worked on by the people whose names are on this page.',
 }
 
-export default async function AboutPage() {
-  const [about, team] = await Promise.all([
-    sanityFetch<any>(ABOUT_QUERY),
-    sanityFetch<any[]>(TEAM_QUERY),
-  ])
+const COMMITMENTS = [
+  'Verified numbers or no numbers.',
+  'Diagnosis before pitch.',
+  'Fix the biggest leak first.',
+  'Report in money, not metrics.',
+  'Never publish a claim we cannot back at the source.',
+]
 
-  const displayTeam = team?.length ? team : TEAM_FALLBACK
+const eyebrow: React.CSSProperties = { display: 'inline-block', fontFamily: 'var(--font-jetbrains)', fontSize: '.72rem', letterSpacing: '.16em', textTransform: 'uppercase', color: '#1C8F5A', fontWeight: 600, marginBottom: '14px' }
+const h2: React.CSSProperties = { fontFamily: 'var(--font-bricolage)', fontSize: 'clamp(1.55rem,3.2vw,2.3rem)', fontWeight: 800, color: '#1C2A42', lineHeight: 1.13, letterSpacing: '-0.02em' }
+const ctaGreen: React.CSSProperties = { display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-bricolage)', fontWeight: 700, fontSize: '1rem', padding: '.82rem 1.55rem', borderRadius: '12px', background: '#25B472', color: '#05261a', textDecoration: 'none' }
+const ctaGhost: React.CSSProperties = { display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-bricolage)', fontWeight: 700, fontSize: '.95rem', padding: '.7rem 1.3rem', borderRadius: '10px', border: '1px solid #DFE5ED', color: '#213D79', cursor: 'default' }
 
-  // Use Sanity values if available (they'll have iconUrl), else use local defaults
-  const displayValues = about?.values?.length ? about.values : VALUES_DEFAULT
-
+export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(160deg,#EEF2F9,#fff)', padding: '60px 32px' }}>
-        <div style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }} className="about-hero-grid">
+      <section style={{ position: 'relative', color: '#fff', padding: '88px 32px 70px', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg,rgba(16,25,45,.72),rgba(16,25,45,.4) 70%,rgba(16,25,45,.2))' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1180px', margin: '0 auto' }}>
+          <span style={{ ...eyebrow, color: '#8ff0c0' }}>Our story</span>
+          <h1 style={{ fontFamily: 'var(--font-bricolage)', fontSize: 'clamp(2rem,4.6vw,3.3rem)', fontWeight: 800, color: '#fff', lineHeight: 1.13, letterSpacing: '-0.02em', maxWidth: '20ch' }}>
+            Two operators. One industry. Every account.
+          </h1>
+          <p style={{ fontSize: '1.18rem', color: '#e6edf9', maxWidth: '56ch', marginTop: '14px', fontFamily: 'var(--font-jakarta)', lineHeight: 1.62 }}>
+            AheadTech360 is run by Iqrar and Ikrash, and every brand we take is worked on by the people whose names
+            are on this page.
+          </p>
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/apply" style={ctaGreen}>Talk to Us</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Origin story */}
+      <section style={{ padding: '80px 32px', background: '#fff' }}>
+        <div className="about-split" style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: '46px', alignItems: 'start' }}>
           <div>
-            <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#213D79' }}>About us</div>
-            <h1 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, lineHeight: 1.1, fontSize: 'clamp(30px,4vw,44px)', color: '#1C2A42', marginBottom: '16px' }}>
-              {about?.heroHeading || <>Small team. <em style={{ color: '#25B472', fontStyle: 'italic' }}>Big results.</em></>}
-            </h1>
-            <p style={{ fontSize: '15px', color: '#6E8098', lineHeight: 1.7, marginBottom: '12px', fontFamily: 'var(--font-jakarta)' }}>
-              {about?.heroParagraph1 || "We're a team of 11-50 based in Karachi, serving US brands. We also run our own ecommerce businesses — so every strategy we sell, we've tested with our own money first."}
+            <span style={eyebrow}>How we got here</span>
+            <h2 style={{ ...h2, marginBottom: '12px' }}>Built inside real stores, not slide decks.</h2>
+            <p style={{ fontSize: '1rem', color: '#6E8098', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)', maxWidth: '62ch', marginBottom: '14px' }}>
+              Running apparel accounts taught us the pattern we fix everywhere: brands buying more traffic while
+              their store loses the traffic they have. So we narrowed everything. One industry. One standard. One
+              promise.
             </p>
-            <p style={{ fontSize: '15px', color: '#6E8098', lineHeight: 1.7, marginBottom: '20px', fontFamily: 'var(--font-jakarta)' }}>
-              {about?.heroParagraph2 || "You'll know your team by name. We answer the phone. We send real reports with real numbers. No ghosting. Ever."}
+            <p style={{ fontSize: '1rem', color: '#6E8098', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)', maxWidth: '62ch' }}>
+              We have helped a small number of businesses outside apparel too, including Stellar Career College,
+              VIFHE, but apparel is home and it is where we stay.
             </p>
-            <div style={{ fontSize: '13px', color: '#A4B3C4', padding: '12px 16px', background: '#F2F5F8', borderRadius: '8px', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)' }}>
-              info@aheadtech360.com &nbsp;|&nbsp; +14695575651
-            </div>
           </div>
-          <div style={{ height: '320px', background: '#DFE5ED', borderRadius: '24px', overflow: 'hidden', position: 'relative' }}>
-            {about?.heroImage?.url ? (
-              <>
-                <Image src={about.heroImage.url} alt={about.heroImage.alt || 'Our team'} fill style={{ objectFit: 'cover' }} unoptimized />
-                {about.heroImage.caption && (
-                  <p style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'rgba(0,0,0,.5)', color: '#fff', fontSize: '12px', padding: '8px 14px', fontFamily: 'var(--font-jakarta)' }}>
-                    {about.heroImage.caption}
-                  </p>
-                )}
-              </>
-            ) : (
-              <div style={{ display: 'grid', placeItems: 'center', height: '100%', fontSize: '12px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>Real team photo</div>
-            )}
-          </div>
+          <figure style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', minHeight: '260px', aspectRatio: '4/3', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '10px', background: '#fff', border: '1px solid #DFE5ED', boxShadow: '0 2px 12px rgba(8,14,28,.07)', padding: '24px' }}>
+            <Image
+              src="/images/Iqrar_khoso_A_glossy_3D_circular_badge_in_the_center_made_of_a_navy_and_green_626811c3-b996-4271-b4cb-ae9228888dc8.png"
+              alt="Verified, accountable work"
+              width={520}
+              height={390}
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            />
+            <figcaption style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '.74rem', color: '#6E8098' }}>Built on verified results</figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* Values */}
-      <section style={{ background: '#F2F5F8', padding: '60px 32px' }}>
+      {/* Location transparency */}
+      <section style={{ padding: '80px 32px', background: '#162952' }}>
         <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#213D79' }}>Our Values</div>
-          <h2 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, fontSize: 'clamp(30px,4vw,44px)', color: '#1C2A42', marginBottom: '40px', lineHeight: 1.1 }}>
-            What we believe.
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px' }} className="values-grid">
-            {displayValues.map((w: any, i: number) => {
-              const imgSrc = w.iconUrl || (w.icon ? `/images/${w.icon}` : null)
-              return (
-                <div key={i} style={{ background: '#fff', border: '1.5px solid #DFE5ED', borderRadius: '16px', padding: '28px' }}>
-                  <div style={{ width: '52px', height: '52px', borderRadius: '12px', background: w.iconBg || '#EEF2F9', display: 'grid', placeItems: 'center', marginBottom: '14px' }}>
-                    {imgSrc && (
-                      <Image
-                        src={imgSrc}
-                        alt={w.iconAlt || w.title || ''}
-                        width={50}
-                        height={50}
-                        style={{ objectFit: 'contain' }}
-                        unoptimized={!!w.iconUrl}
-                      />
-                    )}
-                  </div>
-                  <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#080E1C', marginBottom: '6px', fontFamily: 'var(--font-bricolage)' }}>{w.title}</h3>
-                  <p style={{ fontSize: '13px', color: '#6E8098', lineHeight: 1.6, fontFamily: 'var(--font-jakarta)' }}>{w.description}</p>
-                </div>
-              )
-            })}
-          </div>
+          <span style={{ ...eyebrow, color: '#7fe7b4' }}>Where we are</span>
+          <h2 style={{ ...h2, color: '#fff', marginBottom: '12px' }}>Where we work from, and why we say so.</h2>
+          <p style={{ fontSize: '1rem', color: '#cdd8ee', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)', maxWidth: '70ch' }}>
+            Our team works from Pakistan and serves brands in the US and beyond. We put that in writing because
+            trust built on vagueness is not trust. Judge us on response time, communication, and verified results.
+          </p>
         </div>
       </section>
 
-      {/* Team */}
-      <section style={{ background: '#F2F5F8', padding: '80px 32px' }}>
+      {/* Commitments */}
+      <section style={{ padding: '80px 32px', background: '#F2F5F8' }}>
         <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#213D79' }}>The team</div>
-          <h2 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, fontSize: 'clamp(24px,3vw,36px)', color: '#1C2A42', marginBottom: '32px', lineHeight: 1.1 }}>
-            The people who <em style={{ color: '#25B472', fontStyle: 'italic' }}>do the work.</em>
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '20px' }} className="team-grid">
-            {displayTeam.map((member: any, i: number) => {
-              const photoUrl = member.photo?.url || member.photo
-              const photoAlt = member.photo?.alt || member.name
-              return (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ width: '100%', aspectRatio: '1', background: '#DFE5ED', borderRadius: '16px', display: 'grid', placeItems: 'center', overflow: 'hidden', position: 'relative', marginBottom: '10px' }}>
-                    {photoUrl ? (
-                      <Image src={photoUrl} alt={photoAlt} fill style={{ objectFit: 'cover' }} unoptimized />
-                    ) : (
-                      <span style={{ fontSize: '10px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>Photo</span>
-                    )}
-                  </div>
-                  <h4 style={{ fontSize: '14px', fontWeight: 700, color: '#080E1C', fontFamily: 'var(--font-bricolage)' }}>{member.name}</h4>
-                  <p style={{ fontSize: '12px', color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>{member.role}</p>
-                </div>
-              )
-            })}
+          <span style={eyebrow}>The rules we run on</span>
+          <h2 style={{ ...h2, marginBottom: '20px' }}>Five commitments.</h2>
+          <ul style={{ listStyle: 'none', marginTop: '20px', padding: 0 }}>
+            {COMMITMENTS.map((c) => (
+              <li key={c} style={{ position: 'relative', paddingLeft: '30px', marginBottom: '12px', maxWidth: '62ch', color: '#6E8098' }}>
+                <span style={{ position: 'absolute', left: 0, top: 0, color: '#1C8F5A', fontWeight: 800, fontFamily: 'var(--font-jetbrains)' }}>✓</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/how" style={ctaGhost}>See How This Works</Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ background: 'linear-gradient(160deg,#080E1C,#162952)', padding: '90px 32px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: 'var(--font-bricolage)', fontSize: 'clamp(34px,4.5vw,50px)', fontWeight: 800, color: '#fff', marginBottom: '12px', lineHeight: 1.1 }}>
-            Want to work with <em style={{ color: '#34D48A', fontStyle: 'italic' }}>real people?</em>
-          </h2>
-          <p style={{ fontSize: '15px', color: '#A4B3C4', marginBottom: '32px', fontFamily: 'var(--font-jakarta)' }}>Start with a free audit. Meet the team on the first call.</p>
-          <a href="/contact" style={{ display: 'inline-flex', padding: '14px 32px', borderRadius: '10px', fontSize: '16px', fontWeight: 700, background: '#25B472', color: '#fff', fontFamily: 'var(--font-jakarta)' }}>Get My Free Audit →</a>
+      {/* CTA band */}
+      <section style={{ position: 'relative', padding: '74px 32px', color: '#fff', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(16,25,45,.35)' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '760px', margin: '0 auto' }}>
+          <h2 style={{ ...h2, color: '#fff' }}>You have read our rules. Hold us to them.</h2>
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/apply" style={ctaGreen}>Talk to Us</Link>
+          </div>
         </div>
       </section>
 
       <style>{`
-        @media(max-width:900px){
-          .about-hero-grid { grid-template-columns: 1fr !important; }
-          .values-grid { grid-template-columns: 1fr !important; }
-          .team-grid { grid-template-columns: repeat(2,1fr) !important; }
-        }
+        @media(max-width:900px){ .about-split { grid-template-columns: 1fr !important; } }
       `}</style>
     </>
   )

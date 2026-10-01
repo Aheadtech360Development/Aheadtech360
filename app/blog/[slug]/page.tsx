@@ -550,9 +550,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
 
       {/* Sticky floating button */}
-      <Link href="/contact"
+      <Link href="/apply"
         style={{ position: 'fixed', bottom: '28px', right: '28px', zIndex: 999, display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '13px 22px', borderRadius: '99px', background: '#25B472', color: '#fff', fontSize: '18px', fontWeight: 800, fontFamily: 'var(--font-jakarta)', textDecoration: 'none', boxShadow: '0 8px 28px rgba(37,180,114,.4)' }}>
-        Free Audit →
+        Talk to Us →
       </Link>
 
       <style>{`

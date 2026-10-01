@@ -1,115 +1,61 @@
-'use client'
 // components/sections/ServicesSection.tsx
-
-import Image from 'next/image'
+// Full 11-service directory for the /services hub — fashion/apparel repositioning.
+// Individual service pages (/web-design, /paid, etc.) now exist, so all cards are live.
 import Link from 'next/link'
 
 interface Service {
-  icon?: string     // local filename — e.g. "ads.svg" — public/icons/ (fallback)
-  iconUrl?: string  // Sanity CDN URL (preferred when set)
-  iconBg: string
+  href: string
+  icon: React.ReactNode
   title: string
   description: string
-  resultValue: string
-  resultLabel: string
-  slug?: string     // if set, card links to /services/[slug]
-}
-
-interface ServicesSectionProps {
-  heading?: string
-  subheading?: string
-  services?: Service[]
+  live?: boolean
 }
 
 const DEFAULT_SERVICES: Service[] = [
-  { icon: 'icons8-post-ads-100.png',              iconBg: '#EEF2F9', slug: 'meta-ads',         title: 'We run your ads (Meta + Google)', description: 'Find the right people, show them the right message, send them to a page that converts. Test, kill losers, scale winners.', resultValue: '3.2x', resultLabel: 'Avg return' },
-  { icon: 'icons8-google-web-search-100.png',     iconBg: '#EDFBF3', slug: 'seo',              title: 'We get you found on Google (SEO)', description: 'When people search for what you sell, you show up. Free traffic that compounds every month.', resultValue: '2.4x', resultLabel: 'More traffic' },
-  { icon: 'icons8-electricity-96.png',            iconBg: '#F3E8FF', slug: 'content-production', title: 'We produce your content', description: 'UGC, video ads, product photos, VSLs, motion graphics — made to convert, not just look good.', resultValue: '7d', resultLabel: 'Turnaround' },
-  { icon: 'icons8-email-96.png',                  iconBg: '#FFFAEB', slug: 'email-marketing',  title: 'We email your customers', description: 'Welcome emails. Cart reminders. Win-back campaigns. Makes money while you sleep.', resultValue: '22%', resultLabel: 'Revenue lift' },
-  { icon: 'icons8-website-80.png',                iconBg: '#FEF3F2', slug: 'web-design',       title: 'We build your website', description: 'Shopify. WordPress. Custom. Fast, clean, built to sell — not just look pretty.', resultValue: '<2s', resultLabel: 'Load time' },
-  { icon: 'icons8-social-media-marketing-96.png', iconBg: '#EEF2F9', slug: 'social-media',     title: 'We handle your social media', description: 'Content that builds trust so your ads work even better. Plan it, make it, post it.', resultValue: '3x', resultLabel: 'Engagement' },
-  { icon: 'icons8-flow-chart-64.png',             iconBg: '#EEF2FF', slug: 'app-dev',          title: 'We build your mobile app', description: 'iOS, Android, React Native. MVP to App Store in 12 weeks. Strategy-first — we scope what to cut, then build what ships.', resultValue: '12wk', resultLabel: 'MVP avg' },
-  { icon: 'icons8-contract-60.png',               iconBg: '#F3E8FF', slug: 'custom-dev',       title: 'We build custom systems', description: 'B2B portals, Shopify apps, configurators, marketplaces — when off-the-shelf doesn\'t fit, we build it properly once.', resultValue: '6–12wk', resultLabel: 'Typical' },
+  { href: '/web-design', title: 'Web Design', description: 'A store people trust the second it loads.', icon: <path d="M3 4h18l-7 8v6l-4 2v-8L3 4z" />, live: true },
+  { href: '/web-dev', title: 'Web Development', description: 'Fast, mobile first, built to convert on any platform.', icon: <path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-5h6v5" />, live: true },
+  { href: '/paid', title: 'Paid Advertising', description: 'Ads that bring the right people and scale what works.', icon: <><path d="M3 11v2l12 5V6L3 11z" /><path d="M15 8a4 4 0 010 8" /><path d="M6 13v5h3v-4" /></>, live: true },
+  { href: '/social', title: 'Social Media', description: 'A presence that builds trust before the click.', icon: <path d="M4 5h16v11H9l-5 4V5z" />, live: true },
+  { href: '/creative', title: 'Creative Production', description: 'Scroll stopping ads and content that move people to your store.', icon: <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />, live: true },
+  { href: '/chat', title: 'Human Live Chat (AI)', description: 'Every visitor question answered instantly, day and night.', icon: <path d="M4 5h16v11H9l-5 4V5z" />, live: true },
+  { href: '/voice', title: 'Human Voice Agent (AI)', description: 'Calls answered and orders assisted around the clock.', icon: <path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z" />, live: true },
+  { href: '/seo', title: 'SEO', description: 'Buyers finding you when they search, without paying for every click.', icon: <><circle cx="11" cy="11" r="6" /><path d="M20 20l-4-4" /></>, live: true },
+  { href: '/retarget', title: 'Retargeting & Remarketing', description: 'The visitors who left, brought back to buy.', icon: <><path d="M4 12a8 8 0 0114-5l2 2" /><path d="M20 12a8 8 0 01-14 5l-2-2" /><path d="M18 4v5h-5M6 20v-5h5" /></>, live: true },
+  { href: '/reporting', title: 'Reporting', description: 'Plain language answers to what is working and what it earned.', icon: <path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-7" />, live: true },
+  { href: '/email', title: 'Email & SMS Retention', description: 'Customers who come back and grow in value.', icon: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></>, live: true },
 ]
 
-function parseHeading(text: string) {
-  return text.split(/(\[em\].*?\[\/em\])/g).map((part, i) => {
-    if (part.startsWith('[em]'))
-      return <em key={i} style={{ color: '#25B472', fontStyle: 'italic' }}>{part.replace('[em]', '').replace('[/em]', '')}</em>
-    return <span key={i}>{part}</span>
-  })
-}
-
-function ServiceCard({ service }: { service: Service }) {
-  const imgSrc = service.iconUrl || (service.icon ? `/icons/${service.icon}` : null)
-
-  const card = (
-    <div
-      className="svc-card"
-      style={{ background: '#fff', border: '1.5px solid #DFE5ED', borderRadius: '16px', padding: '28px', display: 'grid', gridTemplateColumns: '56px 1fr auto', gap: '20px', alignItems: 'center', transition: 'all 0.3s' }}
-      onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = '#25B472'; el.style.boxShadow = '0 4px 16px rgba(8,14,28,.08)'; el.style.transform = 'translateY(-2px)' }}
-      onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = '#DFE5ED'; el.style.boxShadow = 'none'; el.style.transform = 'translateY(0)' }}
-    >
-      {/* Icon */}
-      <div style={{ width: '52px', height: '52px', borderRadius: '12px', background: service.iconBg, display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-        {imgSrc ? (
-          <Image
-            src={imgSrc}
-            alt={service.title}
-            width={40}
-            height={40}
-            style={{ objectFit: 'contain' }}
-            unoptimized={!!service.iconUrl}
-          />
-        ) : (
-          <div style={{ width: 40, height: 40 }} />
-        )}
-      </div>
-
-      {/* Text */}
-      <div>
-        <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#080E1C', marginBottom: '3px', fontFamily: 'var(--font-bricolage)' }}>{service.title}</h3>
-        <p style={{ fontSize: '13.5px', color: '#6E8098', lineHeight: 1.5, fontFamily: 'var(--font-jakarta)' }}>{service.description}</p>
-      </div>
-
-      {/* Result Badge */}
-      <div className="svc-result" style={{ background: '#EDFBF3', borderRadius: '8px', padding: '12px 18px', textAlign: 'center', whiteSpace: 'nowrap', flexShrink: 0 }}>
-        <div style={{ fontFamily: 'var(--font-bricolage)', fontSize: '24px', fontWeight: 800, color: '#1C8F5A', lineHeight: 1 }}>{service.resultValue}</div>
-        <div style={{ fontSize: '10px', color: '#6E8098', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600, fontFamily: 'var(--font-jetbrains)', marginTop: '3px' }}>{service.resultLabel}</div>
-      </div>
-    </div>
+function ServiceCard({ href, icon, title, description, live }: Service) {
+  const content = (
+    <>
+      <span style={{ display: 'grid', placeItems: 'center', width: '44px', height: '44px', borderRadius: '11px', background: '#EDFBF3', color: '#1C8F5A', marginBottom: '14px' }}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" style={{ width: '22px', height: '22px' }}>{icon}</svg>
+      </span>
+      <h3 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 700, fontSize: '1.16rem', color: '#1C2A42', marginBottom: '6px' }}>{title}</h3>
+      <p style={{ color: '#6E8098', fontSize: '.95rem', lineHeight: 1.6 }}>{description}</p>
+    </>
   )
+  const cardStyle: React.CSSProperties = { display: 'block', background: '#fff', border: '1px solid #DFE5ED', borderRadius: '16px', padding: '26px', boxShadow: '0 2px 12px rgba(8,14,28,.07)', textDecoration: 'none' }
 
-  if (service.slug) {
-    return (
-      <Link href={`/services/${service.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-        {card}
-      </Link>
-    )
+  if (live) {
+    return <Link href={href} style={cardStyle}>{content}</Link>
   }
-  return card
+  return <div title="Coming soon" style={cardStyle}>{content}</div>
 }
 
-export default function ServicesSection({
-  heading = 'Six things. [em]All make you money.[/em]',
-  subheading = 'No fluff. No "brand awareness." Every service ties to revenue.',
-  services = DEFAULT_SERVICES,
-}: ServicesSectionProps) {
+export default function ServicesSection({ services = DEFAULT_SERVICES }: { services?: Service[] }) {
   return (
     <section style={{ background: '#fff' }}>
       <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '80px 32px' }} className="services-container">
-        <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#213D79' }}>What we do</div>
-        <h2 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.3px', fontSize: 'clamp(30px,4vw,44px)', color: '#1C2A42', marginBottom: '12px' }}>{parseHeading(heading)}</h2>
-        <p style={{ fontSize: '15px', color: '#6E8098', marginBottom: '44px', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)' }}>{subheading}</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }} className="services-list">
-          {services.map((svc, i) => <ServiceCard key={i} service={svc} />)}
+        <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px' }}>
+          {services.map((svc) => <ServiceCard key={svc.href} {...svc} />)}
         </div>
       </div>
       <style>{`
+        @media (max-width: 1100px) and (min-width: 901px) { .services-grid { grid-template-columns: repeat(2,1fr) !important; } }
         @media (max-width: 900px) {
           .services-container { padding: 52px 16px !important; }
-          .svc-card { grid-template-columns: 1fr !important; gap: 12px !important; padding: 20px !important; }
-          .svc-result { justify-self: start; }
+          .services-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

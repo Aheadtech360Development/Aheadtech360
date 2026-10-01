@@ -1,4 +1,5 @@
 // app/privacy/page.tsx
+import Link from 'next/link'
 
 const SECTIONS = [
   {
@@ -6,10 +7,9 @@ const SECTIONS = [
     type: 'bullets',
     content: 'We may collect:',
     bullets: [
-      'A full refund may be available within 14 days of the initial payment if no work has started.',
-      'Partial refunds may be considered depending on progress and completed deliverables.',
-      'Custom development and approved builds are non-refundable once work begins.',
-      'All refund requests must be submitted in writing for review.',
+      'Form submissions, such as your name, email, and message when you contact us or apply.',
+      'Basic website analytics, including pages viewed and device or browser type.',
+      'Newsletter and lead-magnet opt-ins, including the email address you provide.',
     ],
     footer: 'Our goal is simple: keep your information safe while helping your business grow with confidence.',
   },
@@ -72,16 +72,17 @@ export default function PrivacyPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(160deg,#EEF2F9,#fff)', padding: '60px 32px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#213D79' }}>Legal</div>
-          <h1 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, lineHeight: 1.1, fontSize: 'clamp(38px,5.5vw,58px)', color: '#1C2A42', marginBottom: '12px', letterSpacing: '-0.3px' }}>
+      <section style={{ position: 'relative', color: '#fff', padding: '88px 32px 60px', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg,rgba(16,25,45,.72),rgba(16,25,45,.4) 70%,rgba(16,25,45,.2))' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1180px', margin: '0 auto' }}>
+          <div style={{ display: 'inline-block', fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px', fontFamily: 'var(--font-jetbrains)', color: '#8ff0c0' }}>Legal</div>
+          <h1 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, lineHeight: 1.1, fontSize: 'clamp(38px,5.5vw,58px)', color: '#fff', marginBottom: '12px', letterSpacing: '-0.3px' }}>
             Privacy Policy
           </h1>
-          <p style={{ fontSize: '15px', color: '#6E8098', maxWidth: '540px', margin: '0 auto', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)' }}>
+          <p style={{ fontSize: '15px', color: '#e6edf9', maxWidth: '540px', margin: '0 auto', lineHeight: 1.7, fontFamily: 'var(--font-jakarta)' }}>
             How we collect, use, and protect your personal information.
           </p>
-          <p style={{ fontSize: '12px', color: '#A4B3C4', marginTop: '10px', fontFamily: 'var(--font-jakarta)' }}>
+          <p style={{ fontSize: '12px', color: '#9fb2d6', marginTop: '10px', fontFamily: 'var(--font-jakarta)' }}>
             AheadTech360 LLC · Last updated: 2026
           </p>
         </div>
@@ -145,6 +146,21 @@ export default function PrivacyPage() {
                 info@aheadtech360.com
               </a>
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA band */}
+      <section style={{ position: 'relative', padding: '74px 32px', color: '#fff', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(16,25,45,.35)' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '760px', margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'var(--font-bricolage)', fontSize: 'clamp(1.55rem,3.2vw,2.3rem)', fontWeight: 800, color: '#fff', lineHeight: 1.13 }}>
+            Tell us about your store. We will tell you what we see.
+          </h2>
+          <div style={{ marginTop: '24px' }}>
+            <Link href="/apply" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-bricolage)', fontWeight: 700, fontSize: '1rem', padding: '.82rem 1.55rem', borderRadius: '12px', background: '#25B472', color: '#05261a', textDecoration: 'none' }}>
+              Talk to Us
+            </Link>
           </div>
         </div>
       </section>

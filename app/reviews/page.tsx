@@ -102,13 +102,14 @@ function Stars() {
 type Platform = 'Google' | 'Shopify Partner' | 'Clutch' | 'GoodFirms' | 'Upwork'
 
 interface Review {
-  platform:  Platform
-  quote:     string
-  bold?:     string
-  name:      string
-  role:      string
-  initials:  string
-  badge?:    'Verified' | 'Top Rated'
+  platform:   Platform
+  quote:      string
+  bold?:      string
+  name:       string
+  role:       string
+  initials:   string
+  badge?:     'Verified' | 'Top Rated'
+  screenshot?: string
 }
 
 interface Video {
@@ -145,28 +146,28 @@ const VIDEOS: Video[] = [
 
 const REVIEWS: Review[] = [
   // ── Clutch ──────────────────────────────────────────────────────────────────
-  { platform: 'Clutch', quote: 'AheadTech360 delivered an excellent website with a clean design and smooth functionality. The team was highly communicative, professional, and punctual throughout. ', bold: 'The client was extremely pleased with the project\'s results.', name: 'Syed Artaboon Shah', role: 'Clutch Review', initials: 'SA', badge: 'Verified' },
+  { platform: 'Clutch', quote: 'AheadTech360 delivered an excellent website with a clean design and smooth functionality. The team was highly communicative, professional, and punctual throughout. ', bold: 'The client was extremely pleased with the project\'s results.', name: 'Syed Artaboon Shah', role: 'Clutch Review', initials: 'SA', badge: 'Verified', screenshot: '/images/clutch/cc.jpeg' },
 
   // ── Shopify Partner ─────────────────────────────────────────────────────────
-  { platform: 'Shopify Partner', quote: 'There was transparency throughout the process. They first shared wireframes then moved into development. Khaleel was always supportive. ', bold: 'Overall the communication was good and we are satisfied with the work done.', name: 'Freshfits', role: 'Shopify Store Owner', initials: 'FF', badge: 'Verified' },
-  { platform: 'Shopify Partner', quote: 'Ikrash built TrashedPunk.com from a napkin doodle into a live store. He\'s got the whole stack — store setup, theme tweaks, SEO, CRO, performance, integrations, troubleshooting. Fast, no fluff, 100% ownership. ', bold: '10/10 — hire him yesterday.', name: 'TrashedPunk', role: 'Streetwear Brand', initials: 'TP', badge: 'Verified' },
-  { platform: 'Shopify Partner', quote: 'I had an excellent experience working with AheadTech360. Their team is professional, knowledgeable, and truly dedicated. Communication was clear and consistent throughout. ', bold: 'Highly recommend AheadTech360 to anyone looking for reliable and innovative tech solutions.', name: 'MACP Store', role: 'Shopify Store Owner', initials: 'MC', badge: 'Verified' },
-  { platform: 'Shopify Partner', quote: 'These guys are really good at their work! They handled our website development smoothly and even provided valuable consultations to improve our original idea. ', bold: 'All my future websites will definitely be developed by them.', name: 'Maniyas', role: 'Pakistani Fashion Brand', initials: 'MN', badge: 'Verified' },
+  { platform: 'Shopify Partner', quote: 'There was transparency throughout the process. They first shared wireframes then moved into development. Khaleel was always supportive. ', bold: 'Overall the communication was good and we are satisfied with the work done.', name: 'Freshfits', role: 'Shopify Store Owner', initials: 'FF', badge: 'Verified', screenshot: '/images/shopify/ff.jpeg' },
+  { platform: 'Shopify Partner', quote: 'Ikrash built TrashedPunk.com from a napkin doodle into a live store. He\'s got the whole stack — store setup, theme tweaks, SEO, CRO, performance, integrations, troubleshooting. Fast, no fluff, 100% ownership. ', bold: '10/10 — hire him yesterday.', name: 'TrashedPunk', role: 'Streetwear Brand', initials: 'TP', badge: 'Verified', screenshot: '/images/shopify/gg.jpeg' },
+  { platform: 'Shopify Partner', quote: 'I had an excellent experience working with AheadTech360. Their team is professional, knowledgeable, and truly dedicated. Communication was clear and consistent throughout. ', bold: 'Highly recommend AheadTech360 to anyone looking for reliable and innovative tech solutions.', name: 'MACP Store', role: 'Shopify Store Owner', initials: 'MC', badge: 'Verified', screenshot: '/images/shopify/pp.jpeg' },
+  { platform: 'Shopify Partner', quote: 'These guys are really good at their work! They handled our website development smoothly and even provided valuable consultations to improve our original idea. ', bold: 'All my future websites will definitely be developed by them.', name: 'Maniyas', role: 'Pakistani Fashion Brand', initials: 'MN', badge: 'Verified', screenshot: '/images/shopify/tt.jpeg' },
 
   // ── GoodFirms ───────────────────────────────────────────────────────────────
-  { platform: 'GoodFirms', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure. They already had experience within the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'GoodFirms Review', initials: 'JB', badge: 'Verified' },
+  { platform: 'GoodFirms', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure. They already had experience within the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'GoodFirms Review', initials: 'JB', badge: 'Verified', screenshot: '/images/goodfirm/kk.jpeg' },
 
   // ── Upwork ──────────────────────────────────────────────────────────────────
   { platform: 'Upwork', quote: 'Ikrash absolutely crushed it with his SEO and conversion rate tweaks — he got my site ranking higher faster than I expected, and those blog posts? ', bold: 'Pure gold for engagement. Totally recommend!', name: 'Upwork Client', role: 'Upwork Review', initials: 'UC', badge: 'Top Rated' },
   { platform: 'Upwork', quote: 'Ikrash built TrashedPunk.com from a napkin doodle into a live store that doesn\'t glitch when it matters. Flux theme, Printful hooks, custom camo uploads — check. SEO bones so Google sees us, CRO heatmaps so customers actually buy, plus every tweak, audit, and 3 a.m. emergency fix without whining. He\'s got the whole stack: store setup, theme tweaks, SEO, CRO, performance, integrations, troubleshooting — you name it, he shipped it. Fast, no fluff, 100% ownership. If your site needs to crawl out of the code and wear web traffic, this guy\'s the dev. ', bold: '10/10 — hire him yesterday.', name: 'TrashedPunk', role: 'Streetwear Brand · Upwork', initials: 'TP', badge: 'Top Rated' },
 
   // ── Google ──────────────────────────────────────────────────────────────────
-  { platform: 'Google', quote: 'Excellent website development service! Clean design, smooth functionality with great ease of communication from start to finish. Very happy with the results. Special thanks to Ikrash. ', bold: 'Great guy. Will definitely work again.', name: 'Syed Artaboon Shah', role: 'Google Review', initials: 'SA', badge: 'Verified' },
-  { platform: 'Google', quote: 'Been working with AheadTech360 for 6 months now — managing our website, social media, and marketing. It\'s rare to find a team that just gets it. ', bold: 'They\'re responsive, easy to work with, and actually deliver results.', name: 'Gradelao', role: 'Google Review', initials: 'GR', badge: 'Verified' },
-  { platform: 'Google', quote: 'AT360\'s creative ideas and graphic design ensured our successful online launch. They expertly developed our Shopify website and managed our social pages. ', bold: 'Their services boosted our followers and revenue significantly.', name: 'Muhammad Omar', role: 'Google Review', initials: 'MO', badge: 'Verified' },
-  { platform: 'Google', quote: 'There are 2 things I look for in any organization: work ethics and quality of work. ', bold: 'AheadTech360 excels in both. They created my 2 websites and I highly recommend them.', name: 'Ahmed Amin', role: 'Google Review', initials: 'AA', badge: 'Verified' },
-  { platform: 'Google', quote: 'Excellent service from team AheadTech360 — these guys are really clued on and know their stuff. ', bold: 'If I could give more than 5 stars I would. These guys deserve at least 10 stars.', name: 'Khurram Ahmed', role: 'Google Review', initials: 'KA', badge: 'Verified' },
-  { platform: 'Google', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure from start to finish. They had experience in the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'Google Review', initials: 'JB', badge: 'Verified' },
+  { platform: 'Google', quote: 'Excellent website development service! Clean design, smooth functionality with great ease of communication from start to finish. Very happy with the results. Special thanks to Ikrash. ', bold: 'Great guy. Will definitely work again.', name: 'Syed Artaboon Shah', role: 'Google Review', initials: 'SA', badge: 'Verified', screenshot: '/images/google/x.jpeg' },
+  { platform: 'Google', quote: 'Been working with AheadTech360 for 6 months now — managing our website, social media, and marketing. It\'s rare to find a team that just gets it. ', bold: 'They\'re responsive, easy to work with, and actually deliver results.', name: 'Gradelao', role: 'Google Review', initials: 'GR', badge: 'Verified', screenshot: '/images/google/xx.jpeg' },
+  { platform: 'Google', quote: 'AT360\'s creative ideas and graphic design ensured our successful online launch. They expertly developed our Shopify website and managed our social pages. ', bold: 'Their services boosted our followers and revenue significantly.', name: 'Muhammad Omar', role: 'Google Review', initials: 'MO', badge: 'Verified', screenshot: '/images/google/xxx.jpeg' },
+  { platform: 'Google', quote: 'There are 2 things I look for in any organization: work ethics and quality of work. ', bold: 'AheadTech360 excels in both. They created my 2 websites and I highly recommend them.', name: 'Ahmed Amin', role: 'Google Review', initials: 'AA', badge: 'Verified', screenshot: '/images/google/xxxx.jpeg' },
+  { platform: 'Google', quote: 'Excellent service from team AheadTech360 — these guys are really clued on and know their stuff. ', bold: 'If I could give more than 5 stars I would. These guys deserve at least 10 stars.', name: 'Khurram Ahmed', role: 'Google Review', initials: 'KA', badge: 'Verified', screenshot: '/images/google/xxxxx.jpeg' },
+  { platform: 'Google', quote: 'Dealing with AheadTech360 to rebuild and redesign my website has been an absolute pleasure from start to finish. They had experience in the garment printing sector. ', bold: 'Communication has been flawless and nothing is too much for the AT360 team.', name: 'Jason Beevor', role: 'Google Review', initials: 'JB', badge: 'Verified', screenshot: '/images/google/xxxxxx.jpeg' },
 ]
 
 interface Cert { icon: React.ReactNode; name: string; sub: string; highlight?: boolean; iconBg?: string }
@@ -343,6 +344,16 @@ function ReviewCard({ r }: { r: Review }) {
       onMouseLeave={() => setHovered(false)}
       style={{ background: '#fff', border: `1.5px solid ${hovered ? '#213D79' : '#E8EDF3'}`, borderRadius: '14px', padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: '14px', transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s', boxShadow: hovered ? '0 6px 20px rgba(8,14,28,.09)' : 'none', transform: hovered ? 'translateY(-2px)' : 'translateY(0)', cursor: 'pointer' }}
     >
+      {/* Screenshot proof */}
+      {r.screenshot && (
+        <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', border: '1px solid #DFE5ED', background: '#F2F5F8', aspectRatio: '16/9' }}>
+          <Image src={r.screenshot} alt={`${r.name} — ${r.platform} review screenshot`} fill sizes="(max-width:600px) 90vw, 360px" style={{ objectFit: 'cover' }} unoptimized />
+          <span style={{ position: 'absolute', top: '8px', right: '8px', fontSize: '9px', fontWeight: 800, letterSpacing: '.6px', textTransform: 'uppercase', color: '#fff', background: 'rgba(8,14,28,.62)', borderRadius: '5px', padding: '3px 7px', fontFamily: 'var(--font-jetbrains)' }}>
+            Screenshot
+          </span>
+        </div>
+      )}
+
       {/* Top */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
@@ -435,16 +446,17 @@ export default function ReviewsPage() {
   return (
     <>
       {/* ── Hero (dark) ── */}
-      <section style={{ background: 'linear-gradient(160deg,#080E1C 0%,#0F1E3A 100%)', padding: '80px 32px 60px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', color: '#34D48A', fontFamily: 'var(--font-jetbrains)', marginBottom: '16px' }}>
+      <section style={{ position: 'relative', padding: '88px 32px 70px', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'linear-gradient(115deg,rgba(16,25,45,.72),rgba(16,25,45,.4) 70%,rgba(16,25,45,.2))' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ display: 'inline-block', fontSize: '11px', fontWeight: 800, letterSpacing: '2.5px', textTransform: 'uppercase', color: '#8ff0c0', fontFamily: 'var(--font-jetbrains)', marginBottom: '16px' }}>
             REVIEWS &amp; TESTIMONIALS
           </div>
           <h1 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, fontSize: 'clamp(36px,5vw,56px)', color: '#fff', lineHeight: 1.1, letterSpacing: '-0.3px', marginBottom: '20px' }}>
             Don&apos;t take our word for it.{' '}
             <em style={{ color: '#25B472', fontStyle: 'italic' }}>Listen to theirs.</em>
           </h1>
-          <p style={{ fontSize: '16px', color: '#A4B3C4', fontFamily: 'var(--font-jakarta)', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ fontSize: '16px', color: '#e6edf9', fontFamily: 'var(--font-jakarta)', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto' }}>
             4.9 stars across 5 platforms. Real video testimonials. Verified Shopify Partner, Clutch &amp; GoodFirms ratings. Watch what happens when founders actually own their ad accounts again.
           </p>
         </div>
@@ -577,19 +589,20 @@ export default function ReviewsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: 'linear-gradient(160deg,#080E1C,#162952)', padding: '90px 32px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <section style={{ position: 'relative', padding: '74px 32px', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(135deg,#1b356e 0%,#16294F 60%,#101f3d 100%)' }}>
+        <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'rgba(16,25,45,.35)' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '600px', margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-bricolage)', fontWeight: 800, fontSize: 'clamp(34px,4.5vw,50px)', color: '#fff', lineHeight: 1.1, marginBottom: '16px' }}>
             Ready to be our{' '}
             <em style={{ color: '#34D48A', fontStyle: 'italic' }}>next 5-star review?</em>
           </h2>
-          <p style={{ fontSize: '15px', color: '#A4B3C4', marginBottom: '32px', fontFamily: 'var(--font-jakarta)', lineHeight: 1.7 }}>
-            Free audit. We&apos;ll tell you exactly what we&apos;d fix first. Then you decide.
+          <p style={{ fontSize: '15px', color: '#e6edf9', marginBottom: '32px', fontFamily: 'var(--font-jakarta)', lineHeight: 1.7 }}>
+            Tell us about your store. We&apos;ll tell you exactly what we&apos;d fix first. Then you decide.
           </p>
-          <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', padding: '15px 40px', borderRadius: '10px', fontSize: '16px', fontWeight: 700, background: '#25B472', color: '#fff', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
-            Get My Free Audit →
+          <Link href="/apply" style={{ display: 'inline-flex', alignItems: 'center', padding: '.82rem 1.55rem', borderRadius: '12px', fontSize: '1rem', fontWeight: 700, background: '#25B472', color: '#05261a', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
+            Talk to Us
           </Link>
-          <p style={{ fontSize: '12px', color: '#3E5068', marginTop: '16px', fontFamily: 'var(--font-jetbrains)' }}>
+          <p style={{ fontSize: '12px', color: '#9fb2d6', marginTop: '16px', fontFamily: 'var(--font-jetbrains)' }}>
             No card · No pitch · Just our honest read on your account
           </p>
         </div>

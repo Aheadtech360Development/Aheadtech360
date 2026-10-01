@@ -1,56 +1,30 @@
 'use client'
 // components/layout/Header.tsx
-// Logo: public/logo.png se aata hai — bas file wahan rakhein
+// Nav updated for the fashion/apparel repositioning. "Program" and "Our Clients" don't have
+// pages yet, so they render as non-navigating placeholders (see plan: _backup/pre-home-redesign
+// has the old header for reference/rollback).
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-interface NavLink { label: string; href: string }
+interface NavLink { label: string; href: string; live?: boolean }
 
 const DEFAULT_NAV_LINKS: NavLink[] = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Reviews', href: '/reviews' },
-  { label: 'Share Your Story', href: '/story' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Resources', href: '/resources' },
+  { label: 'Home', href: '/', live: true },
+  { label: 'Services', href: '/services', live: true },
+  { label: 'Program', href: '/fgs', live: true },
+  { label: 'Our Clients', href: '/clients', live: true },
+  { label: 'About', href: '/about', live: true },
+  { label: 'Blog', href: '/blog', live: true },
 ]
 
-function ResultsDropdown() {
-  const [open, setOpen] = useState(false)
-  return (
-    <div
-      style={{ position: 'relative' }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <span
-        style={{ color: '#3E5068', fontSize: '13.5px', fontWeight: 500, fontFamily: 'var(--font-jakarta)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}
-        className="hover-blue-link"
-      >
-        Results
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'none' }}>
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </span>
-      {open && (
-        <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', paddingTop: '8px', zIndex: 9999, minWidth: '164px' }}>
-          <div style={{ background: '#fff', border: '1.5px solid #DFE5ED', borderRadius: '12px', padding: '6px', boxShadow: '0 8px 24px rgba(8,14,28,.12)' }}>
-            <Link href="/results" className="dropdown-item"
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 14px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
-              <span style={{ fontSize: '14px' }}>📈</span> Case Studies
-            </Link>
-            <Link href="/portfolio" className="dropdown-item"
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 14px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, color: '#1C2A42', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
-              <span style={{ fontSize: '14px' }}>🖥️</span> Portfolio
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
-  )
+function NavItem({ link }: { link: NavLink }) {
+  const style: React.CSSProperties = { color: '#3E5068', fontSize: '13.5px', fontWeight: 500, transition: 'color 0.2s', fontFamily: 'var(--font-jakarta)', whiteSpace: 'nowrap' }
+  if (link.live) {
+    return <Link href={link.href} style={style} className="hover-blue-link">{link.label}</Link>
+  }
+  return <span title="Coming soon" style={{ ...style, cursor: 'default' }}>{link.label}</span>
 }
 
 export default function Header({ navLinks = DEFAULT_NAV_LINKS }: { navLinks?: NavLink[] }) {
@@ -103,27 +77,15 @@ export default function Header({ navLinks = DEFAULT_NAV_LINKS }: { navLinks?: Na
         <nav style={{ display: 'flex', alignItems: 'center', gap: '8px' }} aria-label="Main navigation">
           <div id="desktop-nav-links" className="hidden-mobile"
             style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            {navLinks.slice(0, 3).map((link) => (
-              <Link key={link.href} href={link.href}
-                style={{ color: '#3E5068', fontSize: '13.5px', fontWeight: 500, transition: 'color 0.2s', fontFamily: 'var(--font-jakarta)', whiteSpace: 'nowrap' }}
-                className="hover-blue-link">
-                {link.label}
-              </Link>
-            ))}
-            <ResultsDropdown />
-            {navLinks.slice(3).map((link) => (
-              <Link key={link.href} href={link.href}
-                style={{ color: '#3E5068', fontSize: '13.5px', fontWeight: 500, transition: 'color 0.2s', fontFamily: 'var(--font-jakarta)', whiteSpace: 'nowrap' }}
-                className="hover-blue-link">
-                {link.label}
-              </Link>
+            {navLinks.map((link) => (
+              <NavItem key={link.href} link={link} />
             ))}
           </div>
 
-          <Link href="/contact"
-            style={{ background: '#25B472', color: '#fff', padding: '9px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '13px', fontFamily: 'var(--font-jakarta)', transition: 'all 0.2s', whiteSpace: 'nowrap', display: 'inline-block', lineHeight: 1.4, marginLeft: '8px' }}
+          <Link href="/apply"
+            style={{ background: '#25B472', color: '#fff', padding: '9px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '13px', fontFamily: 'var(--font-jakarta)', whiteSpace: 'nowrap', display: 'inline-block', lineHeight: 1.4, marginLeft: '8px' }}
             className="hover-cta">
-            Free Audit →
+            Talk to Us
           </Link>
 
           {/* Hamburger — mobile only */}
@@ -140,31 +102,24 @@ export default function Header({ navLinks = DEFAULT_NAV_LINKS }: { navLinks?: Na
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div style={{ position: 'fixed', top: '34px', left: 0, right: 0, background: '#fff', borderBottom: '1px solid #DFE5ED', zIndex: 98, padding: '16px 20px 20px', boxShadow: '0 8px 24px rgba(8,14,28,.12)' }}>
+        <div style={{ position: 'fixed', top: '56px', left: 0, right: 0, background: '#fff', borderBottom: '1px solid #DFE5ED', zIndex: 98, padding: '16px 20px 20px', boxShadow: '0 8px 24px rgba(8,14,28,.12)' }}>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-            {navLinks.slice(0, 3).map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
-                style={{ color: '#3E5068', fontSize: '15px', fontWeight: 600, padding: '10px 12px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/results" onClick={() => setMobileOpen(false)}
-              style={{ color: '#3E5068', fontSize: '15px', fontWeight: 600, padding: '10px 12px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
-              Case Studies
-            </Link>
-            <Link href="/portfolio" onClick={() => setMobileOpen(false)}
-              style={{ color: '#6E8098', fontSize: '14px', fontWeight: 600, padding: '8px 12px 8px 28px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
-              ↳ Portfolio
-            </Link>
-            {navLinks.slice(3).map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
-                style={{ color: '#3E5068', fontSize: '15px', fontWeight: 600, padding: '10px 12px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/contact" onClick={() => setMobileOpen(false)}
+            {navLinks.map((link) =>
+              link.live ? (
+                <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
+                  style={{ color: '#3E5068', fontSize: '15px', fontWeight: 600, padding: '10px 12px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
+                  {link.label}
+                </Link>
+              ) : (
+                <span key={link.href} title="Coming soon"
+                  style={{ color: '#3E5068', fontSize: '15px', fontWeight: 600, padding: '10px 12px', borderRadius: '8px', fontFamily: 'var(--font-jakarta)' }}>
+                  {link.label}
+                </span>
+              )
+            )}
+            <Link href="/apply" onClick={() => setMobileOpen(false)}
               style={{ background: '#25B472', color: '#fff', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '14px', textAlign: 'center', marginTop: '8px', display: 'block', fontFamily: 'var(--font-jakarta)' }}>
-              Get Free Audit →
+              Talk to Us
             </Link>
           </nav>
         </div>
@@ -174,7 +129,7 @@ export default function Header({ navLinks = DEFAULT_NAV_LINKS }: { navLinks?: Na
         @media (max-width: 900px) {
           #desktop-nav-links { display: none !important; }
           .hamburger-btn { display: flex !important; }
-          header { top: 34px !important; height: 56px !important; padding: 0 16px !important; }
+          header { height: 56px !important; padding: 0 16px !important; }
         }
         .hover-blue-link:hover { color: #213D79 !important; }
         .dropdown-item:hover { background: #F2F5F8 !important; }
