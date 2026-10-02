@@ -1,8 +1,7 @@
-import Script from 'next/script'
-import { CALENDAR_EMBED } from '@/content/site/site'
 import { Container } from '../ui/Container'
 import { Section } from '../ui/Section'
 import { SectionHeader } from '../ui/SectionHeader'
+import { CalendarFrame } from './CalendarFrame'
 import s from './CalendarEmbed.module.css'
 
 interface CalendarEmbedProps {
@@ -26,18 +25,10 @@ export function CalendarEmbed({ id = 'calendar', eyebrow = 'Pick A Time', title,
         <div className={s.stack}>
           <SectionHeader eyebrow={eyebrow} title={title} align="center" size="md" />
           <div className={s.frameWrap}>
-            <iframe
-              id={CALENDAR_EMBED.iframeId}
-              src={CALENDAR_EMBED.src}
-              title="Book a free call with AheadTech360"
-              allow="payment"
-              scrolling="no"
-              className={s.frame}
-            />
+            <CalendarFrame className={s.frame} />
           </div>
         </div>
       </Container>
-      <Script src={CALENDAR_EMBED.script} strategy="afterInteractive" />
     </Section>
   )
 }

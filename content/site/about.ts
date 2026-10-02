@@ -20,7 +20,6 @@ export const ABOUT_FOUNDERS = {
 export const ABOUT_FACTS = {
   label: 'AheadTech360 LLC',
   chips: [
-    'Founded 2025',
     'Wyoming-Registered LLC',
     'Shopify Certified Partner',
     'Listed On Clutch & GoodFirms',
