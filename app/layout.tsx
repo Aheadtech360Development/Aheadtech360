@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import Script from 'next/script'
 
@@ -8,25 +8,26 @@ import Script from 'next/script'
 //   app/(site)/layout.tsx    — current design
 //   app/(legacy)/layout.tsx  — previous design, kept reachable by direct URL only
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+// Fonts are self-hosted (variable woff2, latin subset, from Google Fonts) instead of loaded with
+// next/font/google: the Google loader fetches and caches at build time, and a stale or partial cache made
+// the Vercel build fail with "next/font/google queries have exactly one entry". The CSS variables are the
+// same ones the Tailwind theme and the (site) styles already use.
+const jakarta = localFont({
+  src: [{ path: './fonts/PlusJakartaSans.woff2', weight: '300 800', style: 'normal' }],
   variable: '--font-jakarta',
   display: 'swap',
   preload: false,
 })
 
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+const bricolage = localFont({
+  src: [{ path: './fonts/BricolageGrotesque.woff2', weight: '400 800', style: 'normal' }],
   variable: '--font-bricolage',
   display: 'swap',
   preload: false,
 })
 
-const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
+const jetbrains = localFont({
+  src: [{ path: './fonts/JetBrainsMono.woff2', weight: '400 600', style: 'normal' }],
   variable: '--font-jetbrains',
   display: 'swap',
   preload: false,
