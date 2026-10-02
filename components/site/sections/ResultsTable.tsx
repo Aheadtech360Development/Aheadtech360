@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { ResultRow } from '@/content/site/types'
 import { cx } from '@/lib/cx'
 import { ResultBox } from '../ui/ResultBox'
@@ -6,6 +7,7 @@ import s from './ResultsTable.module.css'
 /**
  * Client / Problem / Fix / Result table. Built from ARIA table roles (not <table>) so each row can be a
  * CSS grid on desktop and a stacked card on mobile while keeping table semantics.
+ * A row with an `href` is one big link (stretched from the client name) to that client's case study.
  */
 export function ResultsTable({ rows, label = 'Client results' }: { rows: readonly ResultRow[]; label?: string }) {
   return (
@@ -20,9 +22,18 @@ export function ResultsTable({ rows, label = 'Client results' }: { rows: readonl
       </div>
 
       {rows.map((row) => (
-        <div role="row" key={row.client} className={s.row}>
+        <div role="row" key={row.client} className={cx(s.row, row.href && s.linked)}>
           <div role="rowheader" className={s.client}>
-            {row.client}
+            {row.href ? (
+              <Link href={row.href} className={s.clientLink}>
+                {row.client}
+                <span aria-hidden="true" className={s.arrow}>
+                  →
+                </span>
+              </Link>
+            ) : (
+              row.client
+            )}
           </div>
           <div role="cell" data-label="Problem" className={s.problem}>
             {row.problem}

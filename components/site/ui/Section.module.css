@@ -6,8 +6,9 @@
   --marker: var(--green);
   /* media/review tiles sit on the opposite tone of their section */
   --tile-bg: var(--bg-soft);
-  /* keep in-page anchors clear of the sticky announcement bar + header */
-  scroll-margin-top: calc(var(--announce-h) + var(--header-h) + 16px);
+  /* keep in-page anchors clear of the sticky announcement bar + header (+2px for the header's border);
+     the section's own padding supplies the breathing room, so it lands flush under the header */
+  scroll-margin-top: calc(var(--announce-h) + var(--header-h) + 2px);
 }
 
 .default {

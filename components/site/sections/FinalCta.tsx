@@ -11,7 +11,7 @@ interface FinalCtaProps {
   href?: string
 }
 
-/** Closing navy CTA band. Every CTA on the site points at the same booking page. */
+/** Closing navy CTA band. Points at the booking page unless a page passes its own target (e.g. its calendar). */
 export function FinalCta({ title, text, label = 'Book A Call', href = BOOK_CALL_HREF }: FinalCtaProps) {
   return (
     <Section tone="navy" pad="cta">

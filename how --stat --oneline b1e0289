@@ -1,0 +1,151 @@
+[33mb1e0289[m[33m ([m[1;31morigin/new-design[m[33m, [m[1;32mnew-design[m[33m)[m Rebuild marketing site from new design mockups
+ app/{ => (legacy)}/apply/page.tsx                  |   0
+ app/{ => (legacy)}/blog/BlogClientPage.tsx         |   0
+ app/{ => (legacy)}/blog/CTAbox.tsx                 |   0
+ app/{ => (legacy)}/blog/[slug]/page.tsx            |   0
+ app/{ => (legacy)}/blog/page.tsx                   |   2 [32m+[m[31m-[m
+ app/{ => (legacy)}/city/[slug]/page.tsx            |   0
+ app/{ => (legacy)}/city/city.css                   |   0
+ app/{ => (legacy)}/city/page.tsx                   |   0
+ app/{ => (legacy)}/contact/page.tsx                |   0
+ app/{ => (legacy)}/industries/[slug]/page.tsx      |   0
+ app/{ => (legacy)}/industries/industry.css         |   0
+ app/{ => (legacy)}/industries/page.tsx             |   0
+ app/(legacy)/layout.tsx                            |  35 [32m++[m
+ app/{ => (legacy)}/portfolio/page.tsx              |   0
+ app/{ => (legacy)}/resources/page.tsx              |   0
+ app/{ => (legacy)}/results/[slug]/page.tsx         |   0
+ app/{ => (legacy)}/results/page.tsx                |   0
+ app/{ => (legacy)}/reviews/page.tsx                |   0
+ app/{ => (legacy)}/services/[slug]/content.ts      |   0
+ app/{ => (legacy)}/services/[slug]/page.tsx        |   0
+ app/{ => (legacy)}/story/page.tsx                  |   0
+ app/{ => (legacy)}/studio/[[...index]]/page.tsx    |   2 [32m+[m[31m-[m
+ app/(site)/about/about.module.css                  |  40 [32m++[m
+ app/(site)/about/page.tsx                          |  83 [32m+++++[m
+ app/(site)/book-a-call/page.tsx                    |  53 [32m+++[m
+ app/(site)/case-studies/[slug]/page.tsx            |  77 [32m++++[m
+ app/(site)/case-studies/page.tsx                   |  41 [32m++[m
+ app/(site)/faq/page.tsx                            |  43 [32m+++[m
+ app/(site)/layout.module.css                       |  19 [32m+[m
+ app/(site)/layout.tsx                              |  30 [32m++[m
+ app/(site)/offer/page.tsx                          | 130 [32m+++++++[m
+ app/(site)/page.tsx                                | 141 [32m+++++++[m
+ app/(site)/pricing/page.tsx                        |  52 [32m+++[m
+ app/(site)/privacy/page.tsx                        |  14 [32m+[m
+ app/(site)/services/page.tsx                       |  52 [32m+++[m
+ app/(site)/site.css                                | 111 [32m++++++[m
+ app/(site)/terms/page.tsx                          |  14 [32m+[m
+ app/about/page.tsx                                 | 188 [31m----------[m
+ app/layout.tsx                                     |  30 [32m+[m[31m-[m
+ app/page.tsx                                       | 103 [31m------[m
+ app/privacy/page.tsx                               | 159 [31m--------[m
+ app/services/page.tsx                              | 151 [31m--------[m
+ app/sitemap.ts                                     |  18 [32m+[m[31m-[m
+ components/site/JsonLd.tsx                         |  10 [32m+[m
+ components/site/case/CaseHero.module.css           |  85 [32m+++++[m
+ components/site/case/CaseHero.tsx                  |  61 [32m+++[m
+ components/site/case/CaseSections.module.css       | 334 [32m+++++++++++++++++[m
+ components/site/case/CaseSections.tsx              | 230 [32m++++++++++++[m
+ components/site/layout/AnnouncementBar.module.css  |  52 [32m+++[m
+ components/site/layout/AnnouncementBar.tsx         |  17 [32m+[m
+ components/site/layout/SiteFooter.module.css       | 140 [32m+++++++[m
+ components/site/layout/SiteFooter.tsx              |  70 [32m++++[m
+ components/site/layout/SiteHeader.module.css       | 174 [32m+++++++++[m
+ components/site/layout/SiteHeader.tsx              |  89 [32m+++++[m
+ components/site/sections/CalendarEmbed.module.css  |  42 [32m+++[m
+ components/site/sections/CalendarEmbed.tsx         |  39 [32m++[m
+ components/site/sections/CaseRowList.module.css    | 121 [32m++++++[m
+ components/site/sections/CaseRowList.tsx           |  42 [32m+++[m
+ .../site/sections/CaseSnapshotGrid.module.css      |  52 [32m+++[m
+ components/site/sections/CaseSnapshotGrid.tsx      |  26 [32m++[m
+ components/site/sections/ClientNames.module.css    |  19 [32m+[m
+ components/site/sections/ClientNames.tsx           |  14 [32m+[m
+ components/site/sections/FaqList.module.css        |  49 [32m+++[m
+ components/site/sections/FaqList.tsx               |  27 [32m++[m
+ components/site/sections/FaqSection.module.css     |   5 [32m+[m
+ components/site/sections/FaqSection.tsx            |  28 [32m++[m
+ components/site/sections/FinalCta.module.css       |  25 [32m++[m
+ components/site/sections/FinalCta.tsx              |  29 [32m++[m
+ components/site/sections/FounderCards.module.css   |  97 [32m+++++[m
+ components/site/sections/FounderCards.tsx          |  29 [32m++[m
+ components/site/sections/HeaderCardGrid.module.css |  55 [32m+++[m
+ components/site/sections/HeaderCardGrid.tsx        |  32 [32m++[m
+ components/site/sections/LegalDocument.module.css  |  93 [32m+++++[m
+ components/site/sections/LegalDocument.tsx         |  59 [32m+++[m
+ components/site/sections/PageHero.module.css       |  66 [32m++++[m
+ components/site/sections/PageHero.tsx              |  40 [32m++[m
+ components/site/sections/Qualifier.module.css      |  88 [32m+++++[m
+ components/site/sections/Qualifier.tsx             |  61 [32m+++[m
+ components/site/sections/RatingNote.module.css     |  16 [32m+[m
+ components/site/sections/RatingNote.tsx            |  12 [32m+[m
+ components/site/sections/ResultsTable.module.css   |  94 [32m+++++[m
+ components/site/sections/ResultsTable.tsx          |  40 [32m++[m
+ components/site/sections/ReviewsSection.module.css | 118 [32m++++++[m
+ components/site/sections/ReviewsSection.tsx        |  92 [32m+++++[m
+ components/site/sections/ServiceRow.module.css     |  75 [32m++++[m
+ components/site/sections/ServiceRow.tsx            |  38 [32m++[m
+ components/site/sections/StatStrip.module.css      |  58 [32m+++[m
+ components/site/sections/StatStrip.tsx             |  17 [32m+[m
+ components/site/sections/TierLadder.module.css     |  51 [32m+++[m
+ components/site/sections/TierLadder.tsx            |  20 [32m+[m
+ components/site/sections/TrustBar.module.css       |  17 [32m+[m
+ components/site/sections/TrustBar.tsx              |  29 [32m++[m
+ components/site/sections/VideoBand.module.css      |  19 [32m+[m
+ components/site/sections/VideoBand.tsx             |  24 [32m++[m
+ components/site/sections/VideoShowcase.module.css  |   6 [32m+[m
+ components/site/sections/VideoShowcase.tsx         |  28 [32m++[m
+ components/site/ui/ArrowLink.module.css            |  21 [32m++[m
+ components/site/ui/ArrowLink.tsx                   |  14 [32m+[m
+ components/site/ui/Badge.module.css                |  29 [32m++[m
+ components/site/ui/Badge.tsx                       |  19 [32m+[m
+ components/site/ui/Button.module.css               |  67 [32m++++[m
+ components/site/ui/Button.tsx                      |  46 [32m+++[m
+ components/site/ui/Callout.module.css              |  89 [32m+++++[m
+ components/site/ui/Callout.tsx                     |  47 [32m+++[m
+ components/site/ui/CellGrid.module.css             |  89 [32m+++++[m
+ components/site/ui/CellGrid.tsx                    |  49 [32m+++[m
+ components/site/ui/Chip.module.css                 |  53 [32m+++[m
+ components/site/ui/Chip.tsx                        |  30 [32m++[m
+ components/site/ui/Container.module.css            |  22 [32m++[m
+ components/site/ui/Container.tsx                   |  17 [32m+[m
+ components/site/ui/Eyebrow.module.css              |  19 [32m+[m
+ components/site/ui/Eyebrow.tsx                     |  13 [32m+[m
+ components/site/ui/HeaderCard.module.css           |  40 [32m++[m
+ components/site/ui/HeaderCard.tsx                  |  35 [32m++[m
+ components/site/ui/Icons.tsx                       | 106 [32m++++++[m
+ components/site/ui/LogoMark.module.css             |  12 [32m+[m
+ components/site/ui/LogoMark.tsx                    |  22 [32m++[m
+ components/site/ui/MediaSlot.module.css            |  59 [32m+++[m
+ components/site/ui/MediaSlot.tsx                   |  67 [32m++++[m
+ components/site/ui/PullQuote.module.css            |   8 [32m+[m
+ components/site/ui/PullQuote.tsx                   |   7 [32m+[m
+ components/site/ui/ResultBox.module.css            |  48 [32m+++[m
+ components/site/ui/ResultBox.tsx                   |  19 [32m+[m
+ components/site/ui/Section.module.css              |  48 [32m+++[m
+ components/site/ui/Section.tsx                     |  30 [32m++[m
+ components/site/ui/SectionHeader.module.css        |  62 [32m++++[m
+ components/site/ui/SectionHeader.tsx               |  46 [32m+++[m
+ components/site/ui/Stack.module.css                |  16 [32m+[m
+ components/site/ui/Stack.tsx                       |  17 [32m+[m
+ components/site/ui/VideoPlayer.tsx                 |  38 [32m++[m
+ components/site/ui/VideoSlot.module.css            | 122 [32m++++++[m
+ components/site/ui/VideoSlot.tsx                   |  33 [32m++[m
+ content/site/about.ts                              |  49 [32m+++[m
+ content/site/book-a-call.ts                        |  45 [32m+++[m
+ content/site/case-studies.ts                       | 412 [32m+++++++++++++++++++++[m
+ content/site/faq.ts                                |  59 [32m+++[m
+ content/site/home.ts                               | 126 [32m+++++++[m
+ content/site/legal/privacy.ts                      | 110 [32m++++++[m
+ app/terms/page.tsx => content/site/legal/terms.ts  | 209 [32m++[m[31m---------[m
+ content/site/legal/types.ts                        |  16 [32m+[m
+ content/site/offer.ts                              | 151 [32m++++++++[m
+ content/site/pricing.ts                            |  51 [32m+++[m
+ content/site/services.ts                           |  86 [32m+++++[m
+ content/site/shared.ts                             |  79 [32m++++[m
+ content/site/site.ts                               |  64 [32m++++[m
+ content/site/types.ts                              |  73 [32m++++[m
+ lib/cx.ts                                          |   4 [32m+[m
+ lib/rich-text.tsx                                  |  31 [32m++[m
+ lib/seo.ts                                         |  24 [32m++[m
+ 149 files changed, 6983 insertions(+), 807 deletions(-)

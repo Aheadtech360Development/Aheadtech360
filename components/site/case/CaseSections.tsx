@@ -24,18 +24,21 @@ export function CaseBackground({ text }: { text: string }) {
 
 /** Side-by-side before / after screenshots with a one-line caption each. */
 export function CaseBeforeAfterSection({ data }: { data: CaseBeforeAfter }) {
+  // 2.4:1 is wider than every real screenshot (about 1.8 to 2.25:1), so a screenshot is only ever trimmed
+  // at the bottom (object-position: top) and never loses the logo/nav at its sides
+  const ratio = '2.4 / 1'
   return (
     <Section>
       <Container>
         <div className={s.pair}>
           <figure className={s.side}>
             <figcaption className={s.sideLabel}>{data.beforeLabel}</figcaption>
-            <MediaSlot label={data.beforeSlot} icon="browser" ratio="2.4 / 1" />
+            <MediaSlot label={data.beforeSlot} image={data.beforeImage} icon="browser" ratio={ratio} />
             <p className={s.caption}>{data.beforeCaption}</p>
           </figure>
           <figure className={s.side}>
             <figcaption className={cx(s.sideLabel, s.sideLabelAfter)}>{data.afterLabel}</figcaption>
-            <MediaSlot label={data.afterSlot} icon="browser" tone="positive" ratio="2.4 / 1" />
+            <MediaSlot label={data.afterSlot} image={data.afterImage} icon="browser" tone="positive" ratio={ratio} />
             <p className={cx(s.caption, s.captionAfter)}>{data.afterCaption}</p>
           </figure>
         </div>

@@ -33,6 +33,9 @@ export interface CaseBeforeAfter {
   afterLabel: string
   afterSlot: string
   afterCaption: string
+  /** Real screenshots; each side falls back to its labelled placeholder until one is supplied. */
+  beforeImage?: ImageAsset
+  afterImage?: ImageAsset
 }
 
 export interface CaseMetric {
@@ -122,6 +125,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
       afterLabel: 'After — Current',
       afterSlot: 'Current Dashboard',
       afterCaption: '$30K+/mo and climbing · 8.06%+ CVR on Phase 1 alone · AOV up from $36 to $47 in Phase 1',
+      beforeImage: { src: '/images/case-studies/ezdtfmaker-before.webp', alt: 'EZDTFMaker homepage, before', width: 1883, height: 840 },
+      afterImage: { src: '/images/case-studies/ezdtfmaker-after.webp', alt: 'EZDTFMaker homepage, after', width: 1607, height: 758 },
     },
     phasesTitle: 'How it was installed',
     phases: [
@@ -190,6 +195,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
       afterLabel: 'After — Current',
       afterSlot: 'Current Dashboard',
       afterCaption: '$10K/mo and growing · ~$100 AOV · 2.5% CVR · 50% bounce rate',
+      beforeImage: { src: '/images/case-studies/eztmart-before.webp', alt: 'EZTmart storefront (product page), before', width: 1343, height: 752 },
+      afterImage: { src: '/images/case-studies/eztmart-after.webp', alt: 'EZTmart homepage, after', width: 1255, height: 581 },
     },
     phasesTitle: 'How it was installed',
     phases: [
@@ -365,6 +372,8 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
       afterLabel: 'After — Live Site',
       afterSlot: 'Custom Live Store',
       afterCaption: 'Fully custom Shopify store, built, ranked, and optimized end to end.',
+      beforeImage: { src: '/images/case-studies/trashedpunk-before.webp', alt: 'The earlier TrashedPunk storefront', width: 1697, height: 815 },
+      afterImage: { src: '/images/case-studies/trashedpunk-after.webp', alt: 'The current TrashedPunk storefront', width: 1551, height: 858 },
     },
     phasesTitle: 'How it was built',
     phases: [

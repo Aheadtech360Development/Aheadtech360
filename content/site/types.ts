@@ -15,16 +15,30 @@ export interface ImageAsset {
 export interface VideoItem {
   /** Caption shown on the tile, e.g. "EZDTFMaker — Founder" */
   label: string
-  /** Local mp4 under /public. When omitted the tile renders as a labelled placeholder. */
+  /** Local mp4 under /public. With neither `src` nor `youtubeId` the tile renders as a labelled placeholder. */
   src?: string
+  /** YouTube video id; plays inside a privacy-enhanced embed after the first click. */
+  youtubeId?: string
+  /** Image under /public shown on the tile until it is played. */
   poster?: string
   duration?: string
+  /** Vertical (9:16) footage gets a portrait tile instead of a letterboxed landscape one. */
+  orientation?: 'portrait'
 }
 
 export interface ReviewShotItem {
   platform: string
-  /** When omitted the slot renders as a labelled placeholder. */
-  image?: ImageAsset
+  image: ImageAsset
+}
+
+/** A founder video plus the client details shown beside it. */
+export interface VideoTestimonial extends VideoItem {
+  client: string
+  role: string
+  /** Headline result, taken from the client's case study */
+  result: string
+  /** The client's case study */
+  href: string
 }
 
 export interface FaqItem {
@@ -43,6 +57,8 @@ export interface ResultRow {
   problem: string
   fix: string
   result: string
+  /** When set, the whole row links here (the client's case study). */
+  href?: string
 }
 
 export interface CellItem {
@@ -70,4 +86,6 @@ export interface Founder {
   role: string
   bio: string
   badge?: string
+  /** Square portrait; without one the card shows a plain navy block. */
+  photo?: ImageAsset
 }

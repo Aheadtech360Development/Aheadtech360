@@ -20,16 +20,7 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex-shrink: 0;
-}
-
-.wordmark {
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-  color: var(--ink);
 }
 
 .nav {
@@ -164,11 +155,5 @@
   .drawerCta {
     margin-top: 16px;
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .wordmark {
-    font-size: 15px;
   }
 }

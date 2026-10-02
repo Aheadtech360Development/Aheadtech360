@@ -6,8 +6,9 @@ import { useEffect, useId, useState } from 'react'
 import { HEADER_CTA, NAV, SITE } from '@/content/site/site'
 import { cx } from '@/lib/cx'
 import { Button } from '../ui/Button'
-import { LogoMark } from '../ui/LogoMark'
+import { Logo } from '../ui/Logo'
 import s from './SiteHeader.module.css'
+import { useBookCallHref } from './useBookCallHref'
 
 function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
@@ -20,6 +21,7 @@ export function SiteHeader() {
   const [openOn, setOpenOn] = useState<string | null>(null)
   const open = openOn === pathname
   const menuId = useId()
+  const bookHref = useBookCallHref()
 
   useEffect(() => {
     if (!open) return
@@ -34,8 +36,7 @@ export function SiteHeader() {
     <header className={s.header}>
       <div className={s.inner}>
         <Link href="/" className={s.brand} aria-label={`${SITE.name} home`}>
-          <LogoMark />
-          <span className={s.wordmark}>{SITE.name}</span>
+          <Logo />
         </Link>
 
         <nav className={s.nav} aria-label="Primary">
@@ -51,7 +52,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Button href={HEADER_CTA.href} size="sm" className={s.cta}>
+        <Button href={bookHref} size="sm" className={s.cta}>
           {HEADER_CTA.label}
         </Button>
 
@@ -68,7 +69,14 @@ export function SiteHeader() {
       </div>
 
       <div id={menuId} className={s.drawer} hidden={!open}>
-        <nav className={s.drawerNav} aria-label="Mobile">
+        {/* any link tap closes the menu, including in-page anchors (#calendar) where the pathname never changes */}
+        <nav
+          className={s.drawerNav}
+          aria-label="Mobile"
+          onClick={(e) => {
+            if ((e.target as HTMLElement).closest('a')) setOpenOn(null)
+          }}
+        >
           {NAV.map((item) => (
             <Link
               key={item.href}
@@ -79,7 +87,7 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Button href={HEADER_CTA.href} className={s.drawerCta}>
+          <Button href={bookHref} className={s.drawerCta}>
             {HEADER_CTA.label}
           </Button>
         </nav>

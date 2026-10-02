@@ -12,7 +12,6 @@ export const SITE = {
 
 export const ANNOUNCEMENT = {
   text: 'Booking 4 growth calls this month — free 30-min session, roi in writing',
-  href: '/book-a-call',
 } as const
 
 export interface NavItem {
@@ -29,12 +28,23 @@ export const NAV: readonly NavItem[] = [
   { label: 'About', href: '/about' },
 ]
 
-export const HEADER_CTA: NavItem = { label: 'Book A Free Call', href: '/book-a-call' }
+export const HEADER_CTA = { label: 'Book A Free Call' } as const
 
+/** Where every "Book A Call" CTA goes by default. See CALENDAR_PAGES for the exception. */
 export const BOOK_CALL_HREF = '/book-a-call'
 
-/** GoHighLevel booking-calendar embed URL. Set NEXT_PUBLIC_GHL_CALENDAR_URL to replace the placeholder. */
-export const CALENDAR_EMBED_URL = process.env.NEXT_PUBLIC_GHL_CALENDAR_URL || ''
+/** The booking calendar (GoHighLevel widget) rendered by the "Pick A Time" section. */
+export const CALENDAR_EMBED = {
+  src: 'https://api.aheadtech360.com/widget/booking/w94nZuLnPWgxB5J31RzW',
+  /** Id from GoHighLevel's embed snippet: its form_embed.js finds the iframe by it to auto-resize it. */
+  iframeId: 'kbA8tXaM5oazddHn4aHl_1790940450352',
+  script: 'https://api.aheadtech360.com/js/form_embed.js',
+  /** In-page anchor of the "Pick A Time" section (CalendarEmbed's default id). */
+  anchor: '#calendar',
+} as const
+
+/** Pages that embed the calendar: "Book A Call" there scrolls to it instead of leaving the page. */
+export const CALENDAR_PAGES: readonly string[] = ['/offer']
 
 export const FOOTER_COLUMNS: readonly { title: string; links: readonly NavItem[] }[] = [
   {

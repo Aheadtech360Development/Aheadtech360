@@ -1,10 +1,12 @@
+import { CALENDAR_EMBED } from './site'
 import type { CellItem, FaqItem, HeaderCardItem } from './types'
 
 export const OFFER_HERO = {
   badge: 'The Fashion Growth System',
   title: 'More revenue from your store in 90 days, or we keep working free until you do.',
   lead: 'We install a complete growth system into your store: converting more cold traffic, increasing AOV, building trust through creative, and keeping customers coming back. Live in 90 days.',
-  primaryCta: { label: 'Book A Free Call', href: '/book-a-call' },
+  // Scrolls to the "Pick A Time" calendar at the foot of this page instead of leaving it.
+  primaryCta: { label: 'Book A Free Call', href: CALENDAR_EMBED.anchor },
   secondaryCta: { label: "See What's Included", href: '#system' },
   tag: '90 Days. 5 Services. One System.',
 } as const

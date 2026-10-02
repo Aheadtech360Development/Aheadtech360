@@ -21,6 +21,15 @@
   aspect-ratio: 2.4 / 1;
 }
 
+/* vertical footage: a 9:16 tile, capped in width so two sit side by side without towering */
+.tile.portrait {
+  aspect-ratio: 9 / 16;
+  max-width: 340px;
+}
+.tile.portrait.sm {
+  max-width: 260px;
+}
+
 .button {
   cursor: pointer;
 }
@@ -31,6 +40,10 @@
 /* a placeholder is not interactive, so it does not lift on hover */
 .placeholder {
   cursor: default;
+}
+
+.poster {
+  object-fit: cover;
 }
 
 .play {
@@ -97,6 +110,7 @@
   display: block;
   width: 100%;
   height: 100%;
+  border: 0;
   object-fit: contain;
   background: #000;
 }
@@ -105,6 +119,19 @@
   .md,
   .sm {
     aspect-ratio: 16 / 9;
+  }
+  /* portrait tiles sit two-up on phones, so shrink the controls to fit a ~170px tile */
+  .portrait .play,
+  .portrait.sm .play {
+    width: 46px;
+    height: 46px;
+  }
+  .portrait .caption {
+    left: 8px;
+    bottom: 8px;
+    max-width: calc(100% - 16px);
+    padding: 4px 7px;
+    font-size: 10px;
   }
   .lg .play {
     width: 64px;

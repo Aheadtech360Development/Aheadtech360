@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { cx } from '@/lib/cx'
 import s from './Button.module.css'
+import { SiteLink } from './SiteLink'
 
 type Variant = 'solid' | 'onNavy' | 'text'
 type Size = 'md' | 'sm'
@@ -17,7 +17,7 @@ interface ButtonProps {
   className?: string
 }
 
-/** Internal paths and #anchors render a Next <Link>; mailto:/tel:/https: render a plain <a>. */
+/** Internal paths render a Next <Link>; #anchors and mailto:/tel:/https: render a plain <a> (see SiteLink). */
 export function Button({ href, children, variant = 'solid', size = 'md', arrow, className }: ButtonProps) {
   const cls = cx(s.button, s[variant], size === 'sm' && s.sm, className)
   const content = (
@@ -31,16 +31,9 @@ export function Button({ href, children, variant = 'solid', size = 'md', arrow, 
     </>
   )
 
-  if (href.startsWith('/') || href.startsWith('#')) {
-    return (
-      <Link href={href} className={cls}>
-        {content}
-      </Link>
-    )
-  }
   return (
-    <a href={href} className={cls}>
+    <SiteLink href={href} className={cls}>
       {content}
-    </a>
+    </SiteLink>
   )
 }

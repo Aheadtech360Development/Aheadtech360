@@ -1,0 +1,21 @@
+.logo {
+  display: block;
+  width: auto;
+  max-width: none;
+}
+
+.header {
+  height: 30px;
+}
+
+/* the dark footer needs a single-colour logo: flatten the artwork to white */
+.footer {
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 26px;
+  }
+}

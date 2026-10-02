@@ -27,13 +27,15 @@
 
 .avatar {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
+  border: 2px solid var(--navy);
   background: var(--navy);
+  object-fit: cover;
 }
 .full .avatar {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
 }
 
 .nameRow {

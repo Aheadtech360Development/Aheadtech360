@@ -1,3 +1,4 @@
+import { caseHref } from './case-studies'
 import type { CellItem, CheckList, FaqItem, HeaderCardItem, ResultRow, StatItem } from './types'
 
 export const HOME_HERO = {
@@ -21,8 +22,12 @@ export const HOME_VSL = {
   eyebrow: 'See It In Action',
   title: 'Watch how the system works',
   lead: 'Three minutes, straight from the founders. No script, no stock footage.',
-  // No overview video has been supplied yet: add `src` (an mp4 under /public/videos) to make it playable.
-  video: { label: 'The Fashion Growth System, Explained', duration: '3:12' },
+  video: {
+    label: "Your Ads Aren't the Problem. Your System Is.",
+    youtubeId: 'd2iIysJsCsg',
+    poster: '/images/video/overview-poster.jpg',
+    duration: '3:07',
+  },
 } as const
 
 export const HOME_LEAKS = {
@@ -83,11 +88,11 @@ export const HOME_PROOF = {
   eyebrow: 'Proof',
   title: 'Real stores, real numbers',
   rows: [
-    { client: 'EZDTFMaker', problem: 'Store not converting cold traffic', fix: 'Conversion, acquisition, retention', result: '$35K → $360K+/yr' },
-    { client: 'EZTmart', problem: 'Only loyal customers converted', fix: 'Fixed conversion before ad spend', result: '$2.7K → $10K+/mo' },
-    { client: 'The MACP Store', problem: 'On Square, barely converting', fix: 'Full CRO-optimized rebuild', result: 'CVR 0.5% → 2.18%' },
-    { client: 'TrashedPunk', problem: 'No real store, Etsy/Facebook only', fix: 'Custom build, SEO, CRO', result: 'Live, ranked, optimized' },
-    { client: 'US Streetwear Brand', problem: 'Meta over-reporting, site friction', fix: 'Attribution rebuild, site fixes', result: '$14.9K → $105.4K/mo' },
+    { client: 'EZDTFMaker', problem: 'Store not converting cold traffic', fix: 'Conversion, acquisition, retention', result: '$35K → $360K+/yr', href: caseHref('ezdtfmaker') },
+    { client: 'EZTmart', problem: 'Only loyal customers converted', fix: 'Fixed conversion before ad spend', result: '$2.7K → $10K+/mo', href: caseHref('eztmart') },
+    { client: 'The MACP Store', problem: 'On Square, barely converting', fix: 'Full CRO-optimized rebuild', result: 'CVR 0.5% → 2.18%', href: caseHref('macp-store') },
+    { client: 'TrashedPunk', problem: 'No real store, Etsy/Facebook only', fix: 'Custom build, SEO, CRO', result: 'Live, ranked, optimized', href: caseHref('trashedpunk') },
+    { client: 'US Streetwear Brand', problem: 'Meta over-reporting, site friction', fix: 'Attribution rebuild, site fixes', result: '$14.9K → $105.4K/mo', href: caseHref('us-streetwear-brand') },
   ] satisfies readonly ResultRow[],
   note: '4.9/5 average across Clutch and Google · Shopify Certified Partner · Listed on GoodFirms',
 } as const

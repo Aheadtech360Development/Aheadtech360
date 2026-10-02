@@ -5,15 +5,18 @@
   gap: 22px;
 }
 
+/* two portrait tiles, each centred in its half of the container */
 .videos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
   gap: 24px;
   width: 100%;
 }
 
 @media (max-width: 767px) {
+  /* portrait tiles stay two-up on phones */
   .videos {
-    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
   }
 }

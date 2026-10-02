@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FOOTER_COLUMNS, LEGAL_LINKS, SITE } from '@/content/site/site'
-import { LogoMark } from '../ui/LogoMark'
+import { Logo } from '../ui/Logo'
 import s from './SiteFooter.module.css'
 
 export function SiteFooter() {
@@ -10,8 +10,7 @@ export function SiteFooter() {
         <div className={s.columns}>
           <div className={s.brandCol}>
             <Link href="/" className={s.brand} aria-label={`${SITE.name} home`}>
-              <LogoMark tone="light" size={28} />
-              <span className={s.wordmark}>{SITE.name}</span>
+              <Logo variant="footer" />
             </Link>
             <p className={s.tagline}>{SITE.tagline}</p>
           </div>

@@ -1,0 +1,210 @@
+.wall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* masonry: screenshots keep their own aspect ratio, so mixed crops stay legible */
+.shots {
+  width: 100%;
+  column-count: 3;
+  column-gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin: 0 0 20px;
+  break-inside: avoid;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+  overflow: hidden;
+  transition:
+    transform var(--t-base),
+    border-color var(--t-fast);
+}
+.shot:hover {
+  transform: translateY(-3px);
+  border-color: var(--navy);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* source label: a quiet strip under the screenshot, so nothing covers the review text */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-top: 2px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.marker {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+}
+
+.platform,
+.zoom {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.platform {
+  color: var(--ink);
+}
+.zoom {
+  margin-left: auto;
+  color: var(--muted);
+  transition: color var(--t-fast);
+}
+.shot:hover .zoom {
+  color: var(--navy);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 28px;
+  border: 2px solid var(--navy);
+  background: var(--bg);
+  color: var(--navy);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform var(--t-fast),
+    box-shadow var(--t-fast);
+}
+.more:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--green);
+}
+
+/* full-size viewer. Tailwind's preflight zeroes every margin, which would pin a modal <dialog> to the
+   top-left corner, so the centring is spelled out */
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: fit-content;
+  height: fit-content;
+  max-width: min(94vw, 960px);
+  max-height: 94vh;
+  margin: auto;
+  padding: 0;
+  border: 2px solid var(--navy);
+  background: var(--bg);
+  color: var(--ink);
+  overflow: auto;
+}
+.dialog::backdrop {
+  background: rgba(20, 43, 84, 0.78);
+}
+
+.dialogBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 8px 8px 16px;
+  background: var(--navy);
+  color: var(--on-navy);
+}
+
+.barTitle {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  gap: 6px;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid var(--on-navy-line);
+  background: transparent;
+  color: var(--on-navy);
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+}
+.control:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--navy-deep);
+}
+
+.dialogImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(94vh - 56px);
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
+  .shots {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 599px) {
+  .shots {
+    column-count: 1;
+  }
+  .more {
+    width: 100%;
+  }
+}

@@ -28,6 +28,7 @@ import {
   OFFER_TIMELINE,
 } from '@/content/site/offer'
 import { GUARANTEE, REVIEW_SHOTS, VIDEO_TESTIMONIALS } from '@/content/site/shared'
+import { CALENDAR_EMBED } from '@/content/site/site'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
@@ -122,7 +123,7 @@ export default function OfferPage() {
 
       <FaqSection title={OFFER_FAQ.title} items={OFFER_FAQ.items} action={{ label: 'All FAQs', href: '/faq' }} />
 
-      <FinalCta title={OFFER_FINAL_CTA.title} text={OFFER_FINAL_CTA.text} />
+      <FinalCta title={OFFER_FINAL_CTA.title} text={OFFER_FINAL_CTA.text} href={CALENDAR_EMBED.anchor} />
 
       <CalendarEmbed title={OFFER_CALENDAR.title} />
     </>

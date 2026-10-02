@@ -1,5 +1,6 @@
 /** Content reused across several pages. Page-specific copy lives in the page's own content file. */
-import type { Founder, ReviewShotItem, VideoItem } from './types'
+import { caseHref, getCaseStudy } from './case-studies'
+import type { Founder, ReviewShotItem, VideoTestimonial } from './types'
 
 export const TRUST_BADGES = [
   'Shopify Certified Partner',
@@ -10,32 +11,85 @@ export const TRUST_BADGES = [
 
 export const CLIENT_NAMES = ['EZDTFMaker', 'EZTmart', 'The MACP Store', 'TrashedPunk'] as const
 
-/** Real founder testimonials (files in /public/videos). */
-export const VIDEO_TESTIMONIALS: readonly VideoItem[] = [
-  { label: 'EZDTFMaker — Founder', src: '/videos/ezt.mp4' },
-  { label: 'TrashedPunk — Founder', src: '/videos/at360.mp4' },
+/** Client name, headline result and link, read from the case study so the numbers never drift. */
+function caseSummary(slug: string) {
+  const study = getCaseStudy(slug)
+  if (!study) throw new Error(`Unknown case study: ${slug}`)
+  return { client: study.listing.name, result: study.listing.result, href: caseHref(slug) }
+}
+
+/** Real founder testimonials: vertical (9:16) mp4s in /public/videos, with a poster for each. */
+export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
+  {
+    label: 'EZDTFMaker — Founder',
+    src: '/videos/ezt.mp4',
+    poster: '/images/testimonials/video-1.webp',
+    orientation: 'portrait',
+    role: 'Founder',
+    ...caseSummary('ezdtfmaker'),
+  },
+  {
+    label: 'TrashedPunk — Founder',
+    src: '/videos/at360.mp4',
+    poster: '/images/testimonials/video-2.webp',
+    orientation: 'portrait',
+    role: 'Founder',
+    ...caseSummary('trashedpunk'),
+  },
 ]
 
 /**
- * Review screenshots (files in /public/images). To add more, append an entry — for example an Upwork
- * review once the screenshot exists; an entry without `image` renders as a labelled placeholder.
+ * Review screenshots (files in /public/images/reviews), in priority order: the wall shows the first few
+ * and reveals the rest on "Show all". Masonry layout, so mixed aspect ratios are fine.
  */
 export const REVIEW_SHOTS: readonly ReviewShotItem[] = [
   {
-    platform: 'Google Business',
-    image: { src: '/images/google/x.jpeg', alt: 'Google review from Ahmed Amin praising AheadTech360’s work ethic and quality', width: 798, height: 171 },
-  },
-  {
-    platform: 'Google Business',
-    image: { src: '/images/google/xx.jpeg', alt: 'Five-star Google review of AheadTech360', width: 780, height: 279 },
+    platform: 'Upwork Profile',
+    image: { src: '/images/reviews/upwork-profile.jpeg', alt: 'Upwork profile of Ikrash O.: Top Rated, 100% job success, 5.0 stars from 7 reviews', width: 1600, height: 1092 },
   },
   {
     platform: 'Clutch Review',
-    image: { src: '/images/clutch/cc.jpeg', alt: 'Five-star Clutch review: “I think they are perfect.”', width: 1600, height: 567 },
+    image: { src: '/images/reviews/clutch-review.jpeg', alt: 'Five-star Clutch review: “I think they are perfect.”', width: 1431, height: 406 },
   },
   {
     platform: 'GoodFirms Review',
-    image: { src: '/images/goodfirm/kk.jpeg', alt: 'Five-star GoodFirms review titled “Flawless”', width: 1582, height: 719 },
+    image: { src: '/images/reviews/goodfirms-review.jpeg', alt: 'Five-star GoodFirms review titled “Flawless” from the director of Lofty Creations Apparel', width: 1547, height: 977 },
+  },
+  {
+    platform: 'Google Review',
+    image: { src: '/images/reviews/google-review-card.jpeg', alt: 'Google review: “They created my 2 websites and I highly recommend them.”', width: 553, height: 270 },
+  },
+  {
+    platform: 'Shopify Partner Review',
+    image: { src: '/images/reviews/shopify-partner-macp.jpeg', alt: 'Five-star Shopify Partner review from The MACP Store praising communication and quality of work', width: 1600, height: 751 },
+  },
+  {
+    platform: 'WhatsApp',
+    image: { src: '/images/reviews/whatsapp-jason-1.jpeg', alt: 'WhatsApp message from Lofty Creations: “I never imagined having such a great, professional looking website.”', width: 1600, height: 738 },
+  },
+  {
+    platform: 'Upwork Review',
+    image: { src: '/images/reviews/upwork-review.jpeg', alt: 'Five-star Upwork review of a Shopify store audit: “Delivered an amazing job.”', width: 1349, height: 1029 },
+  },
+  {
+    platform: 'Google Review',
+    image: { src: '/images/reviews/google-review-khuram.jpeg', alt: 'Five-star Google review from Khuram Ahmed: “Excellent service from team AheadTech360.”', width: 1600, height: 602 },
+  },
+  {
+    platform: 'WhatsApp',
+    image: { src: '/images/reviews/whatsapp-trashedpunk-1.jpeg', alt: 'WhatsApp message from TrashedPunk: “You guys are nailing it. Let’s go!”', width: 708, height: 777 },
+  },
+  {
+    platform: 'WhatsApp',
+    image: { src: '/images/reviews/whatsapp-trashedpunk-2.jpeg', alt: 'WhatsApp message from TrashedPunk thanking the team for the blogs, SEO and CRO work', width: 708, height: 546 },
+  },
+  {
+    platform: 'WhatsApp',
+    image: { src: '/images/reviews/whatsapp-jason-2.jpeg', alt: 'WhatsApp message from Lofty Creations: “This was just what I was after, great work guys.”', width: 1600, height: 617 },
+  },
+  {
+    platform: 'WhatsApp',
+    image: { src: '/images/reviews/whatsapp-latchmin.jpeg', alt: 'WhatsApp message from a client: “It’s awesome, I love it.”', width: 1600, height: 438 },
   },
 ]
 
@@ -44,17 +98,23 @@ export const GUARANTEE = {
   text: 'Written into the agreement. Conditions: onboarding access, on-time approvals, spend held at the tier minimum.',
 } as const
 
+/** Square head-and-shoulders crops in /public/images/team. */
+const PHOTO_IKRASH = { src: '/images/team/owner-1.webp', alt: 'Portrait of Ikrash Ovais', width: 480, height: 480 } as const
+const PHOTO_IQRAR = { src: '/images/team/owner-2.webp', alt: 'Portrait of Iqrar Hussain', width: 480, height: 480 } as const
+
 export const FOUNDERS_SHORT: readonly Founder[] = [
   {
     name: 'Ikrash Ovais',
     role: 'Founder & CEO',
     badge: 'Top Rated, Upwork',
     bio: 'Started as a freelance designer for fashion brands, built the buyer-psychology fluency this system runs on.',
+    photo: PHOTO_IKRASH,
   },
   {
     name: 'Iqrar Hussain',
     role: 'Co-Founder & COO',
     bio: 'Runs the performance marketing engine and the weekly testing cycle that scales spend safely.',
+    photo: PHOTO_IQRAR,
   },
 ]
 
@@ -64,11 +124,13 @@ export const FOUNDERS_FULL: readonly Founder[] = [
     role: 'Founder & CEO',
     badge: 'Top Rated, Upwork',
     bio: 'Started as a freelance designer for fashion brands, built the buyer-psychology fluency this system runs on. The on-camera face of AheadTech360, and still runs sales calls himself end to end, from first call to close.',
+    photo: PHOTO_IKRASH,
   },
   {
     name: 'Iqrar Hussain',
     role: 'Co-Founder & COO',
     bio: "Leads performance marketing end to end, runs the ad accounts and the weekly testing cycle that scales spend safely. The operational backbone that keeps every account's numbers accountable, week over week.",
+    photo: PHOTO_IQRAR,
   },
 ]
 
