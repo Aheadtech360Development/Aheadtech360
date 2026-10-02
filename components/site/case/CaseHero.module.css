@@ -25,6 +25,9 @@
 }
 
 .back {
+  /* padding + equal negative margin: a taller tap area that does not shift the layout */
+  padding-block: 10px;
+  margin-block: -10px;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.5px;

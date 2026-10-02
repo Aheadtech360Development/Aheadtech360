@@ -1,19 +1,81 @@
-.list {
+/* the ticker never grows past its container: overflow is clipped at the section's content width */
+.ticker {
+  width: 100%;
+  padding-top: 8px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.track {
   display: flex;
-  flex-wrap: wrap;
+  width: max-content;
+  animation: scroll var(--ticker-duration, 40s) linear infinite;
+}
+.ticker:hover .track,
+.ticker:focus-within .track {
+  animation-play-state: paused;
+}
+
+/* four identical groups: moving the track by half of its width lands exactly on the same picture */
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
-  justify-content: center;
-  gap: 10px 36px;
   margin: 0;
-  padding: 8px 0 0;
+  padding: 0;
   list-style: none;
 }
 
 .name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 48px;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 1px;
   line-height: 1.3;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--muted);
+}
+.name::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+}
+
+/* no motion: show the names as a centred, wrapped list (a single copy) */
+@media (prefers-reduced-motion: reduce) {
+  .ticker {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .track {
+    width: auto;
+    animation: none;
+    justify-content: center;
+  }
+  .copy {
+    display: none;
+  }
+  /* the group may shrink to the container and wrap, instead of running past it */
+  .group {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 36px;
+  }
+  .name {
+    padding-right: 0;
+  }
 }

@@ -1,51 +1,35 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import type { ReviewShotItem } from '@/content/site/types'
+import { cx } from '@/lib/cx'
+import { Modal, ModalButton } from '../ui/Modal'
 import s from './ReviewWall.module.css'
 
 interface ReviewWallProps {
   shots: readonly ReviewShotItem[]
-  /** How many screenshots show before "Show all". The list is in priority order. */
-  initial?: number
+  /** On phones only the first few show until "Show all". Desktop and tablet always show every screenshot. */
+  initialOnMobile?: number
 }
 
 /**
- * Masonry wall of review screenshots. Shows the strongest few, reveals the rest on request, and opens
- * any of them full size in a modal (native <dialog>: focus trap, Esc to close, focus returns to the card).
+ * Masonry wall of review screenshots that open full size in a modal. Every screenshot is in the page;
+ * on phones the ones past `initialOnMobile` are hidden by CSS until the visitor asks for them, which
+ * keeps the long wall short there without hiding anything on larger screens. The list is in priority order.
  */
-export function ReviewWall({ shots, initial = 6 }: ReviewWallProps) {
+export function ReviewWall({ shots, initialOnMobile = 6 }: ReviewWallProps) {
   const [expanded, setExpanded] = useState(false)
   const [active, setActive] = useState<number | null>(null)
-  const dialogRef = useRef<HTMLDialogElement>(null)
 
-  const visible = expanded ? shots : shots.slice(0, initial)
-  const current = active === null ? null : visible[active]
-
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-    if (active === null) {
-      if (dialog.open) dialog.close()
-      return
-    }
-    if (!dialog.open) dialog.showModal()
-    // a modal dialog does not stop the page behind it from scrolling
-    document.documentElement.style.overflow = 'hidden'
-    return () => {
-      document.documentElement.style.overflow = ''
-    }
-  }, [active])
-
-  const step = (delta: number) =>
-    setActive((i) => (i === null ? i : (i + delta + visible.length) % visible.length))
+  const current = active === null ? null : shots[active]
+  const step = (delta: number) => setActive((i) => (i === null ? i : (i + delta + shots.length) % shots.length))
 
   return (
     <div className={s.wall}>
-      <ul className={s.shots}>
-        {visible.map((shot, i) => (
-          <li key={shot.image.src} className={s.item}>
+      <ul className={cx(s.shots, expanded && s.expanded)}>
+        {shots.map((shot, i) => (
+          <li key={shot.image.src} className={cx(s.item, i >= initialOnMobile && s.extra)}>
             <button type="button" className={s.shot} aria-haspopup="dialog" onClick={() => setActive(i)}>
               <Image
                 src={shot.image.src}
@@ -67,56 +51,43 @@ export function ReviewWall({ shots, initial = 6 }: ReviewWallProps) {
         ))}
       </ul>
 
-      {shots.length > initial && (
+      {shots.length > initialOnMobile && (
         <button type="button" className={s.more} aria-expanded={expanded} onClick={() => setExpanded((v) => !v)}>
           {expanded ? 'Show fewer reviews' : `Show all ${shots.length} reviews`}
         </button>
       )}
 
-      <dialog
-        ref={dialogRef}
-        className={s.dialog}
-        aria-label={current ? `${current.platform} review, full size` : 'Review'}
+      <Modal
+        open={current !== null}
         onClose={() => setActive(null)}
-        onClick={(e) => {
-          // the backdrop is part of the dialog element: a click on it targets the dialog itself
-          if (e.target === e.currentTarget) setActive(null)
-        }}
+        title={current && active !== null ? `${current.platform} · ${active + 1} / ${shots.length}` : 'Review'}
         onKeyDown={(e) => {
           if (e.key === 'ArrowLeft') step(-1)
           if (e.key === 'ArrowRight') step(1)
         }}
+        actions={
+          <>
+            <ModalButton label="Previous review" onClick={() => step(-1)}>
+              &larr;
+            </ModalButton>
+            <ModalButton label="Next review" onClick={() => step(1)}>
+              &rarr;
+            </ModalButton>
+          </>
+        }
       >
-        {current && active !== null && (
-          <div className={s.dialogBody}>
-            <div className={s.bar}>
-              <span className={s.barTitle}>
-                {current.platform} · {active + 1} / {visible.length}
-              </span>
-              <div className={s.controls}>
-                <button type="button" className={s.control} onClick={() => step(-1)} aria-label="Previous review">
-                  &larr;
-                </button>
-                <button type="button" className={s.control} onClick={() => step(1)} aria-label="Next review">
-                  &rarr;
-                </button>
-                <button type="button" className={s.control} onClick={() => setActive(null)} aria-label="Close">
-                  &times;
-                </button>
-              </div>
-            </div>
-            <Image
-              key={current.image.src}
-              src={current.image.src}
-              alt={current.image.alt}
-              width={current.image.width}
-              height={current.image.height}
-              sizes="(max-width: 900px) 94vw, 920px"
-              className={s.dialogImage}
-            />
-          </div>
+        {current && (
+          <Image
+            key={current.image.src}
+            src={current.image.src}
+            alt={current.image.alt}
+            width={current.image.width}
+            height={current.image.height}
+            sizes="(max-width: 900px) 94vw, 920px"
+            className={s.dialogImage}
+          />
         )}
-      </dialog>
+      </Modal>
     </div>
   )
 }

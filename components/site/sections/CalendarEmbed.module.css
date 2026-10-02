@@ -5,12 +5,30 @@
   gap: 22px;
 }
 
-/* min-height keeps the section from collapsing before the widget reports its real height */
-.frame {
-  display: block;
+/*
+ * The widget draws its own padded card inside the iframe, which would sit as a second frame inside ours.
+ * The iframe is therefore made a little larger than its box and pulled outward, so our single navy frame
+ * crops that outer padding and the widget's content sits directly in it.
+ */
+.frameWrap {
   width: 100%;
-  min-height: 700px;
   border: 2px solid var(--navy);
   background: var(--bg);
   overflow: hidden;
+}
+
+/* min-height keeps the section from collapsing before the widget reports its real height */
+.frame {
+  display: block;
+  width: calc(100% + 24px);
+  min-height: 700px;
+  margin: -16px -12px;
+  border: 0;
+}
+
+@media (max-width: 599px) {
+  .frame {
+    width: calc(100% + 16px);
+    margin: -12px -8px;
+  }
 }

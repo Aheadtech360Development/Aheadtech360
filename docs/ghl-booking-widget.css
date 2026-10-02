@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+/*
+ * AheadTech360 booking widget theme. Paste into GoHighLevel (the calendar's Custom CSS / custom code field):
+ * the widget lives in an iframe, so the website itself cannot restyle it. Tested against the widget DOM
+ * on /book-a-call and /offer.
+ *
+ * Look: square corners, 2px borders, navy + green, same type as the website
+ */
+:root { --at-navy: #1d3c73; --at-navy-deep: #142b54; --at-green: #24b574; --at-ink: #14161a; --at-muted: #5b5d66; --at-line: #e2e4ea; }
+
+body, #appointment-widgets-booking--revamp, #appointment-widgets-booking--revamp * {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+}
+
+/* one flat surface: no padded card, no shadow, no rounding */
+.appointment_widgets--revamp--inner { padding: 0 !important; }
+.appointment_widgets--revamp--booking { border: 0 !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; }
+
+/* headings */
+.widgets--service-name { font-weight: 800 !important; letter-spacing: -0.02em; text-transform: uppercase; color: var(--at-ink) !important; }
+.label-select-date, .custom-form-title {
+  font-size: 12px !important; font-weight: 800 !important; letter-spacing: 0.6px; text-transform: uppercase; color: var(--at-navy) !important;
+}
+
+/* form fields */
+label.field-label, .label-alignment { font-size: 11px !important; font-weight: 800 !important; letter-spacing: 0.5px; text-transform: uppercase; color: var(--at-muted) !important; }
+input.form-control, textarea.form-control, .multiselect__tags, .multiselect, .input-group {
+  min-height: 48px; border: 2px solid var(--at-line) !important; border-radius: 0 !important; background: #fff !important; box-shadow: none !important;
+}
+input.form-control:focus, textarea.form-control:focus, .multiselect--active .multiselect__tags { border-color: var(--at-navy) !important; outline: none !important; }
+
+/* time slots */
+.btn.disabled-slot { display: none; }
+.time-slot button, button.btn:not(.btn-schedule):not(.disabled-slot) { border-radius: 0 !important; }
+.btn.selected-slot { background: var(--at-navy) !important; border-color: var(--at-navy) !important; color: #fff !important; }
+
+/* calendar days */
+.vdpCell.selected .vdpCellContent, .vdpCell.selected:hover .vdpCellContent { background: var(--at-navy) !important; color: #fff !important; }
+.vdpCell:not(.disabled):hover .vdpCellContent { background: rgba(29, 60, 115, 0.12) !important; }
+
+/* buttons: same look as the website's navy button */
+.btn-schedule, .hl_button.--primary, button.btn-primary {
+  min-height: 48px; padding: 14px 28px !important; border: 2px solid var(--at-navy) !important; border-radius: 0 !important;
+  background: var(--at-navy) !important; color: #fff !important; font-size: 13px !important; font-weight: 800 !important; letter-spacing: 0.6px; text-transform: uppercase;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-schedule:hover, .hl_button.--primary:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 0 var(--at-green) !important; }
+.widgets-action-buttons { padding-top: 12px; }

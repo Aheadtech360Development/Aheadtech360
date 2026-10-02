@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { cx } from '@/lib/cx'
 import { PlayIcon } from './Icons'
+import { Modal } from './Modal'
 import s from './VideoSlot.module.css'
 
 interface VideoPlayerProps {
@@ -28,10 +29,29 @@ function posterSizes(size: VideoPlayerProps['size'], portrait?: boolean) {
 /**
  * Click-to-play. Nothing heavy is fetched up front: the <video> (tens of MB) or the YouTube iframe is
  * only mounted after the first click, so the tile costs one optimised poster image until then.
+ * Vertical (portrait) videos open large in a popup with the full player controls; the horizontal one
+ * plays in place.
  */
 export function VideoPlayer({ label, src, youtubeId, poster, duration, size, portrait, hideCaption, className }: VideoPlayerProps) {
   const [playing, setPlaying] = useState(false)
   const tile = cx(s.tile, s[size], portrait && s.portrait, className)
+
+  if (portrait && src) {
+    return (
+      <>
+        <button type="button" className={cx(tile, s.button)} aria-haspopup="dialog" onClick={() => setPlaying(true)} aria-label={`Play video: ${label}`}>
+          {poster && <Image src={poster} alt="" fill sizes={posterSizes(size, portrait)} className={s.poster} />}
+          <span className={s.play} aria-hidden="true">
+            <PlayIcon size={18} />
+          </span>
+          {!hideCaption && <span className={s.caption}>{label}</span>}
+        </button>
+        <Modal open={playing} onClose={() => setPlaying(false)} title={label}>
+          <video className={s.modalVideo} src={src} poster={poster} controls autoPlay playsInline preload="metadata" />
+        </Modal>
+      </>
+    )
+  }
 
   if (playing) {
     return (

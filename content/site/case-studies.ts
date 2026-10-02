@@ -5,7 +5,8 @@
  * Numbers come from the design and must stay consistent between the listing, the snapshots on the
  * offer page, and the detail page — they all read from here.
  */
-import type { ImageAsset } from './types'
+import type { ImageAsset, VideoItem } from './types'
+import { FOUNDER_VIDEOS } from './videos'
 
 export interface CaseListing {
   vertical: string
@@ -61,7 +62,7 @@ export interface PhasedCase extends CaseBase {
   results:
     | { kind: 'metrics'; title: string; items: readonly CaseMetric[]; footnote?: string }
     | { kind: 'callout'; title: string; text: string }
-  review?: { label: string; video: { label: string; src: string } }
+  review?: { label: string; video: VideoItem }
 }
 
 /** Single-step rebuild with a before/after and a short result block. */
@@ -158,7 +159,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     },
     review: {
       label: 'In Their Own Words',
-      video: { label: 'Video Testimonial — EZDTFMaker Founder', src: '/videos/ezt.mp4' },
+      video: { label: 'Video Testimonial — EZDTFMaker Founder', ...FOUNDER_VIDEOS.ezdtfmaker },
     },
     cta: { title: 'Want a result like this?', text: SHARED_CTA_TEXT },
   },
@@ -400,7 +401,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     },
     review: {
       label: 'In Their Own Words',
-      video: { label: 'Video Testimonial — Donnie Todd, Founder', src: '/videos/at360.mp4' },
+      video: { label: 'Video Testimonial — Donnie Todd, Founder', ...FOUNDER_VIDEOS.trashedpunk },
     },
     cta: { title: 'Starting from zero too?', text: SHARED_CTA_TEXT },
   },

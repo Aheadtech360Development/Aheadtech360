@@ -1,4 +1,5 @@
 import type { CaseBeforeAfter, CaseMetric, CasePhase } from '@/content/site/case-studies'
+import type { VideoItem } from '@/content/site/types'
 import { cx } from '@/lib/cx'
 import { Container } from '../ui/Container'
 import { CircleCheckIcon } from '../ui/Icons'
@@ -130,7 +131,7 @@ export function CaseResultCallout({ title, text }: { title: string; text: string
 }
 
 /** Founder video testimonial. */
-export function CaseReview({ label, video }: { label: string; video: { label: string; src: string } }) {
+export function CaseReview({ label, video }: { label: string; video: VideoItem }) {
   return (
     <Section tone="soft" pad="md">
       <Container size="cta">

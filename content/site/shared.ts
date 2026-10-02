@@ -1,6 +1,7 @@
 /** Content reused across several pages. Page-specific copy lives in the page's own content file. */
 import { caseHref, getCaseStudy } from './case-studies'
 import type { Founder, ReviewShotItem, VideoTestimonial } from './types'
+import { FOUNDER_VIDEOS } from './videos'
 
 export const TRUST_BADGES = [
   'Shopify Certified Partner',
@@ -9,7 +10,16 @@ export const TRUST_BADGES = [
   'Top Rated, Upwork',
 ] as const
 
-export const CLIENT_NAMES = ['EZDTFMaker', 'EZTmart', 'The MACP Store', 'TrashedPunk'] as const
+export const CLIENT_NAMES = [
+  'EZDTFMaker',
+  'EZTmart',
+  'The MACP Store',
+  'TrashedPunk',
+  'AF Blanks',
+  'Avant Printing',
+  'Innterflow',
+  'Stellar College',
+] as const
 
 /** Client name, headline result and link, read from the case study so the numbers never drift. */
 function caseSummary(slug: string) {
@@ -18,21 +28,17 @@ function caseSummary(slug: string) {
   return { client: study.listing.name, result: study.listing.result, href: caseHref(slug) }
 }
 
-/** Real founder testimonials: vertical (9:16) mp4s in /public/videos, with a poster for each. */
+/** Real founder testimonials, shown beside the client name, result and a link to the case study. */
 export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
   {
     label: 'EZDTFMaker — Founder',
-    src: '/videos/ezt.mp4',
-    poster: '/images/testimonials/video-1.webp',
-    orientation: 'portrait',
+    ...FOUNDER_VIDEOS.ezdtfmaker,
     role: 'Founder',
     ...caseSummary('ezdtfmaker'),
   },
   {
     label: 'TrashedPunk — Founder',
-    src: '/videos/at360.mp4',
-    poster: '/images/testimonials/video-2.webp',
-    orientation: 'portrait',
+    ...FOUNDER_VIDEOS.trashedpunk,
     role: 'Founder',
     ...caseSummary('trashedpunk'),
   },

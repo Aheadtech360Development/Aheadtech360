@@ -122,8 +122,12 @@
 }
 
 @media (max-width: 520px) {
+  /* Company and Services stay side by side (their links are short); Contact gets a full row */
   .columns {
-    grid-template-columns: 1fr;
+    gap: 28px 20px;
+  }
+  .columns > :last-child {
+    grid-column: 1 / -1;
   }
   .bottom {
     flex-direction: column;

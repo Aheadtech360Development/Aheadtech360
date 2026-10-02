@@ -19,3 +19,15 @@
 .link:hover {
   text-decoration-color: currentColor;
 }
+
+/* the link is only ~22px tall: extend the tap area without moving anything */
+@media (max-width: 767px) {
+  .link {
+    position: relative;
+  }
+  .link::after {
+    content: '';
+    position: absolute;
+    inset: -10px -6px -4px;
+  }
+}

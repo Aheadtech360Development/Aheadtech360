@@ -1,0 +1,77 @@
+/* Tailwind's preflight zeroes every margin, which would pin a modal <dialog> to the top-left corner,
+   so the centring is spelled out */
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: fit-content;
+  height: fit-content;
+  max-width: min(94vw, 960px);
+  max-height: 94vh;
+  margin: auto;
+  padding: 0;
+  border: 2px solid var(--navy);
+  background: var(--bg);
+  color: var(--ink);
+  overflow: auto;
+}
+.dialog::backdrop {
+  background: rgba(20, 43, 84, 0.78);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 8px 8px 16px;
+  background: var(--navy);
+  color: var(--on-navy);
+}
+
+.title {
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid var(--on-navy-line);
+  background: transparent;
+  color: var(--on-navy);
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+}
+.control:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--navy-deep);
+}

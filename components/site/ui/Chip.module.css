@@ -51,3 +51,14 @@
 .iconGreen {
   color: var(--green);
 }
+
+@media (max-width: 599px) {
+  .list {
+    gap: 8px;
+  }
+  .chip {
+    gap: 6px;
+    padding: 7px 11px;
+    font-size: 11px;
+  }
+}

@@ -106,6 +106,16 @@
 .playing {
   background: #000;
 }
+/* the player inside the popup: as tall as the screen allows, at the footage's own 9:16 */
+.modalVideo {
+  display: block;
+  aspect-ratio: 9 / 16;
+  height: min(calc(94vh - 60px), 900px);
+  max-width: 100%;
+  background: #000;
+  object-fit: contain;
+}
+
 .video {
   display: block;
   width: 100%;
@@ -119,6 +129,10 @@
   .md,
   .sm {
     aspect-ratio: 16 / 9;
+  }
+  /* a lone portrait tile (case-study review) would fill the phone and run 600px tall */
+  .tile.portrait.md {
+    max-width: 240px;
   }
   /* portrait tiles sit two-up on phones, so shrink the controls to fit a ~170px tile */
   .portrait .play,
@@ -137,13 +151,19 @@
     width: 64px;
     height: 64px;
   }
+  /* caption bottom-left (wrapping, so it stops short of the duration badge), duration bottom-right:
+     neither climbs onto the poster, whose own title would otherwise be covered */
   .duration {
-    right: 14px;
-    bottom: 14px;
+    right: 10px;
+    bottom: 10px;
+    padding: 5px 8px;
+    font-size: 11px;
   }
-  /* the caption and duration would collide on a narrow tile: stack the caption above */
   .lg .caption {
-    left: 14px;
-    bottom: 60px;
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 84px);
+    padding: 5px 8px;
+    font-size: 10px;
   }
 }

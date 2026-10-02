@@ -52,6 +52,17 @@
 .text:hover {
   gap: 12px;
 }
+/* the underlined text link is ~21px tall: extend the tap area on phones without moving anything */
+@media (max-width: 767px) {
+  .text {
+    position: relative;
+  }
+  .text::after {
+    content: '';
+    position: absolute;
+    inset: -12px -6px -8px;
+  }
+}
 
 .sm {
   min-height: 44px;

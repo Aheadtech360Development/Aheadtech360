@@ -25,14 +25,16 @@ export function CalendarEmbed({ id = 'calendar', eyebrow = 'Pick A Time', title,
       <Container size="narrow">
         <div className={s.stack}>
           <SectionHeader eyebrow={eyebrow} title={title} align="center" size="md" />
-          <iframe
-            id={CALENDAR_EMBED.iframeId}
-            src={CALENDAR_EMBED.src}
-            title="Book a free call with AheadTech360"
-            allow="payment"
-            scrolling="no"
-            className={s.frame}
-          />
+          <div className={s.frameWrap}>
+            <iframe
+              id={CALENDAR_EMBED.iframeId}
+              src={CALENDAR_EMBED.src}
+              title="Book a free call with AheadTech360"
+              allow="payment"
+              scrolling="no"
+              className={s.frame}
+            />
+          </div>
         </div>
       </Container>
       <Script src={CALENDAR_EMBED.script} strategy="afterInteractive" />

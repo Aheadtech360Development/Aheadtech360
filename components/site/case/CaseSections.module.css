@@ -251,6 +251,23 @@
   color: var(--ink);
 }
 
+@media (max-width: 599px) {
+  /* four columns must fit a phone: tighter padding and type, no forced minimum width */
+  .table {
+    min-width: 0;
+    font-size: 12px;
+  }
+  .table thead th,
+  .table tbody th,
+  .table tbody td {
+    padding: 12px 8px;
+  }
+  .table thead th {
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+}
+
 /* streams */
 .streams {
   display: flex;
