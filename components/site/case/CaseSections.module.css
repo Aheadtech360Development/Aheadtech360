@@ -105,8 +105,9 @@
   color: var(--muted);
 }
 
-.phaseSlot {
-  flex-shrink: 0;
+/* the compound selector outranks MediaSlot's own width: 100%, which otherwise stretches the slot across the card */
+.phase .phaseSlot {
+  flex: 0 0 200px;
   width: 200px;
   min-height: 110px;
 }

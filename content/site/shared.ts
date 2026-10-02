@@ -45,8 +45,8 @@ export const VIDEO_TESTIMONIALS: readonly VideoTestimonial[] = [
 ]
 
 /**
- * Review screenshots (files in /public/images/reviews), in priority order: the wall shows the first few
- * and reveals the rest on "Show all". Masonry layout, so mixed aspect ratios are fine.
+ * Review screenshots (files in /public/images/reviews), in priority order: on phones the wall shows the first few
+ * and reveals the rest on "Show all". Every 4th entry is a Shopify analytics graph, so the graphs are spread through the wall. Masonry layout, so mixed aspect ratios are fine.
  */
 export const REVIEW_SHOTS: readonly ReviewShotItem[] = [
   {
@@ -62,6 +62,10 @@ export const REVIEW_SHOTS: readonly ReviewShotItem[] = [
     image: { src: '/images/reviews/goodfirms-review.jpeg', alt: 'Five-star GoodFirms review titled “Flawless” from the director of Lofty Creations Apparel', width: 1547, height: 977 },
   },
   {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-sales-jun-2026.jpeg', alt: 'Shopify total sales over time for June 2026: US$105,473.52', width: 535, height: 339 },
+  },
+  {
     platform: 'Google Review',
     image: { src: '/images/reviews/google-review-card.jpeg', alt: 'Google review: “They created my 2 websites and I highly recommend them.”', width: 553, height: 270 },
   },
@@ -74,20 +78,60 @@ export const REVIEW_SHOTS: readonly ReviewShotItem[] = [
     image: { src: '/images/reviews/whatsapp-jason-1.jpeg', alt: 'WhatsApp message from Lofty Creations: “I never imagined having such a great, professional looking website.”', width: 1600, height: 738 },
   },
   {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-cvr-jun-2026.jpeg', alt: 'Shopify conversion rate over time for June 2026: 3.54%', width: 538, height: 348 },
+  },
+  {
+    platform: 'Clutch Review',
+    image: { src: '/images/reviews/clutch-review-2.jpeg', alt: 'Five-star Clutch review of an e-commerce build for a fashion and apparel company: “Their communication was impressive.”', width: 1393, height: 552 },
+  },
+  {
+    platform: 'Shopify Partner Review',
+    image: { src: '/images/reviews/shopify-partner-freshfits.jpeg', alt: 'Five-star Shopify Partner review from freshfits praising the transparent process and communication', width: 1030, height: 369 },
+  },
+  {
     platform: 'Upwork Review',
     image: { src: '/images/reviews/upwork-review.jpeg', alt: 'Five-star Upwork review of a Shopify store audit: “Delivered an amazing job.”', width: 1349, height: 1029 },
+  },
+  {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-sales-may-2026.jpeg', alt: 'Shopify total sales over time for May 2026: US$29,146.59', width: 556, height: 366 },
   },
   {
     platform: 'Google Review',
     image: { src: '/images/reviews/google-review-khuram.jpeg', alt: 'Five-star Google review from Khuram Ahmed: “Excellent service from team AheadTech360.”', width: 1600, height: 602 },
   },
   {
+    platform: 'Shopify Partner Review',
+    image: { src: '/images/reviews/shopify-partner-maniyas.jpeg', alt: 'Five-star Shopify Partner review from Maniyas: “These guys are really good at their work!”', width: 993, height: 322 },
+  },
+  {
     platform: 'WhatsApp',
     image: { src: '/images/reviews/whatsapp-trashedpunk-1.jpeg', alt: 'WhatsApp message from TrashedPunk: “You guys are nailing it. Let’s go!”', width: 708, height: 777 },
   },
   {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-cvr-may-2026.jpeg', alt: 'Shopify conversion rate over time for May 2026: 10.27%', width: 547, height: 352 },
+  },
+  {
+    platform: 'Google Review',
+    image: { src: '/images/reviews/google-review-grade.jpeg', alt: 'Five-star Google review: “Been working with AheadTech360 for 6 months now, they’re managing everything from our website to social media and marketing.”', width: 813, height: 307 },
+  },
+  {
+    platform: 'Upwork Review',
+    image: { src: '/images/reviews/upwork-review-dtf.jpeg', alt: 'Five-star Upwork review of a Shopify store for DTF printing apparel: “No revisions were needed.”', width: 1098, height: 328 },
+  },
+  {
     platform: 'WhatsApp',
     image: { src: '/images/reviews/whatsapp-trashedpunk-2.jpeg', alt: 'WhatsApp message from TrashedPunk thanking the team for the blogs, SEO and CRO work', width: 708, height: 546 },
+  },
+  {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-cvr-aug-2026.jpeg', alt: 'Shopify conversion rate over time for August 2026: 16.81%', width: 544, height: 352 },
+  },
+  {
+    platform: 'Client Review',
+    image: { src: '/images/reviews/client-review-dido.jpeg', alt: 'Verified review from the owner of Dido’s: “Ikrash and his team have helped me grow my business.”', width: 1450, height: 225 },
   },
   {
     platform: 'WhatsApp',
@@ -96,6 +140,10 @@ export const REVIEW_SHOTS: readonly ReviewShotItem[] = [
   {
     platform: 'WhatsApp',
     image: { src: '/images/reviews/whatsapp-latchmin.jpeg', alt: 'WhatsApp message from a client: “It’s awesome, I love it.”', width: 1600, height: 438 },
+  },
+  {
+    platform: 'Shopify Analytics',
+    image: { src: '/images/reviews/shopify-bounce-aug-2026.jpeg', alt: 'Shopify bounce rate over time for August 2026: 38.06%', width: 561, height: 360 },
   },
 ]
 

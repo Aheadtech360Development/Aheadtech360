@@ -42,7 +42,7 @@ export function ReviewsSection({
           </div>
 
           <div className={s.block}>
-            <h3 className={s.blockTitle}>Real Client Reviews</h3>
+            <h3 className={s.blockTitle}>Client Reviews &amp; Results</h3>
             <ReviewWall shots={shots} />
           </div>
         </div>
