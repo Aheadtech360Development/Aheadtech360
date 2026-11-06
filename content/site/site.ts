@@ -23,8 +23,8 @@ export const NAV: readonly NavItem[] = [
   { label: 'The Offer', href: '/offer' },
   { label: 'Services', href: '/services' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Reviews', href: '/reviews' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'FAQ', href: '/faq' },
   { label: 'About', href: '/about' },
 ]
 
@@ -52,6 +52,7 @@ export const FOOTER_COLUMNS: readonly { title: string; links: readonly NavItem[]
     links: [
       { label: 'About', href: '/about' },
       { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Reviews', href: '/reviews' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'FAQ', href: '/faq' },
     ],

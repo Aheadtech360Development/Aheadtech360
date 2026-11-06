@@ -1,0 +1,29 @@
+/* the concept board is a tall poster: keep it from growing past a comfortable reading width */
+.board {
+  max-width: 420px;
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 2px solid var(--navy);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--navy);
+  transition: background var(--t-fast);
+}
+.ghost:hover {
+  background: var(--bg);
+}
+
+@media (max-width: 640px) {
+  .ghost {
+    width: 100%;
+    justify-content: center;
+  }
+}
