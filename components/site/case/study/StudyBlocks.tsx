@@ -188,24 +188,27 @@ export function DataTable({
 }) {
   return (
     <div className={s.tableWrap}>
-      <table className={s.table}>
-        <thead>
-          <tr>
+      {/* explicit roles keep the table semantics when the CSS lays the rows out as cards on phones */}
+      <table className={s.table} role="table">
+        <thead role="rowgroup">
+          <tr role="row">
             {columns.map((c) => (
-              <th key={c} scope="col">
+              <th key={c} scope="col" role="columnheader">
                 {c}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody role="rowgroup">
           {rows.map((r, ri) => (
-            <tr key={r.label}>
-              <th scope="row">{r.label}</th>
+            <tr key={r.label} role="row">
+              <th scope="row" role="rowheader">
+                {r.label}
+              </th>
               {r.cells.map((c, ci) => {
                 const win = winFrom !== undefined && ci >= winFrom && (winRows === 'all' || ri === rows.length - 1)
                 return (
-                  <td key={ci} className={cx(s.num, win && s.win)}>
+                  <td key={ci} role="cell" data-label={columns[ci + 1]} className={cx(s.num, win && s.win)}>
                     {c}
                   </td>
                 )

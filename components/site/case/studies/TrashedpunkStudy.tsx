@@ -3,7 +3,7 @@ import { FOUNDER_VIDEOS } from '@/content/site/videos'
 import { Container } from '../../ui/Container'
 import { Section } from '../../ui/Section'
 import { VideoSlot } from '../../ui/VideoSlot'
-import { Gap, Para, SecHead, Shot, Split, StatRow, Timeline } from '../study/StudyBlocks'
+import { Gap, PageCapture, Para, SecHead, Shot, ShotGrid, Split, StatRow, Timeline } from '../study/StudyBlocks'
 import { MoreResults, StudyCta } from '../study/StudyEnd'
 import { StudyHero } from '../study/StudyHero'
 import s from './TrashedpunkStudy.module.css'
@@ -94,6 +94,20 @@ export function TrashedpunkStudy() {
       </Section>
 
       <Section>
+        <Container>
+          <SecHead tag="Before and after" title="The store, then and now." />
+          <ShotGrid>
+            <PageCapture image={IMG.tpBefore} label="Before · Earlier store" lead="Before:">
+              the earlier version of the store. Scroll inside the window to see the whole page.
+            </PageCapture>
+            <PageCapture after image={IMG.tpAfter} label="After · Current store" lead="After:">
+              the store as it is now. Scroll inside the window to see the whole page.
+            </PageCapture>
+          </ShotGrid>
+        </Container>
+      </Section>
+
+      <Section tone="soft">
         <Container>
           <SecHead tag="In their own words" title="What the founder says." />
           <VideoSlot label="Video Testimonial: TrashedPunk Founder" {...FOUNDER_VIDEOS.trashedpunk} size="md" />

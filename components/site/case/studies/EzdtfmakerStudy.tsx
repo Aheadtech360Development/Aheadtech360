@@ -258,8 +258,8 @@ export function EzdtfmakerStudy() {
           <SecHead tag="In their own words" title="What clients say." />
           <Split>
             <VideoSlot label="Video Testimonial: EZDTFMaker Founder" {...FOUNDER_VIDEOS.ezdtfmaker} size="md" />
-            <ReviewShot image={IMG.ezdtfReview} lead="GoodFirms verified review.">
-              Five stars, titled Flawless.
+            <ReviewShot image={IMG.ezdtfReview} lead="Google review.">
+              Five stars. The client had two websites built.
             </ReviewShot>
           </Split>
         </Container>

@@ -39,8 +39,10 @@ export const CASE_IMAGES = {
   // Platform reviews shown on the study pages (files in /public/images/reviews)
   macpReview: { src: '/images/reviews/shopify-partner-macp.jpeg', alt: 'Five-star Shopify Partner review from The MACP Store, October 2025, praising quality of work and communication.', width: 1600, height: 751 },
   eztReview: { src: '/images/reviews/upwork-review-dtf.jpeg', alt: 'Five-star Upwork review of a Shopify store for DTF printing apparel: no revisions were needed, endorsed as collaborative, a clear communicator and reliable.', width: 1098, height: 328 },
-  ezdtfReview: { src: '/images/reviews/goodfirms-review.jpeg', alt: 'Five-star GoodFirms verified review titled Flawless, from the director of Lofty Creations Apparel.', width: 1547, height: 977 },
+  ezdtfReview: { src: '/images/reviews/google-review-card.jpeg', alt: 'Five-star Google review: AheadTech360 excels in both work ethics and quality of work. They created my 2 websites and I highly recommend them.', width: 553, height: 270 },
 
   // TrashedPunk
+  tpBefore: img('trashedpunk-before', 959, 3029, 'Full-page capture of the earlier TrashedPunk store: dark neon theme with a Not Fashion, Neon Therapy hero, a short product list, a comparison table, customer videos and reviews.'),
+  tpAfter: img('trashedpunk-after', 959, 4456, 'Full-page capture of the current TrashedPunk store: light theme with a Not Fashion, Neon Therapy hero, Shop by vibe categories, a featured collection, the brand story, customer videos, reviews, FAQs and footer.'),
   tpConcept: img('trashedpunk-concept-board', 900, 1350, 'TrashedPunk concept direction board: neon teal, pink and yellow on black, glitch textures, a neon frog and the brush-script logo over a dark alley.'),
 } as const
