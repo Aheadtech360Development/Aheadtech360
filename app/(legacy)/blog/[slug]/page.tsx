@@ -9,7 +9,7 @@ import { sanityFetch } from '@/sanity/lib/client'
 import FAQAccordion from '@/components/blog/FAQAccordion'
 import CTABox from '@/components/blog/CTABox'
 
-// ── Queries ────────────────────────────────────────────────────────────
+// -- Queries --
 
 const POST_QUERY = `*[_type == "blogPost" && slug.current == $slug][0]{
   title, category, publishedAt, _updatedAt, readTime, excerpt,
@@ -37,7 +37,7 @@ const LATEST_QUERY = `*[_type == "blogPost" && slug.current != $slug] | order(pu
   "image": { "url": coverImage.asset->url, "alt": coverImage.alt }
 }`
 
-// ── Types ──────────────────────────────────────────────────────────────
+// -- Types --
 
 interface LatestPost {
   slug: string
@@ -53,14 +53,14 @@ const CAT_COLORS: Record<string, string> = {
   'Digital Marketing': '#213D79', 'SEO': '#25B472', 'Web Design': '#7C3AED',
 }
 
-// ── Helpers ────────────────────────────────────────────────────────────
+// -- Helpers --
 
 function formatDate(d: string) {
   if (!d) return ''
   return new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 }
 
-// ── Portable Text renderer ─────────────────────────────────────────────
+// -- Portable Text renderer --
 
 function RenderBody({ body }: { body: any[] }) {
   if (!body?.length) return <p style={{ color: '#6E8098', fontFamily: 'var(--font-jakarta)' }}>Content coming soon.</p>
@@ -280,7 +280,7 @@ function RenderBody({ body }: { body: any[] }) {
   )
 }
 
-// ── Metadata ───────────────────────────────────────────────────────────
+// -- Metadata --
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
@@ -298,12 +298,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     keywords,
-    alternates: { canonical: `https://aheadtech360.com/blog/${slug}` },
+    alternates: { canonical: `https://www.aheadtech360.com/blog/${slug}` },
     openGraph: {
       title,
       description,
       type: 'article',
-      url: `https://aheadtech360.com/blog/${slug}`,
+      url: `https://www.aheadtech360.com/blog/${slug}`,
       siteName: 'AheadTech360',
       images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: post?.title || '' }] : [],
     },
@@ -315,7 +315,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// ── Main Page ──────────────────────────────────────────────────────────
+// -- Main Page --
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -332,11 +332,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const sidebarFormUrl = settings?.blogSidebarFormUrl || ''
 
   // Construct share URLs server-side from slug — no window.location needed
-  const pageUrl = `https://aheadtech360.com/blog/${slug}`
+  const pageUrl = `https://www.aheadtech360.com/blog/${slug}`
   const shareUrl = encodeURIComponent(pageUrl)
   const shareTitle = encodeURIComponent(post.title || '')
 
-  // ── Structured data ────────────────────────────────────────────────────
+  // -- Structured data --
   const faqSchema = post.faqs?.length
     ? {
         '@context': 'https://schema.org',
@@ -384,38 +384,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* ════════════════════════════════════════════════════════
-          SECTION 1: Main Article
-      ════════════════════════════════════════════════════════ */}
+      {/* SECTION 1: Main Article */}
       <section style={{ background: '#fff', padding: '60px 32px 80px' }}>
         <div style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr', gap: '48px', alignItems: 'start' }} className="blog-post-grid">
 
-          {/* ── LEFT: Sticky GHL Form ── */}
-          {/* <div style={{ position: 'sticky', top: '100px' }}>
-            <div style={{ background: '#fff', border: '1.5px solid #DFE5ED', borderRadius: '20px', padding: '28px', boxShadow: '0 12px 40px rgba(8,14,28,.08)' }}>
-              <h3 style={{ fontFamily: 'var(--font-bricolage)', fontSize: '18px', fontWeight: 800, color: '#080E1C', marginBottom: '6px', textAlign: 'center' }}>
-                Get a Free Audit
-              </h3>
-              <p style={{ fontSize: '12.5px', color: '#6E8098', textAlign: 'center', marginBottom: '20px', fontFamily: 'var(--font-jakarta)', lineHeight: 1.5 }}>
-                We'll find what's broken. Free. No strings.
-              </p>
-              {sidebarFormUrl ? (
-                <iframe src={sidebarFormUrl} style={{ width: '100%', minHeight: '500px', border: 'none' }} loading="lazy" title="Get Free Audit" />
-              ) : (
-                <div style={{ background: '#FFFAEB', border: '1.5px solid #FCD34D', borderRadius: '10px', padding: '16px', fontSize: '12px', color: '#7A5A00', fontFamily: 'var(--font-jakarta)', lineHeight: 1.6, textAlign: 'center' }}>
-                  ⚙️ <strong>Form not connected yet.</strong><br />
-                  Go to Sanity Studio → Site Settings → <em>Blog Sidebar GHL Form URL</em>
-                </div>
-              )}
-              <div style={{ marginTop: '16px', textAlign: 'center' }}>
-                <Link href="/contact" style={{ fontSize: '13px', fontWeight: 700, color: '#25B472', fontFamily: 'var(--font-jakarta)', textDecoration: 'none' }}>
-                  Or talk to us directly →
-                </Link>
-              </div>
-            </div>
-          </div> */}
-
-          {/* ── RIGHT: Article Content ── */}
+          {/* RIGHT: Article Content */}
           <div>
             <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#6E8098', fontFamily: 'var(--font-jakarta)', textDecoration: 'none', marginBottom: '20px', fontWeight: 600 }}>
               ← Back to Blog
@@ -492,9 +465,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          SECTION 2: FAQ
-      ════════════════════════════════════════════════════════ */}
+      {/* SECTION 2: FAQ */}
       {post.faqs?.length > 0 && (
         <section style={{ background: '#F2F5F8', padding: '80px 32px' }}>
           <div style={{ maxWidth: '760px', margin: '0 auto' }}>
@@ -507,9 +478,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-      {/* ════════════════════════════════════════════════════════
-          SECTION 3: Latest Articles
-      ════════════════════════════════════════════════════════ */}
+      {/* SECTION 3: Latest Articles */}
       {latestPosts && latestPosts.length > 0 && (
         <section style={{ background: '#fff', padding: '80px 32px' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
@@ -550,7 +519,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
 
       {/* Sticky floating button */}
-      <Link href="/contact"
+      <Link href="/book-a-call"
         style={{ position: 'fixed', bottom: '28px', right: '28px', zIndex: 999, display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '13px 22px', borderRadius: '99px', background: '#25B472', color: '#fff', fontSize: '18px', fontWeight: 800, fontFamily: 'var(--font-jakarta)', textDecoration: 'none', boxShadow: '0 8px 28px rgba(37,180,114,.4)' }}>
         Free Audit →
       </Link>
