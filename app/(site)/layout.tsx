@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import { AnnouncementBar } from '@/components/site/layout/AnnouncementBar'
 import { SiteFooter } from '@/components/site/layout/SiteFooter'
 import { SiteHeader } from '@/components/site/layout/SiteHeader'
+import PageSchema from '@/components/seo/PageSchema'
 import { SITE } from '@/content/site/site'
 import './site.css'
 import s from './layout.module.css'
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="site">
+      <PageSchema />
       <a href="#main" className={s.skip}>
         Skip to content
       </a>
