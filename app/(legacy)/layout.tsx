@@ -5,6 +5,7 @@
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import Topbar from '@/components/layout/Topbar'
+import PageSchema from '@/components/seo/PageSchema'
 import { sanityFetch } from '@/sanity/lib/client'
 
 const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
@@ -21,6 +22,7 @@ export default async function LegacyLayout({ children }: { children: React.React
 
   return (
     <>
+      <PageSchema />
       <Topbar text={settings?.topbarText} />
       <Header navLinks={settings?.navLinks?.length ? settings.navLinks : undefined} />
       {children}
