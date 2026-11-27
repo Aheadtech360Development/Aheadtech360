@@ -1,13 +1,12 @@
 import { FinalCta } from '@/components/site/sections/FinalCta'
 import { PageHero } from '@/components/site/sections/PageHero'
-import { TierLadder } from '@/components/site/sections/TierLadder'
 import { ActionCallout } from '@/components/site/ui/Callout'
 import { CellGrid } from '@/components/site/ui/CellGrid'
 import { Container } from '@/components/site/ui/Container'
 import { Section } from '@/components/site/ui/Section'
 import { SectionHeader } from '@/components/site/ui/SectionHeader'
 import { Stack } from '@/components/site/ui/Stack'
-import { PRICING_FINAL_CTA, PRICING_HERO, PRICING_MODEL, PRICING_NUMBER, PRICING_TIERS } from '@/content/site/pricing'
+import { PRICING_FINAL_CTA, PRICING_HERO, PRICING_MODEL, PRICING_NUMBER } from '@/content/site/pricing'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata = pageMetadata({
@@ -31,16 +30,7 @@ export default function PricingPage() {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <Stack>
-            <SectionHeader title={PRICING_TIERS.title} size="sm" />
-            <TierLadder tiers={PRICING_TIERS.tiers} />
-          </Stack>
-        </Container>
-      </Section>
-
-      <Section tone="soft" pad="md">
+      <Section pad="md">
         <Container size="prose">
           <ActionCallout eyebrow={PRICING_NUMBER.eyebrow} title={PRICING_NUMBER.title} action={PRICING_NUMBER.action} />
         </Container>
